@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="xanadu::allocator">
+		<DisplayString>{_memory_address,s8}</DisplayString>
+		<StringView>_memory_address,s8</StringView>
+		<Expand>
+			<Item Name="[size]">_memory_length</Item>
+			<Item Name="[capacity]">_memory_capacity</Item>
+			<ArrayItems>
+				<Size>_memory_length</Size>
+				<ValuePointer>_memory_address</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="xanadu::string">
+		<DisplayString>{_Allocator._memory_address,s8}</DisplayString>
+		<StringView>_Allocator._memory_address,s8</StringView>
+		<Expand>
+			<Item Name="[size]">_Allocator._memory_length</Item>
+			<Item Name="[capacity]">_Allocator._memory_capacity</Item>
+			<ArrayItems>
+				<Size>_Allocator._memory_length</Size>
+				<ValuePointer>_Allocator._memory_address</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+</AutoVisualizer>
