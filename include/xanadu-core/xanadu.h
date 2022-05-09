@@ -3,6 +3,7 @@
 
 #include <xanadu-core/allocator.h>
 #include <xanadu-core/application.h>
+#include <xanadu-core/bytearray.h>
 #include <xanadu-core/date_time.h>
 #include <xanadu-core/endian.h>
 #include <xanadu-core/error.h>

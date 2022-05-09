@@ -23,7 +23,7 @@ namespace xanadu
 	class _XCOREAPI_ string
 	{
 	public:
-		using _Elem			= char;
+		using elem_type			= char;
 		using size_type			= xanadu::size_type;
 		using pos_type			= xanadu::pos_type;
 
@@ -38,13 +38,13 @@ namespace xanadu
 		string() noexcept;
 
 		// constructor
-		string(size_type _Length, _Elem _Char) noexcept;
+		string(size_type _Length, elem_type _Char) noexcept;
 
 		// constructor
-		string(const _Elem* _Memory) noexcept; // NOLINT(google-explicit-constructor)
+		string(const elem_type* _Memory) noexcept; // NOLINT(google-explicit-constructor)
 
 		// constructor
-		string(const _Elem* _Memory, size_type _Length) noexcept;
+		string(const elem_type* _Memory, size_type _Length) noexcept;
 
 		// constructor
 		string(const std::string& _StdStr) noexcept; // NOLINT(google-explicit-constructor)
@@ -60,7 +60,7 @@ namespace xanadu
 
 	public:
 		// operator overload =
-		string& operator = (const _Elem* _Memory) noexcept;
+		string& operator = (const elem_type* _Memory) noexcept;
 
 		// operator overload =
 		string& operator = (const std::string& _String) noexcept;
@@ -73,10 +73,10 @@ namespace xanadu
 
 	public:
 		// operator overload +=
-		string& operator += (_Elem _Char) noexcept;
+		string& operator += (elem_type _Char) noexcept;
 
 		// operator overload +=
-		string& operator += (const _Elem* _String) noexcept;
+		string& operator += (const elem_type* _String) noexcept;
 
 		// operator overload +=
 		string& operator += (const std::string& _String) noexcept;
@@ -86,10 +86,10 @@ namespace xanadu
 
 	public:
 		// operator overload +
-		string operator + (_Elem _Char) const noexcept;
+		string operator + (elem_type _Char) const noexcept;
 
 		// operator overload +
-		string operator + (const _Elem* _String) const noexcept;
+		string operator + (const elem_type* _String) const noexcept;
 
 		// operator overload +
 		string operator + (const std::string& _String) const noexcept;
@@ -99,65 +99,65 @@ namespace xanadu
 
 	public:
 		// operator overload ==
-		bool operator == (_Elem _Char) const noexcept;
+		bool operator == (elem_type _Char) const noexcept;
 
 		// operator overload ==
-		bool operator == (const _Elem* _String) const noexcept;
+		bool operator == (const elem_type* _String) const noexcept;
 
 		// operator overload ==
 		bool operator == (const xanadu::string& _String) const noexcept;
 
 		// operator overload !=
-		bool operator != (_Elem _Char) const noexcept;
+		bool operator != (elem_type _Char) const noexcept;
 
 		// operator overload !=
-		bool operator != (const _Elem* _String) const noexcept;
+		bool operator != (const elem_type* _String) const noexcept;
 
 		// operator overload !=
 		bool operator != (const xanadu::string& _String) const noexcept;
 
 		// operator overload <
-		bool operator < (_Elem _Char) const noexcept;
+		bool operator < (elem_type _Char) const noexcept;
 
 		// operator overload <
-		bool operator < (const _Elem* _String) const noexcept;
+		bool operator < (const elem_type* _String) const noexcept;
 
 		// operator overload <
 		bool operator < (const xanadu::string& _String) const noexcept;
 
 		// operator overload >
-		bool operator > (_Elem _Char) const noexcept;
+		bool operator > (elem_type _Char) const noexcept;
 
 		// operator overload >
-		bool operator > (const _Elem* _String) const noexcept;
+		bool operator > (const elem_type* _String) const noexcept;
 
 		// operator overload >
 		bool operator > (const xanadu::string& _String) const noexcept;
 
 		// operator overload <=
-		bool operator <= (_Elem _Char) const noexcept;
+		bool operator <= (elem_type _Char) const noexcept;
 
 		// operator overload <=
-		bool operator <= (const _Elem* _String) const noexcept;
+		bool operator <= (const elem_type* _String) const noexcept;
 
 		// operator overload <=
 		bool operator <= (const xanadu::string& _String) const noexcept;
 
 		// operator overload >=
-		bool operator >= (_Elem _Char) const noexcept;
+		bool operator >= (elem_type _Char) const noexcept;
 
 		// operator overload >=
-		bool operator >= (const _Elem* _String) const noexcept;
+		bool operator >= (const elem_type* _String) const noexcept;
 
 		// operator overload >=
 		bool operator >= (const xanadu::string& _String) const noexcept;
 
 	public:
-		// [opt] operator overload []
-		_Elem& operator [] (pos_type _Index);
+		// operator overload []
+		elem_type& operator [] (pos_type _Index);
 
-		// [opt] operator overload []
-		_Elem operator [] (pos_type _Index) const;
+		// operator overload []
+		elem_type operator [] (pos_type _Index) const;
 
 	public:
 		// [opt] clear
@@ -177,10 +177,10 @@ namespace xanadu
 		virtual bool empty() const noexcept final;
 
 		// [get] data
-		virtual _Elem* data() noexcept final;
+		virtual elem_type* data() noexcept final;
 
 		// [get] data
-		virtual const _Elem* data() const noexcept final;
+		virtual const elem_type* data() const noexcept final;
 
 		// [get] size
 		virtual size_type size() const noexcept final;
@@ -195,416 +195,416 @@ namespace xanadu
 		virtual size_type max_size() const noexcept final;
 
 	public:
-		// Extracting substrings from strings
+		// 从源中截取部分数据
 		virtual xanadu::string substr(pos_type _Pos) const noexcept final;
 
-		// Extracting substrings from strings
+		// 从源中截取部分数据
 		virtual xanadu::string substr(pos_type _Pos, size_type _Length) const noexcept final;
 
-		// Gets the substring to the left of the source string
+		// 从源中截取部分数据
 		virtual xanadu::string left(pos_type _Pos) const noexcept final;
 
-		// Gets the substring to the right of the source string
+		// 从源中截取部分数据
 		virtual xanadu::string right(pos_type _Pos) const noexcept final;
 
 	public:
-		// [mid] Gets the substring in the middle of the source string
+		// [mid] 从源中截取部分数据
 		virtual xanadu::string mid(pos_type _Pos) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
+		// [mid] 从源中截取部分数据
 		virtual xanadu::string mid(pos_type _Pos, size_type _Size) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const _Elem* _Left, const _Elem* _Right) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const elem_type* _Left, const elem_type* _Right) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const _Elem* _Left, const _Elem* _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const elem_type* _Left, const elem_type* _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const _Elem* _Left, size_type _LengthL, const _Elem* _Right, size_type _LengthR) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const _Elem* _Left, size_type _LengthL, const _Elem* _Right, size_type _LengthR, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const _Elem* _Left, const xanadu::string& _Right) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const elem_type* _Left, const xanadu::string& _Right) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const _Elem* _Left, const xanadu::string& _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const elem_type* _Left, const xanadu::string& _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const xanadu::string& _Left, const _Elem* _Right) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const xanadu::string& _Left, const elem_type* _Right) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
-		virtual xanadu::string mid(const xanadu::string& _Left, const _Elem* _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// [mid] 从源中截取部分数据
+		virtual xanadu::string mid(const xanadu::string& _Left, const elem_type* _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
+		// [mid] 从源中截取部分数据
 		virtual xanadu::string mid(const xanadu::string& _Left, const xanadu::string& _Right) const noexcept final;
 
-		// [mid] Gets the substring in the middle of the source string
+		// [mid] 从源中截取部分数据
 		virtual xanadu::string mid(const xanadu::string& _Left, const xanadu::string& _Right, xanadu::CaseSensitivity _XCS) const noexcept final;
 
 	public:
-		// Detects whether the string starts with the specified prefix
-		virtual bool startsWith(_Elem _Char) const noexcept final;
+		// 检测源数据是否存在指定的前缀
+		virtual bool startsWith(elem_type _Char) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
-		virtual bool startsWith(_Elem _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检测源数据是否存在指定的前缀
+		virtual bool startsWith(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
-		virtual bool startsWith(const _Elem* _Memory) const noexcept final;
+		// 检测源数据是否存在指定的前缀
+		virtual bool startsWith(const elem_type* _Memory) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
-		virtual bool startsWith(const _Elem* _Memory, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检测源数据是否存在指定的前缀
+		virtual bool startsWith(const elem_type* _Memory, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
-		virtual bool startsWith(const _Elem* _Memory, size_type _Length) const noexcept final;
+		// 检测源数据是否存在指定的前缀
+		virtual bool startsWith(const elem_type* _Memory, size_type _Length) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
-		virtual bool startsWith(const _Elem* _Memory, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检测源数据是否存在指定的前缀
+		virtual bool startsWith(const elem_type* _Memory, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
+		// 检测源数据是否存在指定的前缀
 		virtual bool startsWith(const xanadu::string& _String) const noexcept final;
 
-		// Detects whether the string starts with the specified prefix
+		// 检测源数据是否存在指定的前缀
 		virtual bool startsWith(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
 	public:
-		// Detects whether the string ends with the specified suffix
-		virtual bool endsWith(_Elem _Char) const noexcept final;
+		// 检测源数据是否存在指定的后缀
+		virtual bool endsWith(elem_type _Char) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
-		virtual bool endsWith(_Elem _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检测源数据是否存在指定的后缀
+		virtual bool endsWith(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
-		virtual bool endsWith(const _Elem* _Memory) const noexcept final;
+		// 检测源数据是否存在指定的后缀
+		virtual bool endsWith(const elem_type* _Memory) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
-		virtual bool endsWith(const _Elem* _Memory, xanadu::CaseSensitivity) const noexcept final;
+		// 检测源数据是否存在指定的后缀
+		virtual bool endsWith(const elem_type* _Memory, xanadu::CaseSensitivity) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
-		virtual bool endsWith(const _Elem* _Memory, size_type _Length) const noexcept final;
+		// 检测源数据是否存在指定的后缀
+		virtual bool endsWith(const elem_type* _Memory, size_type _Length) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
-		virtual bool endsWith(const _Elem* _Memory, size_type _Length, xanadu::CaseSensitivity) const noexcept final;
+		// 检测源数据是否存在指定的后缀
+		virtual bool endsWith(const elem_type* _Memory, size_type _Length, xanadu::CaseSensitivity) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
+		// 检测源数据是否存在指定的后缀
 		virtual bool endsWith(const xanadu::string& _String) const noexcept final;
 
-		// Detects whether the string ends with the specified suffix
+		// 检测源数据是否存在指定的后缀
 		virtual bool endsWith(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 		
 	public:
-		// Find in positive order from the specified location
-		virtual pos_type find(_Elem _Char) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(elem_type _Char) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(_Elem _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(_Elem _Char, pos_type _Pos) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(elem_type _Char, pos_type _Pos) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(_Elem _Char, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(elem_type _Char, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(const _Elem* _String) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(const elem_type* _String) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(const _Elem* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(const _Elem* _String, pos_type _Pos) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(const elem_type* _String, pos_type _Pos) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(const _Elem* _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(const elem_type* _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(const _Elem* _String, size_type _Length, pos_type _Pos) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(const elem_type* _String, size_type _Length, pos_type _Pos) const noexcept final;
 
-		// Find in positive order from the specified location
-		virtual pos_type find(const _Elem* _String, size_type _Length, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按正序查找数据
+		virtual pos_type find(const elem_type* _String, size_type _Length, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Find in positive order from the specified location
+		// 从指定位置按正序查找数据
 		virtual pos_type find(const xanadu::string& _String) const noexcept final;
 
-		// Find in positive order from the specified location
+		// 从指定位置按正序查找数据
 		virtual pos_type find(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Find in positive order from the specified location
+		// 从指定位置按正序查找数据
 		virtual pos_type find(const xanadu::string& _String, pos_type _Pos) const noexcept final;
 
-		// Find in positive order from the specified location
+		// 从指定位置按正序查找数据
 		virtual pos_type find(const xanadu::string& _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
 	public:
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(_Elem _Char) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(elem_type _Char) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(_Elem _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(_Elem _Char, pos_type _Pos) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(elem_type _Char, pos_type _Pos) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(_Elem _Char, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(elem_type _Char, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(const _Elem* _String) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(const elem_type* _String) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(const _Elem* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(const _Elem* _String, pos_type _Pos) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(const elem_type* _String, pos_type _Pos) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(const _Elem* _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(const elem_type* _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(const _Elem* _String, size_type _Length, pos_type _Pos) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(const elem_type* _String, size_type _Length, pos_type _Pos) const noexcept final;
 
-		// Search in reverse order from the specified location
-		virtual pos_type rfind(const _Elem* _String, size_type _Length, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 从指定位置按倒序查找数据
+		virtual pos_type rfind(const elem_type* _String, size_type _Length, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Search in reverse order from the specified location
+		// 从指定位置按倒序查找数据
 		virtual pos_type rfind(const xanadu::string& _String) const noexcept final;
 
-		// Search in reverse order from the specified location
+		// 从指定位置按倒序查找数据
 		virtual pos_type rfind(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Search in reverse order from the specified location
+		// 从指定位置按倒序查找数据
 		virtual pos_type rfind(const xanadu::string& _String, pos_type _Pos) const noexcept final;
 
-		// Search in reverse order from the specified location
+		// 从指定位置按倒序查找数据
 		virtual pos_type rfind(const xanadu::string& _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept final;
 
 	public:
-		// Check whether the specified content is included
-		virtual bool contains(_Elem _Char) const noexcept final;
+		// 检查是否包含指定数据
+		virtual bool contains(elem_type _Char) const noexcept final;
 
-		// Check whether the specified content is included
-		virtual bool contains(_Elem _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检查是否包含指定数据
+		virtual bool contains(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Check whether the specified content is included
-		virtual bool contains(const _Elem* _String) const noexcept final;
+		// 检查是否包含指定数据
+		virtual bool contains(const elem_type* _String) const noexcept final;
 
-		// Check whether the specified content is included
-		virtual bool contains(const _Elem* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检查是否包含指定数据
+		virtual bool contains(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Check whether the specified content is included
-		virtual bool contains(const _Elem* _String, size_type _Length) const noexcept final;
+		// 检查是否包含指定数据
+		virtual bool contains(const elem_type* _String, size_type _Length) const noexcept final;
 
-		// Check whether the specified content is included
-		virtual bool contains(const _Elem* _String, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检查是否包含指定数据
+		virtual bool contains(const elem_type* _String, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Check whether the specified content is included
+		// 检查是否包含指定数据
 		virtual bool contains(const xanadu::string& _String) const noexcept final;
 
-		// Check whether the specified content is included
+		// 检查是否包含指定数据
 		virtual bool contains(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
 	public:
-		// Check that they are the same
-		virtual int compare(_Elem _Char) const noexcept final;
+		// 检查是否与指定数据相同
+		virtual int compare(elem_type _Char) const noexcept final;
 
-		// Check that they are the same
-		virtual int compare(_Elem _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检查是否与指定数据相同
+		virtual int compare(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Check that they are the same
-		virtual int compare(const _Elem* _String) const noexcept final;
+		// 检查是否与指定数据相同
+		virtual int compare(const elem_type* _String) const noexcept final;
 
-		// Check that they are the same
-		virtual int compare(const _Elem* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检查是否与指定数据相同
+		virtual int compare(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Check that they are the same
-		virtual int compare(const _Elem* _String, size_type _Length) const noexcept final;
+		// 检查是否与指定数据相同
+		virtual int compare(const elem_type* _String, size_type _Length) const noexcept final;
 
-		// Check that they are the same
-		virtual int compare(const _Elem* _String, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept final;
+		// 检查是否与指定数据相同
+		virtual int compare(const elem_type* _String, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept final;
 
-		// Check that they are the same
+		// 检查是否与指定数据相同
 		virtual int compare(const xanadu::string& _String) const noexcept final;
 
-		// Check that they are the same
+		// 检查是否与指定数据相同
 		virtual int compare(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept final;
 
 	public:
-		// Add at the begin
-		virtual xanadu::string& prepend(_Elem _Char) noexcept final;
+		// 在头部插入数据
+		virtual xanadu::string& prepend(elem_type _Char) noexcept final;
 
-		// Add at the begin
-		virtual xanadu::string& prepend(const _Elem* _String) noexcept final;
+		// 在头部插入数据
+		virtual xanadu::string& prepend(const elem_type* _String) noexcept final;
 
-		// Add at the begin
-		virtual xanadu::string& prepend(const _Elem* _String, size_type _Size) noexcept final;
+		// 在头部插入数据
+		virtual xanadu::string& prepend(const elem_type* _String, size_type _Size) noexcept final;
 
-		// Add at the begin
+		// 在头部插入数据
 		virtual xanadu::string& prepend(const xanadu::string& _String) noexcept final;
 
 	public:
-		// Add at the end
-		virtual xanadu::string& append(_Elem _Char) noexcept final;
+		// 在尾部添加数据
+		virtual xanadu::string& append(elem_type _Char) noexcept final;
 
-		// Add at the end
-		virtual xanadu::string& append(const _Elem* _String) noexcept final;
+		// 在尾部添加数据
+		virtual xanadu::string& append(const elem_type* _String) noexcept final;
 
-		// Add at the end
-		virtual xanadu::string& append(const _Elem* _String, size_type _Size) noexcept final;
+		// 在尾部添加数据
+		virtual xanadu::string& append(const elem_type* _String, size_type _Size) noexcept final;
 
-		// Add at the end
+		// 在尾部添加数据
 		virtual xanadu::string& append(const xanadu::string& _String) noexcept final;
 
 	public:
-		// Inserts data from the specified location _Elem
-		virtual xanadu::string& insert(pos_type _Pos, _Elem _Char) noexcept final;
+		// 在指定下标处插入数据
+		virtual xanadu::string& insert(pos_type _Pos, elem_type _Char) noexcept final;
 
-		// Inserts data from the specified location _Elem
-		virtual xanadu::string& insert(pos_type _Pos, size_type _Count, _Elem _Char) noexcept final;
+		// 在指定下标处插入数据
+		virtual xanadu::string& insert(pos_type _Pos, size_type _Count, elem_type _Char) noexcept final;
 
-		// Inserts data from the specified location const _Elem*
-		virtual xanadu::string& insert(pos_type _Pos, const _Elem* _String) noexcept final;
+		// 在指定下标处插入数据
+		virtual xanadu::string& insert(pos_type _Pos, const elem_type* _String) noexcept final;
 
-		// Inserts data from the specified location const _Elem*
-		virtual xanadu::string& insert(pos_type _Pos, const _Elem* _String, size_type _Length) noexcept final;
+		// 在指定下标处插入数据
+		virtual xanadu::string& insert(pos_type _Pos, const elem_type* _String, size_type _Length) noexcept final;
 
 		// Inserts data from the specified location xanadu::string
 		virtual xanadu::string& insert(pos_type _Pos, const xanadu::string& _String) noexcept final;
 
 	public:
-		// Removes the specified length of data from the specified location
+		// 移除下标 pos 处的 length 长度数据
 		virtual xanadu::string& remove(pos_type _Pos, size_type _Length) noexcept final;
 
-		// Delete the same data as the parameter
-		virtual xanadu::string& remove(_Elem _Char) noexcept final;
+		// 删除与参数相同的数据
+		virtual xanadu::string& remove(elem_type _Char) noexcept final;
 
-		// Delete the same data as the parameter
-		virtual xanadu::string& remove(_Elem _Char, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 删除与参数相同的数据
+		virtual xanadu::string& remove(elem_type _Char, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Delete the same data as the parameter
-		virtual xanadu::string& remove(const _Elem* _String) noexcept final;
+		// 删除与参数相同的数据
+		virtual xanadu::string& remove(const elem_type* _String) noexcept final;
 
-		// Delete the same data as the parameter
-		virtual xanadu::string& remove(const _Elem* _String, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 删除与参数相同的数据
+		virtual xanadu::string& remove(const elem_type* _String, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Delete the same data as the parameter
-		virtual xanadu::string& remove(const _Elem* _String, size_type _Length) noexcept final;
+		// 删除与参数相同的数据
+		virtual xanadu::string& remove(const elem_type* _String, size_type _Length) noexcept final;
 
-		// Delete the same data as the parameter
-		virtual xanadu::string& remove(const _Elem* _String, size_type _Length, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 删除与参数相同的数据
+		virtual xanadu::string& remove(const elem_type* _String, size_type _Length, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Delete the same data as the parameter
+		// 删除与参数相同的数据
 		virtual xanadu::string& remove(const xanadu::string& _String) noexcept final;
 
-		// Delete the same data as the parameter
+		// 删除与参数相同的数据
 		virtual xanadu::string& remove(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) noexcept final;
 
 	public:
-		// Replace the specified data
-		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, _Elem _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, elem_type _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, const _Elem* _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, const elem_type* _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, const _Elem* _After, size_type _LengthA) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, const elem_type* _After, size_type _LengthA) noexcept final;
 
-		// Replace the specified data
+		// 替换数据
 		virtual xanadu::string& replace(pos_type _Pos, size_type _Length, const xanadu::string& _After) noexcept final;
 
 	public:
-		// Replace the specified data
-		virtual xanadu::string& replace(_Elem _Before, _Elem _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(elem_type _Before, elem_type _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(_Elem _Before, _Elem _After, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(elem_type _Before, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(_Elem _Before, const _Elem* _After, size_type _LengthA) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(elem_type _Before, const elem_type* _After, size_type _LengthA) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(_Elem _Before, const _Elem* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(elem_type _Before, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(_Elem _Before, const xanadu::string& _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(elem_type _Before, const xanadu::string& _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(_Elem _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
-
-	public:
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, _Elem _After) noexcept final;
-
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, _Elem _After, xanadu::CaseSensitivity _XCS) noexcept final;
-
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, const _Elem* _After, size_type _LengthA) noexcept final;
-
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, const _Elem* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
-
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, const xanadu::string& _After) noexcept final;
-
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(elem_type _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
 
 	public:
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, size_type _LengthB, _Elem _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, elem_type _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, size_type _LengthB, _Elem _After, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, size_type _LengthB, const _Elem* _After, size_type _LengthA) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, const elem_type* _After, size_type _LengthA) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, size_type _LengthB, const _Elem* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, size_type _LengthB, const xanadu::string& _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, const xanadu::string& _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const _Elem* _Before, size_type _LengthB, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
 
 	public:
-		// Replace the specified data
-		virtual xanadu::string& replace(const xanadu::string& _Before, _Elem _After) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, size_type _LengthB, elem_type _After) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const xanadu::string& _Before, _Elem _After, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, size_type _LengthB, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const xanadu::string& _Before, const _Elem* _After, size_type _LengthA) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA) noexcept final;
 
-		// Replace the specified data
-		virtual xanadu::string& replace(const xanadu::string& _Before, const _Elem* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
 
-		// Replace the specified data
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, size_type _LengthB, const xanadu::string& _After) noexcept final;
+
+		// 替换数据
+		virtual xanadu::string& replace(const elem_type* _Before, size_type _LengthB, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
+
+	public:
+		// 替换数据
+		virtual xanadu::string& replace(const xanadu::string& _Before, elem_type _After) noexcept final;
+
+		// 替换数据
+		virtual xanadu::string& replace(const xanadu::string& _Before, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept final;
+
+		// 替换数据
+		virtual xanadu::string& replace(const xanadu::string& _Before, const elem_type* _After, size_type _LengthA) noexcept final;
+
+		// 替换数据
+		virtual xanadu::string& replace(const xanadu::string& _Before, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept final;
+
+		// 替换数据
 		virtual xanadu::string& replace(const xanadu::string& _Before, const xanadu::string& _After) noexcept final;
 
-		// Replace the specified data
+		// 替换数据
 		virtual xanadu::string& replace(const xanadu::string& _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept final;
 
 	public:
 		// 按指定数据拆分字符串
-		virtual std::list<xanadu::string> split(_Elem _Char) const noexcept final;
+		virtual std::list<xanadu::string> split(elem_type _Char) const noexcept final;
 
 		// 按指定数据拆分字符串
-		virtual std::list<xanadu::string> split(const _Elem* _Memory) const noexcept final;
+		virtual std::list<xanadu::string> split(const elem_type* _Memory) const noexcept final;
 
 		// 按指定数据拆分字符串
-		virtual std::list<xanadu::string> split(const _Elem* _Memory, size_type _Size) const noexcept final;
+		virtual std::list<xanadu::string> split(const elem_type* _Memory, size_type _Size) const noexcept final;
 
 		// 按指定数据拆分字符串
 		virtual std::list<xanadu::string> split(const xanadu::string& _String) const noexcept final;
 
 	public:
 		// 判断一个字符是否为空白字符
-		static bool isSpace(_Elem _Char) noexcept;
+		static bool isSpace(elem_type _Char) noexcept;
 
 		// 格式化字符串 (char* [%s]) (wchar_t* [%ls])
 		static xanadu::string format(const char* _Format, ...) noexcept;
@@ -661,10 +661,10 @@ namespace xanadu
 		virtual xanadu::string toHex() const noexcept final;
 
 		// [conv] 从HEX转换
-		static xanadu::string fromHex(const _Elem* _String) noexcept;
+		static xanadu::string fromHex(const elem_type* _String) noexcept;
 
 		// [conv] 从HEX转换
-		static xanadu::string fromHex(const _Elem* _String, size_type _Size) noexcept;
+		static xanadu::string fromHex(const elem_type* _String, size_type _Size) noexcept;
 
 		// [conv] 从HEX转换
 		static xanadu::string fromHex(const xanadu::string& _Hex) noexcept;

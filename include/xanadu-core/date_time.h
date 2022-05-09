@@ -194,10 +194,10 @@ namespace xanadu
 		virtual ~date_time() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		date_time& operator = (const date_time& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		date_time& operator = (date_time&& _Other) noexcept;
 
 	public:

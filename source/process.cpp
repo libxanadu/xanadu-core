@@ -32,10 +32,10 @@ xanadu::process::~process() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::process& xanadu::process::operator = (const process& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::process& xanadu::process::operator = (process&& _Other) noexcept = default;
 
 

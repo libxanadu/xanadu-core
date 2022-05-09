@@ -108,10 +108,10 @@ namespace xanadu
 		virtual ~system() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		system& operator = (const system& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		system& operator = (system&& _Other) noexcept;
 
 	private:

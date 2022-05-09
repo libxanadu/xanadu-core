@@ -18,10 +18,10 @@ xanadu::thread::~thread() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::thread& xanadu::thread::operator = (const thread& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::thread& xanadu::thread::operator = (thread&& _Other) noexcept = default;
 
 

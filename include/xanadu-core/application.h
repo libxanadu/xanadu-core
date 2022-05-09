@@ -31,10 +31,10 @@ namespace xanadu
 		virtual ~application() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		application& operator = (const application& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		application& operator = (application&& _Other) noexcept;
 
 	public:

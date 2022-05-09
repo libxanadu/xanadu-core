@@ -12,21 +12,21 @@ namespace xanadu
 	class _XCOREAPI_ exception
 	{
 	public:
-		using				_Elem = char;
+		using				elem_type = char;
 		using				size_type = xanadu::size_type;
 
 	private:
-		_Elem*				_memory_address;
+		elem_type*				_memory_address;
 
 	public:
 		// constructor
 		exception() noexcept;
 
 		// constructor
-		exception(const _Elem* _Memory) noexcept; // NOLINT(google-explicit-constructor)
+		exception(const elem_type* _Memory) noexcept; // NOLINT(google-explicit-constructor)
 
 		// constructor
-		exception(const _Elem* _Memory, size_type _Length) noexcept;
+		exception(const elem_type* _Memory, size_type _Length) noexcept;
 
 		// constructor
 		exception(const std::string& _Exception) noexcept; // NOLINT(google-explicit-constructor)
@@ -45,7 +45,7 @@ namespace xanadu
 
 	public:
 		// operator overload =
-		exception& operator = (const _Elem* _Exception) noexcept;
+		exception& operator = (const elem_type* _Exception) noexcept;
 
 		// operator overload =
 		exception& operator = (const std::string& _Exception) noexcept;
@@ -61,11 +61,11 @@ namespace xanadu
 
 	private:
 		// [opt] 拷贝字符串
-		static _Elem* clone_string(const _Elem* _Memory, size_type _Length) noexcept;
+		static elem_type* clone_string(const elem_type* _Memory, size_type _Length) noexcept;
 
 	public:
 		// [get] explain
-		virtual const _Elem* explain() const noexcept final;
+		virtual const elem_type* explain() const noexcept final;
 
 	public:
 		// [std] range_error

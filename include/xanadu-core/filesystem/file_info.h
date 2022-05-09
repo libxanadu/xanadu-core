@@ -35,14 +35,14 @@ namespace xanadu::filesystem
 		explicit file_info(const xanadu::filesystem::path& _Path) noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		file_info& operator = (const file_info& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		file_info& operator = (file_info&& _Other) noexcept;
 
 	public:
-		// operators overload const path&
+		// operator overload const path&
 		operator const xanadu::filesystem::path& () const noexcept; // NOLINT(google-explicit-constructor)
 
 	public:

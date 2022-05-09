@@ -13,8 +13,8 @@ namespace xanadu::filesystem
 	class _XCOREAPI_ path
 	{
 	public:
-		using				_Elem = xanadu::string::_Elem;
-		using				value_type = _Elem;
+		using				elem_type = xanadu::string::elem_type;
+		using				value_type = elem_type;
 		using				string_type = xanadu::string;
 
 	public:
@@ -38,7 +38,7 @@ namespace xanadu::filesystem
 
 	public:
 		// constructor
-		path(const _Elem* _String) noexcept; // NOLINT(google-explicit-constructor)
+		path(const elem_type* _String) noexcept; // NOLINT(google-explicit-constructor)
 
 		// constructor
 		path(const string_type& _String) noexcept; // NOLINT(google-explicit-constructor)
@@ -47,64 +47,64 @@ namespace xanadu::filesystem
 		path(string_type&& _String) noexcept; // NOLINT(google-explicit-constructor)
 
 	public:
-		// operators overload =
+		// operator overload =
 		path& operator = (const path& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		path& operator = (path&& _Other) noexcept;
 
 	public:
-		// operators overload =
-		path& operator = (const _Elem* _String) noexcept;
+		// operator overload =
+		path& operator = (const elem_type* _String) noexcept;
 
-		// operators overload =
+		// operator overload =
 		path& operator = (const string_type& _String) noexcept;
 
-		// operators overload =
+		// operator overload =
 		path& operator = (string_type&& _String) noexcept;
 
 	public:
-		// operators overload +
-		path operator + (const _Elem* _String) const noexcept;
+		// operator overload +
+		path operator + (const elem_type* _String) const noexcept;
 
-		// operators overload +
+		// operator overload +
 		path operator + (const string_type& _String) const noexcept;
 
-		// operators overload +
+		// operator overload +
 		path operator + (const path& _Path) const noexcept;
 
 	public:
-		// operators overload +=
-		path& operator += (const _Elem* _String) noexcept;
+		// operator overload +=
+		path& operator += (const elem_type* _String) noexcept;
 
-		// operators overload +=
+		// operator overload +=
 		path& operator += (const string_type& _String) noexcept;
 
-		// operators overload +=
+		// operator overload +=
 		path& operator += (const path& _Path) noexcept;
 
 	public:
-		// operators overload +=
-		path operator / (const _Elem* _String) const noexcept;
+		// operator overload +=
+		path operator / (const elem_type* _String) const noexcept;
 
-		// operators overload /
+		// operator overload /
 		path operator / (const string_type& _String) const noexcept;
 
-		// operators overload /
+		// operator overload /
 		path operator / (const path& _Path) const noexcept;
 
 	public:
-		// operators overload /=
-		path& operator /= (const _Elem* _String) noexcept;
+		// operator overload /=
+		path& operator /= (const elem_type* _String) noexcept;
 
-		// operators overload /=
+		// operator overload /=
 		path& operator /= (const string_type& _String) noexcept;
 
-		// operators overload /=
+		// operator overload /=
 		path& operator /= (const path& _Path) noexcept;
 
 	public:
-		// operators overload string_type
+		// operator overload string_type
 		operator string_type() const noexcept; // NOLINT(google-explicit-constructor)
 
 	public:

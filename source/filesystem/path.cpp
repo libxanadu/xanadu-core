@@ -19,7 +19,7 @@ xanadu::filesystem::path::~path() noexcept = default;
 
 
 // constructor
-xanadu::filesystem::path::path(const _Elem* _String) noexcept
+xanadu::filesystem::path::path(const elem_type* _String) noexcept
 {
 	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
 }
@@ -40,31 +40,31 @@ xanadu::filesystem::path::path(string_type&& _String) noexcept
 
 
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::path& xanadu::filesystem::path::operator = (const path& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::path& xanadu::filesystem::path::operator = (path&& _Other) noexcept = default;
 
 
 
 
 
-// operators overload =
-xanadu::filesystem::path& xanadu::filesystem::path::operator = (const _Elem* _String) noexcept
+// operator overload =
+xanadu::filesystem::path& xanadu::filesystem::path::operator = (const elem_type* _String) noexcept
 {
 	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
 	return *this;
 }
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::path& xanadu::filesystem::path::operator = (const string_type& _String) noexcept
 {
 	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
 	return *this;
 }
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::path& xanadu::filesystem::path::operator = (string_type&& _String) noexcept
 {
 	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
@@ -75,15 +75,15 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator = (string_type&& _S
 
 
 
-// operators overload +
-xanadu::filesystem::path xanadu::filesystem::path::operator + (const _Elem* _String) const noexcept
+// operator overload +
+xanadu::filesystem::path xanadu::filesystem::path::operator + (const elem_type* _String) const noexcept
 {
 	auto		vNew = *this;
 	vNew += _String;
 	return vNew;
 }
 
-// operators overload +
+// operator overload +
 xanadu::filesystem::path xanadu::filesystem::path::operator + (const string_type& _String) const noexcept
 {
 	auto		vNew = *this;
@@ -91,7 +91,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator + (const string_type
 	return vNew;
 }
 
-// operators overload +
+// operator overload +
 xanadu::filesystem::path xanadu::filesystem::path::operator + (const path& _Path) const noexcept
 {
 	auto		vNew = *this;
@@ -103,21 +103,21 @@ xanadu::filesystem::path xanadu::filesystem::path::operator + (const path& _Path
 
 
 
-// operators overload +=
-xanadu::filesystem::path& xanadu::filesystem::path::operator += (const _Elem* _String) noexcept
+// operator overload +=
+xanadu::filesystem::path& xanadu::filesystem::path::operator += (const elem_type* _String) noexcept
 {
 	this->_path_absolute += _String;
 	return *this;
 }
 
-// operators overload +=
+// operator overload +=
 xanadu::filesystem::path& xanadu::filesystem::path::operator += (const string_type& _String) noexcept
 {
 	this->_path_absolute += _String;
 	return *this;
 }
 
-// operators overload +=
+// operator overload +=
 xanadu::filesystem::path& xanadu::filesystem::path::operator += (const path& _Path) noexcept
 {
 	this->_path_absolute += _Path._path_absolute;
@@ -128,15 +128,15 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator += (const path& _Pa
 
 
 
-// operators overload /
-xanadu::filesystem::path xanadu::filesystem::path::operator / (const _Elem* _String) const noexcept
+// operator overload /
+xanadu::filesystem::path xanadu::filesystem::path::operator / (const elem_type* _String) const noexcept
 {
 	auto		vNew = *this;
 	vNew /= _String;
 	return vNew;
 }
 
-// operators overload /
+// operator overload /
 xanadu::filesystem::path xanadu::filesystem::path::operator / (const string_type& _String) const noexcept
 {
 	auto		vNew = *this;
@@ -144,7 +144,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator / (const string_type
 	return vNew;
 }
 
-// operators overload /
+// operator overload /
 xanadu::filesystem::path xanadu::filesystem::path::operator / (const path& _Path) const noexcept
 {
 	auto		vNew = *this;
@@ -156,15 +156,15 @@ xanadu::filesystem::path xanadu::filesystem::path::operator / (const path& _Path
 
 
 
-// operators overload /=
-xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const _Elem* _String) noexcept
+// operator overload /=
+xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const elem_type* _String) noexcept
 {
 	this->_path_absolute += "/";
 	this->_path_absolute += _String;
 	return *this;
 }
 
-// operators overload /=
+// operator overload /=
 xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const string_type& _String) noexcept
 {
 	this->_path_absolute += "/";
@@ -172,7 +172,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const string_ty
 	return *this;
 }
 
-// operators overload /=
+// operator overload /=
 xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const path& _Path) noexcept
 {
 	this->_path_absolute += "/";
@@ -184,7 +184,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const path& _Pa
 
 
 
-// operators overload string_type
+// operator overload string_type
 xanadu::filesystem::path::operator string_type() const noexcept
 {
 	return this->_path_absolute;

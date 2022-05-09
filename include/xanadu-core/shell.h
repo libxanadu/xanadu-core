@@ -23,10 +23,10 @@ namespace xanadu
 		virtual ~shell() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		shell& operator = (const shell& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		shell& operator = (shell&& _Other) noexcept;
 
 	public:

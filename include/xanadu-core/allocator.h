@@ -11,7 +11,8 @@ namespace xanadu
 	class _XCOREAPI_ allocator
 	{
 	public:
-		using				_Elem = char;
+		using				elem_type = char;
+		using				raw_type = xanadu::raw_type;
 		using				size_type = xanadu::size_type;
 		using				pos_type = xanadu::pos_type;
 
@@ -23,7 +24,7 @@ namespace xanadu
 		static const size_type		minimum_capacity;
 
 	private:
-		_Elem*				_memory_address;
+		elem_type*			_memory_address;
 		size_type			_memory_length;
 		size_type			_memory_capacity;
 
@@ -35,7 +36,7 @@ namespace xanadu
 		allocator(size_type _Length, int _Char) noexcept;
 
 		// constructor
-		allocator(const void* _Memory, size_type _Length) noexcept;
+		allocator(const raw_type* _Memory, size_type _Length) noexcept;
 
 		// constructor
 		allocator(const allocator& _Allocator) noexcept;
@@ -62,11 +63,11 @@ namespace xanadu
 		allocator& operator += (const allocator& _Allocator) noexcept;
 		
 	public:
-		// [opt] operator overload []
-		_Elem& operator [] (pos_type _Index);
+		// operator overload []
+		elem_type& operator [] (pos_type _Index);
 
-		// [opt] operator overload []
-		_Elem operator [] (pos_type _Index) const;
+		// operator overload []
+		elem_type operator [] (pos_type _Index) const;
 
 	public:
 		// [opt] capacity from length
@@ -96,10 +97,10 @@ namespace xanadu
 		virtual bool empty() const noexcept final;
 
 		// [get] data
-		virtual void* data() noexcept final;
+		virtual raw_type* data() noexcept final;
 
 		// [get] data
-		virtual const void* data() const noexcept final;
+		virtual const raw_type* data() const noexcept final;
 
 		// [get] size
 		virtual size_type size() const noexcept final;
@@ -115,21 +116,21 @@ namespace xanadu
 
 	public:
 		// [opt] prepend
-		virtual bool prepend(const void* _Memory, size_type _Length) noexcept final;
+		virtual bool prepend(const raw_type* _Memory, size_type _Length) noexcept final;
 
 		// [opt] prepend
 		virtual bool prepend(const allocator& _Allocator) noexcept final;
 
 	public:
 		// [opt] append
-		virtual bool append(const void* _Memory, size_type _Length) noexcept final;
+		virtual bool append(const raw_type* _Memory, size_type _Length) noexcept final;
 
 		// [opt] append
 		virtual bool append(const allocator& _Allocator) noexcept final;
 
 	public:
 		// [opt] insert
-		virtual bool insert(pos_type _Pos, const void* _Memory, size_type _Length) noexcept final;
+		virtual bool insert(pos_type _Pos, const raw_type* _Memory, size_type _Length) noexcept final;
 
 		// [opt] append
 		virtual bool insert(pos_type _Pos, const allocator& _Allocator) noexcept final;
@@ -140,17 +141,31 @@ namespace xanadu
 
 	public:
 		// [opt] replace
-		virtual bool replace(size_type _Pos, size_type _Length, const _Elem* _After, size_type _LengthA) noexcept final;
+		virtual bool replace(size_type _Pos, size_type _Length, const raw_type* _After, size_type _LengthA) noexcept final;
 
 		// [opt] replace
 		virtual bool replace(size_type _Pos, size_type _Length, const allocator& _After) noexcept final;
 
 	public:
 		// [opt] compare
-		virtual int compare(const void* _Memory, size_type _Length) const noexcept final;
+		virtual int compare(const raw_type* _Memory, size_type _Length) const noexcept final;
 
 		// [opt] compare
 		virtual int compare(const allocator& _Allocator) const noexcept final;
+
+	public:
+		// [opt] find
+		virtual pos_type find(const raw_type* _Memory, size_type _Length, pos_type _Pos) const noexcept final;
+
+		// [opt] find
+		virtual pos_type find(const allocator& _Allocator, pos_type _Pos) const noexcept final;
+
+	public:
+		// [opt] rfind
+		virtual pos_type rfind(const raw_type* _Memory, size_type _Length, pos_type _Pos) const noexcept final;
+
+		// [opt] rfind
+		virtual pos_type rfind(const allocator& _Allocator, pos_type _Pos) const noexcept final;
 	};
 }
 

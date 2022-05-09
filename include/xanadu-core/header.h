@@ -65,7 +65,9 @@ namespace xanadu
 
 	using	size_type		= xanadu::size_t;
 	using	pos_type		= xanadu::size_t;
-	using	difference_type		= ptrdiff_t;
+	using	raw_type		= void;
+	using	diff_type		= ptrdiff_t;
+	using	time_type		= xanadu::int64_t;
 }
 
 

@@ -108,7 +108,7 @@ xanadu::ternary::~ternary() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::ternary& xanadu::ternary::operator = (value_type _Type) noexcept
 {
 	this->_value_type = _Type;
@@ -227,85 +227,85 @@ xanadu::ternary& xanadu::ternary::operator = (xanadu::ternary&& _Other) noexcept
 
 
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (value_type _Type) const noexcept
 {
 	return this->_value_type == _Type;
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (bool _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (char _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (unsigned char _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (short _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (unsigned short _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (int _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (unsigned int _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (long _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (unsigned long _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (long long _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (unsigned long long _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (const void* _Value) const noexcept
 {
 	return this->_value_type == xanadu::ternary::convert(_Value);
 }
 
-// operators overload ==
+// operator overload ==
 bool xanadu::ternary::operator == (const xanadu::ternary& _Other) const noexcept
 {
 	return this->_value_type == _Other._value_type;
@@ -313,85 +313,85 @@ bool xanadu::ternary::operator == (const xanadu::ternary& _Other) const noexcept
 
 
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (value_type _Type) const noexcept
 {
 	return this->_value_type != _Type;
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (bool _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (char _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (unsigned char _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (short _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (unsigned short _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (int _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (unsigned int _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (long _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (unsigned long _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (long long _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (unsigned long long _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (const void* _Value) const noexcept
 {
 	return this->_value_type != xanadu::ternary::convert(_Value);
 }
 
-// operators overload !=
+// operator overload !=
 bool xanadu::ternary::operator != (const xanadu::ternary& _Other) const noexcept
 {
 	return this->_value_type != _Other._value_type;

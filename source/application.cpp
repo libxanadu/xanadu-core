@@ -33,10 +33,10 @@ xanadu::application::~application() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::application& xanadu::application::operator = (const application& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::application& xanadu::application::operator = (application&& _Other) noexcept = default;
 
 

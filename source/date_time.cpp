@@ -51,10 +51,10 @@ xanadu::date_time::~date_time() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::date_time& xanadu::date_time::operator = (const date_time& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::date_time& xanadu::date_time::operator = (date_time&& _Other) noexcept = default;
 
 

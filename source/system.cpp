@@ -42,10 +42,10 @@ xanadu::system::~system() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::system& xanadu::system::operator = (const xanadu::system& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::system& xanadu::system::operator = (xanadu::system&& _Other) noexcept = default;
 
 

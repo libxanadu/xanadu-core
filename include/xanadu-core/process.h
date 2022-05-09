@@ -35,10 +35,10 @@ namespace xanadu
 		virtual ~process() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		process& operator = (const process& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		process& operator = (process&& _Other) noexcept;
 
 	public:

@@ -18,8 +18,8 @@ xanadu::stream::~stream() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::stream& xanadu::stream::operator = (const stream& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::stream& xanadu::stream::operator = (stream&& _Other) noexcept = default;

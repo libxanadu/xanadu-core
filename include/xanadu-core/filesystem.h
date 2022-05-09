@@ -29,10 +29,10 @@ namespace xanadu::filesystem
 		virtual ~file() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		file& operator = (const file& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		file& operator = (file&& _Other) noexcept;
 	};
 
@@ -53,10 +53,10 @@ namespace xanadu::filesystem
 		virtual ~directory() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		directory& operator = (const directory& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		directory& operator = (directory&& _Other) noexcept;
 	};
 }

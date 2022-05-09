@@ -32,7 +32,7 @@ xanadu::allocator::allocator(size_type _Length, int _Char) noexcept
 }
 
 // constructor
-xanadu::allocator::allocator(const void* _Memory, size_type _Length) noexcept
+xanadu::allocator::allocator(const raw_type* _Memory, size_type _Length) noexcept
 {
 	this->_memory_address = nullptr;
 	this->_memory_length = 0;
@@ -148,8 +148,8 @@ xanadu::allocator& xanadu::allocator::operator += (const allocator& _Allocator) 
 
 
 
-// [opt] operator overload []
-xanadu::allocator::_Elem& xanadu::allocator::operator [] (pos_type _Index)
+// operator overload []
+xanadu::allocator::elem_type& xanadu::allocator::operator [] (pos_type _Index)
 {
 	if(this->_memory_length <= _Index)
 	{
@@ -158,8 +158,8 @@ xanadu::allocator::_Elem& xanadu::allocator::operator [] (pos_type _Index)
 	return this->_memory_address[_Index];
 }
 
-// [opt] operator overload []
-xanadu::allocator::_Elem xanadu::allocator::operator [] (pos_type _Index) const
+// operator overload []
+xanadu::allocator::elem_type xanadu::allocator::operator [] (pos_type _Index) const
 {
 	if(this->_memory_length <= _Index)
 	{
@@ -191,7 +191,7 @@ xanadu::allocator::size_type xanadu::allocator::capacity_from_length(size_type _
 bool xanadu::allocator::malloc(size_type _Length) noexcept
 {
 	auto		vCapacity = xanadu::allocator::capacity_from_length(_Length);
-	auto		vMemory = new(std::nothrow) xanadu::allocator::_Elem [vCapacity];
+	auto		vMemory = new(std::nothrow) xanadu::allocator::elem_type [vCapacity];
 
 	if(vMemory == nullptr)
 	{
@@ -218,13 +218,13 @@ void xanadu::allocator::clear() noexcept
 bool xanadu::allocator::resize(size_type _Length) noexcept
 {
 	auto		vCapacity = xanadu::allocator::capacity_from_length(_Length);
-	auto		vMemory = static_cast<xanadu::allocator::_Elem*>(nullptr);
+	auto		vMemory = static_cast<xanadu::allocator::elem_type*>(nullptr);
 
 	if(_Length > this->_memory_length)
 	{
 		if(_Length > this->_memory_capacity)
 		{
-			vMemory = new(std::nothrow) xanadu::allocator::_Elem [vCapacity];
+			vMemory = new(std::nothrow) xanadu::allocator::elem_type [vCapacity];
 			if(vMemory == nullptr)
 			{
 				return false;
@@ -254,11 +254,11 @@ bool xanadu::allocator::resize(size_type _Length) noexcept
 bool xanadu::allocator::reverse(size_type _Length) noexcept
 {
 	auto		vCapacity = xanadu::allocator::capacity_from_length(_Length);
-	auto		vMemory = static_cast<xanadu::allocator::_Elem*>(nullptr);
+	auto		vMemory = static_cast<xanadu::allocator::elem_type*>(nullptr);
 
 	if(_Length > this->_memory_capacity)
 	{
-		vMemory = new(std::nothrow) xanadu::allocator::_Elem [vCapacity];
+		vMemory = new(std::nothrow) xanadu::allocator::elem_type [vCapacity];
 		if(vMemory == nullptr)
 		{
 			return false;
@@ -299,13 +299,13 @@ bool xanadu::allocator::empty() const noexcept
 }
 
 // [get] data
-void* xanadu::allocator::data() noexcept
+xanadu::allocator::raw_type* xanadu::allocator::data() noexcept
 {
 	return this->_memory_address;
 }
 
 // [get] data
-const void* xanadu::allocator::data() const noexcept
+const xanadu::allocator::raw_type* xanadu::allocator::data() const noexcept
 {
 	return this->_memory_address;
 }
@@ -339,7 +339,7 @@ xanadu::allocator::size_type xanadu::allocator::max_size() const noexcept
 
 
 // [opt] prepend
-bool xanadu::allocator::prepend(const void* _Memory, size_type _Length) noexcept
+bool xanadu::allocator::prepend(const raw_type* _Memory, size_type _Length) noexcept
 {
 	return this->insert(0, _Memory, _Length);
 }
@@ -355,7 +355,7 @@ bool xanadu::allocator::prepend(const allocator& _Allocator) noexcept
 
 
 // [opt] append
-bool xanadu::allocator::append(const void* _Memory, size_type _Length) noexcept
+bool xanadu::allocator::append(const raw_type* _Memory, size_type _Length) noexcept
 {
 	return this->insert(this->size(), _Memory, _Length);
 }
@@ -371,7 +371,7 @@ bool xanadu::allocator::append(const allocator& _Allocator) noexcept
 
 
 // [opt] insert
-bool xanadu::allocator::insert(pos_type _Pos, const void* _Memory, size_type _Length) noexcept
+bool xanadu::allocator::insert(pos_type _Pos, const raw_type* _Memory, size_type _Length) noexcept
 {
 	if(_Memory == nullptr || _Length == 0)
 	{
@@ -428,7 +428,7 @@ bool xanadu::allocator::remove(pos_type _Pos, size_type _Length) noexcept
 
 
 // [opt] replace
-bool xanadu::allocator::replace(size_type _Pos, size_type _Length, const _Elem* _After, size_type _LengthA) noexcept
+bool xanadu::allocator::replace(size_type _Pos, size_type _Length, const raw_type* _After, size_type _LengthA) noexcept
 {
 	size_type 	vDifference = 0;
 
@@ -471,7 +471,7 @@ bool xanadu::allocator::replace(size_type _Pos, size_type _Length, const allocat
 
 
 // [opt] compare
-int xanadu::allocator::compare(const void* _Memory, size_type _Length) const noexcept
+int xanadu::allocator::compare(const raw_type* _Memory, size_type _Length) const noexcept
 {
 	int		vCompare = 0;
 
@@ -517,4 +517,74 @@ int xanadu::allocator::compare(const void* _Memory, size_type _Length) const noe
 int xanadu::allocator::compare(const allocator& _Allocator) const noexcept
 {
 	return this->compare(_Allocator._memory_address, _Allocator._memory_length);
+}
+
+
+
+
+// [opt] find
+xanadu::allocator::pos_type xanadu::allocator::find(const raw_type* _Memory, size_type _Length, pos_type _Pos) const noexcept
+{
+	if(this->_memory_address == _Memory)
+	{
+		return 0;
+	}
+	if(this->_memory_length == 0 || _Memory == nullptr || _Length == 0 || _Pos > this->_memory_length  || (this->_memory_length - _Pos) < _Length)
+	{
+		return xanadu::allocator::npos;
+	}
+
+	auto		vCount = this->_memory_length - _Pos - _Length;
+
+	for(xanadu::allocator::pos_type vPos = _Pos; vPos <= vCount; ++vPos)
+	{
+		if(0 == std::memcmp(this->_memory_address + vPos, _Memory, _Length))
+		{
+			return vPos;
+		}
+	}
+
+	return xanadu::allocator::npos;
+}
+
+// [opt] find
+xanadu::allocator::pos_type xanadu::allocator::find(const allocator& _Allocator, pos_type _Pos) const noexcept
+{
+	return this->find(_Allocator._memory_address, _Allocator._memory_length, _Pos);
+}
+
+
+
+
+// [opt] rfind
+xanadu::allocator::pos_type xanadu::allocator::rfind(const raw_type* _Memory, size_type _Length, pos_type _Pos) const noexcept
+{
+	if(this->_memory_address == _Memory)
+	{
+		return 0;
+	}
+	if(this->_memory_length == 0 || _Memory == nullptr || _Length == 0 || _Pos > this->_memory_length  || (this->_memory_length - _Pos) < _Length)
+	{
+		return xanadu::allocator::npos;
+	}
+
+	for(; _Pos >= 0; --_Pos)
+	{
+		if(0 == std::memcmp(this->_memory_address + _Pos, _Memory, _Length))
+		{
+			return _Pos;
+		}
+		if(_Pos == 0)
+		{
+			break;
+		}
+	}
+
+	return xanadu::allocator::npos;
+}
+
+// [opt] rfind
+xanadu::allocator::pos_type xanadu::allocator::rfind(const allocator& _Allocator, pos_type _Pos) const noexcept
+{
+	return this->rfind(_Allocator._memory_address, _Allocator._memory_length, _Pos);
 }

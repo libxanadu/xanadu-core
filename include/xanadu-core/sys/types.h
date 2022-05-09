@@ -38,14 +38,14 @@
 		return static_cast<_XANADU_BITMASK>(~static_cast<_IntTy>(_Left));						\
 	}                                                                                                               \
 															\
-	constexpr bool _Bitmask_includes(_XANADU_BITMASK _Left, _XANADU_BITMASK _Elements) noexcept    			\
+	constexpr bool _Bitmask_includes(_XANADU_BITMASK _Left, _XANADU_BITMASK elem_typeents) noexcept    			\
 	{														\
-		return (_Left & _Elements) != _XANADU_BITMASK{};								\
+		return (_Left & elem_typeents) != _XANADU_BITMASK{};								\
 	}                                                                                                               \
 															\
-	constexpr bool _Bitmask_includes_all(_XANADU_BITMASK _Left, _XANADU_BITMASK _Elements) noexcept			\
+	constexpr bool _Bitmask_includes_all(_XANADU_BITMASK _Left, _XANADU_BITMASK elem_typeents) noexcept			\
 	{														\
-		return (_Left & _Elements) == _Elements;								\
+		return (_Left & elem_typeents) == elem_typeents;								\
 	}
 
 

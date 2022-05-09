@@ -27,10 +27,10 @@ namespace xanadu
 		virtual ~thread() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		thread& operator = (const thread& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		thread& operator = (thread&& _Other) noexcept;
 
 	public:

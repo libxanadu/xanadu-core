@@ -13,10 +13,10 @@ xanadu::shell::~shell() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::shell& xanadu::shell::operator = (const shell& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::shell& xanadu::shell::operator = (shell&& _Other) noexcept = default;
 
 

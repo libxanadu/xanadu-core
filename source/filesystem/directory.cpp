@@ -18,8 +18,8 @@ xanadu::filesystem::directory::~directory() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::directory& xanadu::filesystem::directory::operator = (const directory& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::directory& xanadu::filesystem::directory::operator = (directory&& _Other) noexcept = default;

@@ -105,7 +105,7 @@ bool xanadu::error::failure() const noexcept
 }
 
 // [get] explain
-const xanadu::error::_Elem* xanadu::error::explain() const noexcept
+const xanadu::error::elem_type* xanadu::error::explain() const noexcept
 {
 	auto		vIterator = _static_error_expend_array.find(this->_error_code);
 	if(vIterator != _static_error_expend_array.end())
@@ -125,7 +125,7 @@ const xanadu::error::_Elem* xanadu::error::explain() const noexcept
 
 
 // 添加扩展数据
-void xanadu::error::add_expand(value_type _Code, const _Elem* _Explain) noexcept
+void xanadu::error::add_expand(value_type _Code, const elem_type* _Explain) noexcept
 {
 	auto		vIterator = _static_error_expend_array.find(_Code);
 	if(vIterator == _static_error_expend_array.end())

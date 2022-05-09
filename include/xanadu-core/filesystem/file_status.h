@@ -46,10 +46,10 @@ namespace xanadu::filesystem
 		virtual ~file_status() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		file_status& operator = (const file_status& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		file_status& operator = (file_status&& _Other) noexcept;
 
 	public:

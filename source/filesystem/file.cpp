@@ -18,8 +18,8 @@ xanadu::filesystem::file::~file() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::file& xanadu::filesystem::file::operator = (const file& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::file& xanadu::filesystem::file::operator = (file&& _Other) noexcept = default;

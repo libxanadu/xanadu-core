@@ -38,7 +38,7 @@ namespace xanadu
 		}value_type;
 
 	public:
-		using				_Elem = char;
+		using				elem_type = char;
 
 	private:
 		value_type			_error_code;
@@ -95,11 +95,11 @@ namespace xanadu
 		virtual bool failure() const noexcept final;
 
 		// [get] explain
-		virtual const _Elem* explain() const noexcept final;
+		virtual const elem_type* explain() const noexcept final;
 
 	public:
 		// 添加扩展数据
-		static void add_expand(value_type _Code, const _Elem* _Explain) noexcept;
+		static void add_expand(value_type _Code, const elem_type* _Explain) noexcept;
 	};
 }
 

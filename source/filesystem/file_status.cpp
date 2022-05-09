@@ -48,10 +48,10 @@ xanadu::filesystem::file_status::~file_status() noexcept = default;
 
 
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::file_status& xanadu::filesystem::file_status::operator = (const file_status& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::file_status& xanadu::filesystem::file_status::operator = (file_status&& _Other) noexcept = default;
 
 

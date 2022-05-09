@@ -28,17 +28,17 @@ xanadu::filesystem::file_info::file_info(const xanadu::filesystem::path& _Path) 
 
 
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::file_info& xanadu::filesystem::file_info::operator = (const file_info& _Other) noexcept = default;
 
-// operators overload =
+// operator overload =
 xanadu::filesystem::file_info& xanadu::filesystem::file_info::operator = (file_info&& _Other) noexcept = default;
 
 
 
 
 
-// operators overload const path&
+// operator overload const path&
 xanadu::filesystem::file_info::operator const xanadu::filesystem::path& () const noexcept
 {
 	return this->_file_path;

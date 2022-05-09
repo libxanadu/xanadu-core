@@ -80,135 +80,135 @@ namespace xanadu
 		virtual ~ternary() noexcept;
 
 	public:
-		// operators overload =
+		// operator overload =
 		ternary& operator = (value_type _Type) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (bool _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (char _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (unsigned char _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (short _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (unsigned short _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (int _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (unsigned int _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (long _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (unsigned long _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (long long _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (unsigned long long _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (const void* _Value) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (const ternary& _Other) noexcept;
 
-		// operators overload =
+		// operator overload =
 		ternary& operator = (ternary&& _Other) noexcept;
 
 	public:
-		// operators overload ==
+		// operator overload ==
 		bool operator == (value_type _Type) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (bool _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (char _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (unsigned char _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (short _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (unsigned short _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (int _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (unsigned int _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (long _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (unsigned long _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (long long _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (unsigned long long _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (const void* _Value) const noexcept;
 
-		// operators overload ==
+		// operator overload ==
 		bool operator == (const ternary& _Other) const noexcept;
 
 	public:
-		// operators overload !=
+		// operator overload !=
 		bool operator != (value_type _Type) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (bool _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (char _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (unsigned char _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (short _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (unsigned short _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (int _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (unsigned int _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (long _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (unsigned long _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (long long _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (unsigned long long _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (const void* _Value) const noexcept;
 
-		// operators overload !=
+		// operator overload !=
 		bool operator != (const ternary& _Other) const noexcept;
 
 	public:

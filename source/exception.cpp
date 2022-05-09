@@ -9,13 +9,13 @@ xanadu::exception::exception() noexcept
 }
 
 // constructor
-xanadu::exception::exception(const _Elem* _Memory) noexcept
+xanadu::exception::exception(const elem_type* _Memory) noexcept
 {
 	this->_memory_address = xanadu::exception::clone_string(_Memory, x_posix_strlen(_Memory));
 }
 
 // constructor
-xanadu::exception::exception(const _Elem* _Memory, size_type _Length) noexcept
+xanadu::exception::exception(const elem_type* _Memory, size_type _Length) noexcept
 {
 	this->_memory_address = xanadu::exception::clone_string(_Memory, _Length);
 }
@@ -55,7 +55,7 @@ xanadu::exception::~exception() noexcept
 
 
 // operator overload =
-xanadu::exception& xanadu::exception::operator = (const _Elem* _Memory) noexcept
+xanadu::exception& xanadu::exception::operator = (const elem_type* _Memory) noexcept
 {
 	delete this->_memory_address;
 	this->_memory_address = xanadu::exception::clone_string(_Memory, x_posix_strlen(_Memory));
@@ -105,9 +105,9 @@ xanadu::exception& xanadu::exception::operator = (exception&& _Exception) noexce
 
 
 // [opt] 拷贝字符串
-xanadu::exception::_Elem* xanadu::exception::clone_string(const _Elem* _Memory, size_type _Length) noexcept
+xanadu::exception::elem_type* xanadu::exception::clone_string(const elem_type* _Memory, size_type _Length) noexcept
 {
-	auto		vAddress = new(std::nothrow) _Elem[_Length + 1];
+	auto		vAddress = new(std::nothrow) elem_type[_Length + 1];
 	if(vAddress)
 	{
 		x_posix_memset(vAddress, 0, _Length + 1);
@@ -121,7 +121,7 @@ xanadu::exception::_Elem* xanadu::exception::clone_string(const _Elem* _Memory, 
 
 
 // [get] explain
-const xanadu::exception::_Elem* xanadu::exception::explain() const noexcept
+const xanadu::exception::elem_type* xanadu::exception::explain() const noexcept
 {
 	if(this->_memory_address)
 	{
