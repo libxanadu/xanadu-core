@@ -18,5 +18,6 @@
 #include <xanadu-core/string.h> // NOLINT(modernize-deprecated-headers)
 #include <xanadu-core/ternary.h>
 #include <xanadu-core/thread.h>
+#include <xanadu-core/uuid.h>
 
 #endif

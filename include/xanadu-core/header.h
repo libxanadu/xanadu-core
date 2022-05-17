@@ -13,6 +13,7 @@
 #include <ostream>
 #include <functional>
 #include <mutex>
+#include <random>
 
 
 // xanadu export declaration used by the project
@@ -66,7 +67,7 @@ namespace xanadu
 	using	size_type		= xanadu::size_t;
 	using	pos_type		= xanadu::size_t;
 	using	raw_type		= void;
-	using	diff_type		= ptrdiff_t;
+	using	diff_type		= xanadu::ssize_t;
 	using	time_type		= xanadu::int64_t;
 }
 
