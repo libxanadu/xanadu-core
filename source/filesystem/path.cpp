@@ -3,37 +3,37 @@
 
 
 // constructor
-xanadu::filesystem::path::path() noexcept = default;
+x::filesystem::path::path() noexcept = default;
 
 // constructor
-xanadu::filesystem::path::path(const path& _Other) noexcept = default;
+x::filesystem::path::path(const path& _Other) noexcept = default;
 
 // constructor
-xanadu::filesystem::path::path(path&& _Other) noexcept = default;
+x::filesystem::path::path(path&& _Other) noexcept = default;
 
 // destructor
-xanadu::filesystem::path::~path() noexcept = default;
+x::filesystem::path::~path() noexcept = default;
 
 
 
 
 
 // constructor
-xanadu::filesystem::path::path(const elem_type* _String) noexcept
+x::filesystem::path::path(const elem_type* _String) noexcept
 {
-	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
+	this->_path_absolute = x::filesystem::path::format_to_common(_String);
 }
 
 // constructor
-xanadu::filesystem::path::path(const string_type& _String) noexcept
+x::filesystem::path::path(const string_type& _String) noexcept
 {
-	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
+	this->_path_absolute = x::filesystem::path::format_to_common(_String);
 }
 
 // constructor
-xanadu::filesystem::path::path(string_type&& _String) noexcept
+x::filesystem::path::path(string_type&& _String) noexcept
 {
-	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
+	this->_path_absolute = x::filesystem::path::format_to_common(_String);
 }
 
 
@@ -41,33 +41,33 @@ xanadu::filesystem::path::path(string_type&& _String) noexcept
 
 
 // operator overload =
-xanadu::filesystem::path& xanadu::filesystem::path::operator = (const path& _Other) noexcept = default;
+x::filesystem::path& x::filesystem::path::operator = (const path& _Other) noexcept = default;
 
 // operator overload =
-xanadu::filesystem::path& xanadu::filesystem::path::operator = (path&& _Other) noexcept = default;
+x::filesystem::path& x::filesystem::path::operator = (path&& _Other) noexcept = default;
 
 
 
 
 
 // operator overload =
-xanadu::filesystem::path& xanadu::filesystem::path::operator = (const elem_type* _String) noexcept
+x::filesystem::path& x::filesystem::path::operator = (const elem_type* _String) noexcept
 {
-	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
+	this->_path_absolute = x::filesystem::path::format_to_common(_String);
 	return *this;
 }
 
 // operator overload =
-xanadu::filesystem::path& xanadu::filesystem::path::operator = (const string_type& _String) noexcept
+x::filesystem::path& x::filesystem::path::operator = (const string_type& _String) noexcept
 {
-	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
+	this->_path_absolute = x::filesystem::path::format_to_common(_String);
 	return *this;
 }
 
 // operator overload =
-xanadu::filesystem::path& xanadu::filesystem::path::operator = (string_type&& _String) noexcept
+x::filesystem::path& x::filesystem::path::operator = (string_type&& _String) noexcept
 {
-	this->_path_absolute = xanadu::filesystem::path::format_to_common(_String);
+	this->_path_absolute = x::filesystem::path::format_to_common(_String);
 	return *this;
 }
 
@@ -76,7 +76,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator = (string_type&& _S
 
 
 // operator overload +
-xanadu::filesystem::path xanadu::filesystem::path::operator + (const elem_type* _String) const noexcept
+x::filesystem::path x::filesystem::path::operator + (const elem_type* _String) const noexcept
 {
 	auto		vNew = *this;
 	vNew += _String;
@@ -84,7 +84,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator + (const elem_type* 
 }
 
 // operator overload +
-xanadu::filesystem::path xanadu::filesystem::path::operator + (const string_type& _String) const noexcept
+x::filesystem::path x::filesystem::path::operator + (const string_type& _String) const noexcept
 {
 	auto		vNew = *this;
 	vNew += _String;
@@ -92,7 +92,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator + (const string_type
 }
 
 // operator overload +
-xanadu::filesystem::path xanadu::filesystem::path::operator + (const path& _Path) const noexcept
+x::filesystem::path x::filesystem::path::operator + (const path& _Path) const noexcept
 {
 	auto		vNew = *this;
 	vNew += _Path;
@@ -104,21 +104,21 @@ xanadu::filesystem::path xanadu::filesystem::path::operator + (const path& _Path
 
 
 // operator overload +=
-xanadu::filesystem::path& xanadu::filesystem::path::operator += (const elem_type* _String) noexcept
+x::filesystem::path& x::filesystem::path::operator += (const elem_type* _String) noexcept
 {
 	this->_path_absolute += _String;
 	return *this;
 }
 
 // operator overload +=
-xanadu::filesystem::path& xanadu::filesystem::path::operator += (const string_type& _String) noexcept
+x::filesystem::path& x::filesystem::path::operator += (const string_type& _String) noexcept
 {
 	this->_path_absolute += _String;
 	return *this;
 }
 
 // operator overload +=
-xanadu::filesystem::path& xanadu::filesystem::path::operator += (const path& _Path) noexcept
+x::filesystem::path& x::filesystem::path::operator += (const path& _Path) noexcept
 {
 	this->_path_absolute += _Path._path_absolute;
 	return *this;
@@ -129,7 +129,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator += (const path& _Pa
 
 
 // operator overload /
-xanadu::filesystem::path xanadu::filesystem::path::operator / (const elem_type* _String) const noexcept
+x::filesystem::path x::filesystem::path::operator / (const elem_type* _String) const noexcept
 {
 	auto		vNew = *this;
 	vNew /= _String;
@@ -137,7 +137,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator / (const elem_type* 
 }
 
 // operator overload /
-xanadu::filesystem::path xanadu::filesystem::path::operator / (const string_type& _String) const noexcept
+x::filesystem::path x::filesystem::path::operator / (const string_type& _String) const noexcept
 {
 	auto		vNew = *this;
 	vNew /= _String;
@@ -145,7 +145,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator / (const string_type
 }
 
 // operator overload /
-xanadu::filesystem::path xanadu::filesystem::path::operator / (const path& _Path) const noexcept
+x::filesystem::path x::filesystem::path::operator / (const path& _Path) const noexcept
 {
 	auto		vNew = *this;
 	vNew /= _Path;
@@ -157,7 +157,7 @@ xanadu::filesystem::path xanadu::filesystem::path::operator / (const path& _Path
 
 
 // operator overload /=
-xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const elem_type* _String) noexcept
+x::filesystem::path& x::filesystem::path::operator /= (const elem_type* _String) noexcept
 {
 	this->_path_absolute += "/";
 	this->_path_absolute += _String;
@@ -165,7 +165,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const elem_type
 }
 
 // operator overload /=
-xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const string_type& _String) noexcept
+x::filesystem::path& x::filesystem::path::operator /= (const string_type& _String) noexcept
 {
 	this->_path_absolute += "/";
 	this->_path_absolute += _String;
@@ -173,7 +173,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const string_ty
 }
 
 // operator overload /=
-xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const path& _Path) noexcept
+x::filesystem::path& x::filesystem::path::operator /= (const path& _Path) noexcept
 {
 	this->_path_absolute += "/";
 	this->_path_absolute += _Path._path_absolute;
@@ -185,7 +185,7 @@ xanadu::filesystem::path& xanadu::filesystem::path::operator /= (const path& _Pa
 
 
 // operator overload string_type
-xanadu::filesystem::path::operator string_type() const noexcept
+x::filesystem::path::operator string_type() const noexcept
 {
 	return this->_path_absolute;
 }
@@ -195,18 +195,18 @@ xanadu::filesystem::path::operator string_type() const noexcept
 
 
 // 格式化至通用路径
-xanadu::filesystem::path::string_type xanadu::filesystem::path::format_to_common(const string_type& _String) noexcept
+x::filesystem::path::string_type x::filesystem::path::format_to_common(const string_type& _String) noexcept
 {
 	auto		vCommon = _String;
 	for(auto vIndex = 0U; vIndex < vCommon.size(); ++vIndex)
 	{
 		if(vCommon[vIndex] == '\\')
 		{
-			vCommon[vIndex] = xanadu::filesystem::path::path_separator;
+			vCommon[vIndex] = x::filesystem::path::path_separator;
 		}
 	}
-	vCommon.replace("//", xanadu::filesystem::path::path_separator);
-	while(vCommon.size() > 1 && vCommon[vCommon.size() - 1] == xanadu::filesystem::path::path_separator)
+	vCommon.replace("//", x::filesystem::path::path_separator);
+	while(vCommon.size() > 1 && vCommon[vCommon.size() - 1] == x::filesystem::path::path_separator)
 	{
 		vCommon.remove(vCommon.size() - 1, 1);
 	}
@@ -214,23 +214,23 @@ xanadu::filesystem::path::string_type xanadu::filesystem::path::format_to_common
 }
 
 // 格式化至本机路径
-xanadu::filesystem::path::string_type xanadu::filesystem::path::format_to_native(const string_type& _String) noexcept
+x::filesystem::path::string_type x::filesystem::path::format_to_native(const string_type& _String) noexcept
 {
-	auto		vCommon = xanadu::filesystem::path::format_to_common(_String);
+	auto		vCommon = x::filesystem::path::format_to_common(_String);
 #if defined(XANADU_SYSTEM_WINDOWS)
-	vCommon.replace(xanadu::filesystem::path::path_separator, '\\');
+	vCommon.replace(x::filesystem::path::path_separator, '\\');
 #endif
 	return vCommon;
 }
 
 // 转换至绝对路径
-xanadu::filesystem::path::string_type xanadu::filesystem::path::convert_to_absolute(const string_type& _String) noexcept
+x::filesystem::path::string_type x::filesystem::path::convert_to_absolute(const string_type& _String) noexcept
 {
-	return xanadu::filesystem::path::format_to_common(_String);
+	return x::filesystem::path::format_to_common(_String);
 }
 
 // 检查名称是否符合规范
-bool xanadu::filesystem::path::check_is_correct(const path& _Path) noexcept
+bool x::filesystem::path::check_is_correct(const path& _Path) noexcept
 {
 	return _Path.is_exist();
 }
@@ -240,19 +240,19 @@ bool xanadu::filesystem::path::check_is_correct(const path& _Path) noexcept
 
 
 // 本机路径
-xanadu::filesystem::path::string_type xanadu::filesystem::path::native_path() const noexcept
+x::filesystem::path::string_type x::filesystem::path::native_path() const noexcept
 {
-	return xanadu::filesystem::path::format_to_native(this->_path_absolute);
+	return x::filesystem::path::format_to_native(this->_path_absolute);
 }
 
 // 文件路径
-xanadu::filesystem::path::string_type xanadu::filesystem::path::filepath() const noexcept
+x::filesystem::path::string_type x::filesystem::path::filepath() const noexcept
 {
 	return this->_path_absolute;
 }
 
 // 父目录
-xanadu::filesystem::path::string_type xanadu::filesystem::path::parent_dir() const noexcept
+x::filesystem::path::string_type x::filesystem::path::parent_dir() const noexcept
 {
 	auto		vPos = this->_path_absolute.rfind("/");
 	if(vPos == string_type::npos)
@@ -267,7 +267,7 @@ xanadu::filesystem::path::string_type xanadu::filesystem::path::parent_dir() con
 }
 
 // 文件名称
-xanadu::filesystem::path::string_type xanadu::filesystem::path::filename() const noexcept
+x::filesystem::path::string_type x::filesystem::path::filename() const noexcept
 {
 	auto		vPos = this->_path_absolute.rfind("/");
 	if(vPos == string_type::npos)
@@ -282,7 +282,7 @@ xanadu::filesystem::path::string_type xanadu::filesystem::path::filename() const
 }
 
 // 去除后缀名的文件名称
-xanadu::filesystem::path::string_type xanadu::filesystem::path::stem() const noexcept
+x::filesystem::path::string_type x::filesystem::path::stem() const noexcept
 {
 	auto		vFileName = this->filename();
 	auto		vPos = vFileName.rfind(".");
@@ -297,13 +297,13 @@ xanadu::filesystem::path::string_type xanadu::filesystem::path::stem() const noe
 }
 
 // 后缀名
-xanadu::filesystem::path::string_type xanadu::filesystem::path::extension() const noexcept
+x::filesystem::path::string_type x::filesystem::path::extension() const noexcept
 {
 	return this->suffix();
 }
 
 // 后缀名
-xanadu::filesystem::path::string_type xanadu::filesystem::path::suffix() const noexcept
+x::filesystem::path::string_type x::filesystem::path::suffix() const noexcept
 {
 	auto		vFileName = this->filename();
 	auto		vPos = vFileName.rfind(".");
@@ -322,19 +322,19 @@ xanadu::filesystem::path::string_type xanadu::filesystem::path::suffix() const n
 
 
 // 判断是否存在
-bool xanadu::filesystem::path::is_exist() const noexcept
+bool x::filesystem::path::is_exist() const noexcept
 {
-	return xanadu::filesystem::exists(*this);
+	return x::filesystem::exists(*this);
 }
 
 // 判断是否为目录
-bool xanadu::filesystem::path::is_dir() const noexcept
+bool x::filesystem::path::is_dir() const noexcept
 {
-	return xanadu::filesystem::is_directory(*this);
+	return x::filesystem::is_directory(*this);
 }
 
 // 判断是否为文件
-bool xanadu::filesystem::path::is_file() const noexcept
+bool x::filesystem::path::is_file() const noexcept
 {
-	return !xanadu::filesystem::is_directory(*this);
+	return !x::filesystem::is_directory(*this);
 }

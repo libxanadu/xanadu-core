@@ -5,13 +5,13 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class error
 	class _XCOREAPI_ error
 	{
 	public:
-		typedef enum value_type : xanadu::size_type
+		typedef enum value_type : x::size_type
 		{
 			EE_SUCCESS				= 0x00000000,		// 成功
 

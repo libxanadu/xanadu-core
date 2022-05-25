@@ -3,7 +3,7 @@
 
 
 // constructor
-xanadu::uuid::uuid() noexcept
+x::uuid::uuid() noexcept
 {
 	this->_uuid_data_1 = 0;
 	this->_uuid_data_2 = 0;
@@ -17,7 +17,7 @@ xanadu::uuid::uuid() noexcept
 }
 
 // constructor
-xanadu::uuid::uuid(uint32_t _D1, uint16_t _D2, uint16_t _D3, uint8_t _D41, uint8_t _D42, uint8_t _D43, uint8_t _D44, uint8_t _D45, uint8_t _D46, uint8_t _D47, uint8_t _D48) noexcept
+x::uuid::uuid(uint32_t _D1, uint16_t _D2, uint16_t _D3, uint8_t _D41, uint8_t _D42, uint8_t _D43, uint8_t _D44, uint8_t _D45, uint8_t _D46, uint8_t _D47, uint8_t _D48) noexcept
 {
 	this->_uuid_data_1 = _D1;
 	this->_uuid_data_2 = _D2;
@@ -33,7 +33,7 @@ xanadu::uuid::uuid(uint32_t _D1, uint16_t _D2, uint16_t _D3, uint8_t _D41, uint8
 }
 
 // constructor
-xanadu::uuid::uuid(const char* _UUID) noexcept
+x::uuid::uuid(const char* _UUID) noexcept
 {
 	this->_uuid_data_1 = 0;
 	this->_uuid_data_2 = 0;
@@ -43,14 +43,11 @@ xanadu::uuid::uuid(const char* _UUID) noexcept
 		vItem = 0;
 	}
 
-	if(!this->formatString(_UUID))
-	{
-		this->update();
-	}
+	this->formatString(_UUID);
 }
 
 // constructor
-xanadu::uuid::uuid(const xanadu::string& _UUID) noexcept
+x::uuid::uuid(const x::string& _UUID) noexcept
 {
 	this->_uuid_data_1 = 0;
 	this->_uuid_data_2 = 0;
@@ -60,27 +57,24 @@ xanadu::uuid::uuid(const xanadu::string& _UUID) noexcept
 		vItem = 0;
 	}
 
-	if(!this->formatString(_UUID))
-	{
-		this->update();
-	}
+	this->formatString(_UUID);
 }
 
 // constructor
-xanadu::uuid::uuid(const xanadu::uuid& _Object) noexcept = default;
+x::uuid::uuid(const x::uuid& _Object) noexcept = default;
 
 // constructor
-xanadu::uuid::uuid(xanadu::uuid&& _Object) noexcept = default;
+x::uuid::uuid(x::uuid&& _Object) noexcept = default;
 
 // destructor
-xanadu::uuid::~uuid() noexcept = default;
+x::uuid::~uuid() noexcept = default;
 
 
 
 
 
 // operator overload =
-xanadu::uuid& xanadu::uuid::operator = (const xanadu::uuid& _Object) noexcept
+x::uuid& x::uuid::operator = (const x::uuid& _Object) noexcept
 {
 	if(this != &_Object)
 	{
@@ -93,7 +87,7 @@ xanadu::uuid& xanadu::uuid::operator = (const xanadu::uuid& _Object) noexcept
 }
 
 // operator overload =
-xanadu::uuid& xanadu::uuid::operator = (xanadu::uuid&& _Object) noexcept
+x::uuid& x::uuid::operator = (x::uuid&& _Object) noexcept
 {
 	if(this != &_Object)
 	{
@@ -110,15 +104,15 @@ xanadu::uuid& xanadu::uuid::operator = (xanadu::uuid&& _Object) noexcept
 
 
 // 从字符串格式化
-bool xanadu::uuid::formatString(const xanadu::string& _UUID) noexcept
+bool x::uuid::formatString(const x::string& _UUID) noexcept
 {
 	if(_UUID.size() == 38 && _UUID.startsWith("{") && _UUID.endsWith("}"))
 	{
-		return xanadu::uuid::formatString(_UUID.substr(1, 36));
+		return x::uuid::formatString(_UUID.substr(1, 36));
 	}
 	else if(_UUID.size() == 36)
 	{
-		for(string::pos_type vIndex = 0; vIndex < _UUID.size(); ++vIndex)
+		for(x::string::pos_type vIndex = 0; vIndex < _UUID.size(); ++vIndex)
 		{
 			if(vIndex == 8 || vIndex == 13 || vIndex == 18 || vIndex == 23)
 			{
@@ -145,7 +139,7 @@ bool xanadu::uuid::formatString(const xanadu::string& _UUID) noexcept
 		vUUID_36.insert(13, '-');
 		vUUID_36.insert(18, '-');
 		vUUID_36.insert(23, '-');
-		return xanadu::uuid::formatString(vUUID_36);
+		return x::uuid::formatString(vUUID_36);
 	}
 
 	return false;
@@ -156,7 +150,7 @@ bool xanadu::uuid::formatString(const xanadu::string& _UUID) noexcept
 
 
 // 更换一个新的UUID
-void xanadu::uuid::update() noexcept
+void x::uuid::update() noexcept
 {
 #if defined(XANADU_SYSTEM_WINDOWS)
 	GUID		vUuid;
@@ -186,7 +180,7 @@ void xanadu::uuid::update() noexcept
 
 
 // 创建一个UUID
-xanadu::uuid xanadu::uuid::createUuid() noexcept
+x::uuid x::uuid::createUuid() noexcept
 {
 	return {};
 }
@@ -195,29 +189,35 @@ xanadu::uuid xanadu::uuid::createUuid() noexcept
 
 
 
-// 转换为字符串
-xanadu::string xanadu::uuid::toString() const noexcept
+// 从字符串格式化
+x::uuid x::uuid::fromString(const x::string& _UUID) noexcept
 {
-	return xanadu::uuid::toString(WithBraces);
+	return x::uuid(_UUID);
 }
 
 // 转换为字符串
-xanadu::string xanadu::uuid::toString(STRING_FORMAT _Format) const noexcept
+x::string x::uuid::toString() const noexcept
+{
+	return x::uuid::toString(WithBraces);
+}
+
+// 转换为字符串
+x::string x::uuid::toString(STRING_FORMAT _Format) const noexcept
 {
 	switch (_Format)
 	{
 		case WithBraces:
-			return string::format("{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}",
+			return x::string::format("{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}",
 					      this->_uuid_data_1, this->_uuid_data_2, this->_uuid_data_3,
 					      this->_uuid_data_4[0], this->_uuid_data_4[1], this->_uuid_data_4[2], this->_uuid_data_4[3],
 					      this->_uuid_data_4[4], this->_uuid_data_4[5], this->_uuid_data_4[6], this->_uuid_data_4[7]);
 		case WithoutBraces:
-			return string::format("%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X",
+			return x::string::format("%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X",
 					      this->_uuid_data_1, this->_uuid_data_2, this->_uuid_data_3,
 					      this->_uuid_data_4[0], this->_uuid_data_4[1], this->_uuid_data_4[2], this->_uuid_data_4[3],
 					      this->_uuid_data_4[4], this->_uuid_data_4[5], this->_uuid_data_4[6], this->_uuid_data_4[7]);
 		case HexDigitsOnly:
-			return string::format("%08X%04X%04X%02X%02X%02X%02X%02X%02X%02X%02X",
+			return x::string::format("%08X%04X%04X%02X%02X%02X%02X%02X%02X%02X%02X",
 					      this->_uuid_data_1, this->_uuid_data_2, this->_uuid_data_3,
 					      this->_uuid_data_4[0], this->_uuid_data_4[1], this->_uuid_data_4[2], this->_uuid_data_4[3],
 					      this->_uuid_data_4[4], this->_uuid_data_4[5], this->_uuid_data_4[6], this->_uuid_data_4[7]);

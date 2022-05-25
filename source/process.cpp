@@ -14,36 +14,36 @@
 
 
 // constructor
-xanadu::process::process() noexcept
+x::process::process() noexcept
 {
 	this->_process_id = 0;
 }
 
 // constructor
-xanadu::process::process(const process& _Other) noexcept = default;
+x::process::process(const process& _Other) noexcept = default;
 
 // constructor
-xanadu::process::process(process&& _Other) noexcept = default;
+x::process::process(process&& _Other) noexcept = default;
 
 // destructor
-xanadu::process::~process() noexcept = default;
+x::process::~process() noexcept = default;
 
 
 
 
 
 // operator overload =
-xanadu::process& xanadu::process::operator = (const process& _Other) noexcept = default;
+x::process& x::process::operator = (const process& _Other) noexcept = default;
 
 // operator overload =
-xanadu::process& xanadu::process::operator = (process&& _Other) noexcept = default;
+x::process& x::process::operator = (process&& _Other) noexcept = default;
 
 
 
 
 
 // 遍历所有进程
-bool xanadu::process::process_traverse(const std::function<bool(const xanadu::process& _ProcessInfo)>& _Lambda) noexcept
+bool x::process::process_traverse(const std::function<bool(const x::process& _ProcessInfo)>& _Lambda) noexcept
 {
 	if(_Lambda == nullptr)
 	{
@@ -62,7 +62,7 @@ bool xanadu::process::process_traverse(const std::function<bool(const xanadu::pr
 		auto		vMore = ::Process32FirstW(vSnapshotHandle, &vProcessEntry32);
 		while(vMore)
 		{
-			if(!_Lambda(xanadu::process::from_process_id(static_cast<xanadu::process::id_type>(vProcessEntry32.th32ProcessID), xanadu::string::fromWString(vProcessEntry32.szExeFile))))
+			if(!_Lambda(x::process::from_process_id(static_cast<x::process::id_type>(vProcessEntry32.th32ProcessID), x::string::fromWString(vProcessEntry32.szExeFile))))
 			{
 				break;
 			}
@@ -72,11 +72,11 @@ bool xanadu::process::process_traverse(const std::function<bool(const xanadu::pr
 	}
 #endif
 #if defined(XANADU_SYSTEM_LINUX)
-	vSync = xanadu::filesystem::dir_traverse("/proc", [&](const xanadu::filesystem::file_info& _FileInfo)->bool
+	vSync = x::filesystem::dir_traverse("/proc", [&](const x::filesystem::file_info& _FileInfo)->bool
 	{
 		if(_FileInfo.path().is_dir())
 		{
-			if(!_Lambda(xanadu::process::from_process_id(static_cast<xanadu::process::id_type>(_FileInfo.path().filename().toLLong()))))
+			if(!_Lambda(x::process::from_process_id(static_cast<x::process::id_type>(_FileInfo.path().filename().toLLong()))))
 			{
 				return false;
 			}
@@ -102,7 +102,7 @@ bool xanadu::process::process_traverse(const std::function<bool(const xanadu::pr
 					{
 						continue;
 					}
-					if(!_Lambda(xanadu::process::from_process_id(static_cast<xanadu::process::id_type>(vProcessID))))
+					if(!_Lambda(x::process::from_process_id(static_cast<x::process::id_type>(vProcessID))))
 					{
 						break;
 					}
@@ -116,10 +116,10 @@ bool xanadu::process::process_traverse(const std::function<bool(const xanadu::pr
 }
 
 // 查询所有进程数量
-xanadu::uint64_t xanadu::process::process_count() noexcept
+x::uint64_t x::process::process_count() noexcept
 {
-	xanadu::uint64_t	vNumber = 0;
-	xanadu::process::process_traverse([&](const xanadu::process& _ProcessInfo)->bool
+	x::uint64_t	vNumber = 0;
+	x::process::process_traverse([&](const x::process& _ProcessInfo)->bool
 	{
 		XANADU_UNUSED(_ProcessInfo);
 		++vNumber;
@@ -129,15 +129,15 @@ xanadu::uint64_t xanadu::process::process_count() noexcept
 }
 
 // 查询指定名称进程数量
-xanadu::uint64_t xanadu::process::process_number(const xanadu::string& _ProcessName) noexcept
+x::uint64_t x::process::process_number(const x::string& _ProcessName) noexcept
 {
 	if(_ProcessName.empty())
 	{
 		return 0;
 	}
 
-	xanadu::uint64_t	vNumber = 0;
-	xanadu::process::process_traverse([&](const xanadu::process& _ProcessInfo)->bool
+	x::uint64_t	vNumber = 0;
+	x::process::process_traverse([&](const x::process& _ProcessInfo)->bool
 	{
 		if(_ProcessInfo.name() == _ProcessName)
 		{
@@ -149,7 +149,7 @@ xanadu::uint64_t xanadu::process::process_number(const xanadu::string& _ProcessN
 }
 
 // 根据进程ID终止进程
-bool xanadu::process::terminate(unsigned long long _ProcessID) noexcept
+bool x::process::terminate(unsigned long long _ProcessID) noexcept
 {
 	auto		vSync = true;
 #if defined(XANADU_SYSTEM_WINDOWS)
@@ -166,7 +166,7 @@ bool xanadu::process::terminate(unsigned long long _ProcessID) noexcept
 }
 
 // 根据进程名称终止进程
-bool xanadu::process::terminate(const xanadu::string& _ProcessName) noexcept
+bool x::process::terminate(const x::string& _ProcessName) noexcept
 {
 	if(_ProcessName.empty())
 	{
@@ -174,11 +174,11 @@ bool xanadu::process::terminate(const xanadu::string& _ProcessName) noexcept
 	}
 
 	auto		vSync = true;
-	xanadu::process::process_traverse([&](const xanadu::process& _ProcessInfo)->bool
+	x::process::process_traverse([&](const x::process& _ProcessInfo)->bool
 	{
 		if(_ProcessInfo.name() == _ProcessName)
 		{
-			vSync = xanadu::process::terminate(_ProcessInfo.id());
+			vSync = x::process::terminate(_ProcessInfo.id());
 		}
 		return true;
 	});
@@ -190,15 +190,15 @@ bool xanadu::process::terminate(const xanadu::string& _ProcessName) noexcept
 
 
 // 当前进程
-xanadu::process xanadu::process::current_process() noexcept
+x::process x::process::current_process() noexcept
 {
-	return xanadu::process::from_process_id(xanadu::process::current_process_id());
+	return x::process::from_process_id(x::process::current_process_id());
 }
 
 // 当前进程ID
-xanadu::process::id_type xanadu::process::current_process_id() noexcept
+x::process::id_type x::process::current_process_id() noexcept
 {
-	return static_cast<xanadu::process::id_type>(x_posix_getpid());
+	return static_cast<x::process::id_type>(x_posix_getpid());
 }
 
 
@@ -206,9 +206,9 @@ xanadu::process::id_type xanadu::process::current_process_id() noexcept
 
 
 // args 转换为 string
-xanadu::string xanadu::process::args_to_string(char** _Args) noexcept
+x::string x::process::args_to_string(char** _Args) noexcept
 {
-	xanadu::string	vString;
+	x::string	vString;
 	for(int vIndex = 0; _Args[vIndex]; ++vIndex)
 	{
 		if(vIndex != 0)
@@ -221,7 +221,7 @@ xanadu::string xanadu::process::args_to_string(char** _Args) noexcept
 }
 
 // string 转换为 args
-char** xanadu::process::string_to_args(const xanadu::string& _Args) noexcept
+char** x::process::string_to_args(const x::string& _Args) noexcept
 {
 	auto		vProgram = std::string(_Args.data());
 	auto		vArgs = std::vector<std::string>();
@@ -282,7 +282,7 @@ char** xanadu::process::string_to_args(const xanadu::string& _Args) noexcept
 }
 
 // args 释放
-void xanadu::process::args_free(char** _Args) noexcept
+void x::process::args_free(char** _Args) noexcept
 {
 	if(_Args == nullptr)
 	{
@@ -300,7 +300,7 @@ void xanadu::process::args_free(char** _Args) noexcept
 
 
 // 输出所有换行数据
-void xanadu::process::read_output_printf_newline(output_type& _Bytes, const callback_type& _Lambda) noexcept
+void x::process::read_output_printf_newline(output_type& _Bytes, const callback_type& _Lambda) noexcept
 {
 	do{
 		auto		vFind = _Bytes.find('\n');
@@ -320,7 +320,7 @@ void xanadu::process::read_output_printf_newline(output_type& _Bytes, const call
 }
 
 // 从句柄读取输出
-void xanadu::process::read_output_from_descriptor(int _Handle, const callback_type& _Lambda) noexcept
+void x::process::read_output_from_descriptor(int _Handle, const callback_type& _Lambda) noexcept
 {
 	auto		vBuffer = new(std::nothrow) char[XANADU_SIZE_KB];
 	auto		vBytes = output_type();
@@ -332,7 +332,7 @@ void xanadu::process::read_output_from_descriptor(int _Handle, const callback_ty
 		{
 			vBytes.append(vBuffer, vSync);
 		}
-		xanadu::process::read_output_printf_newline(vBytes, _Lambda);
+		x::process::read_output_printf_newline(vBytes, _Lambda);
 		if(0 == vSync)
 		{
 			if(0 != x_posix_errno())
@@ -357,7 +357,7 @@ void xanadu::process::read_output_from_descriptor(int _Handle, const callback_ty
 }
 
 // 从句柄读取输出
-void xanadu::process::read_output_from_file(FILE* _Handle, const callback_type& _Lambda) noexcept
+void x::process::read_output_from_file(FILE* _Handle, const callback_type& _Lambda) noexcept
 {
 	auto		vBuffer = new(std::nothrow) char[XANADU_SIZE_KB];
 	auto		vBytes = output_type();
@@ -369,7 +369,7 @@ void xanadu::process::read_output_from_file(FILE* _Handle, const callback_type& 
 		{
 			vBytes.append(vBuffer, vSync);
 		}
-		xanadu::process::read_output_printf_newline(vBytes, _Lambda);
+		x::process::read_output_printf_newline(vBytes, _Lambda);
 		if(0 == vSync)
 		{
 			if(0 != x_posix_ferror(_Handle) || 0 != x_posix_feof(_Handle))
@@ -390,7 +390,7 @@ void xanadu::process::read_output_from_file(FILE* _Handle, const callback_type& 
 }
 
 // 从句柄读取输出
-void xanadu::process::read_output_from_handle(HANDLE _Handle, const callback_type& _Lambda) noexcept
+void x::process::read_output_from_handle(HANDLE _Handle, const callback_type& _Lambda) noexcept
 {
 #if defined(XANADU_SYSTEM_WINDOWS)
 	auto		vBuffer = new(std::nothrow) char[XANADU_SIZE_KB];
@@ -404,7 +404,7 @@ void xanadu::process::read_output_from_handle(HANDLE _Handle, const callback_typ
 		{
 			vBytes.append(vBuffer, vSync);
 		}
-		xanadu::process::read_output_printf_newline(vBytes, _Lambda);
+		x::process::read_output_printf_newline(vBytes, _Lambda);
 		if(!vSuccess)
 		{
 			if(ERROR_BROKEN_PIPE == ::GetLastError())
@@ -429,19 +429,19 @@ void xanadu::process::read_output_from_handle(HANDLE _Handle, const callback_typ
 
 
 // 从进程ID构建数据
-xanadu::process xanadu::process::from_process_id(id_type _ProcessID) noexcept
+x::process x::process::from_process_id(id_type _ProcessID) noexcept
 {
-	xanadu::process	vProcessInfo = xanadu::process::from_process_id(_ProcessID, nullptr);
+	x::process	vProcessInfo = x::process::from_process_id(_ProcessID, nullptr);
 #if defined(XANADU_SYSTEM_WINDOWS)
 	auto		vFind = vProcessInfo._process_path.rfind("/");
-	if(vFind != xanadu::string::npos)
+	if(vFind != x::string::npos)
 	{
 		vProcessInfo._process_name = vProcessInfo._process_path.substr(vFind + 1);
 	}
 #endif
 #if defined(XANADU_SYSTEM_LINUX)
 	auto		vFind = vProcessInfo._process_path.rfind("/");
-	if(vFind != xanadu::string::npos)
+	if(vFind != x::string::npos)
 	{
 		vProcessInfo._process_name = vProcessInfo._process_path.substr(vFind + 1);
 	}
@@ -455,9 +455,9 @@ xanadu::process xanadu::process::from_process_id(id_type _ProcessID) noexcept
 }
 
 // 从进程ID构建数据
-xanadu::process xanadu::process::from_process_id(id_type _ProcessID, const xanadu::string& _ProcessName) noexcept
+x::process x::process::from_process_id(id_type _ProcessID, const x::string& _ProcessName) noexcept
 {
-	xanadu::process	vProcessInfo;
+	x::process	vProcessInfo;
 	vProcessInfo._process_id = _ProcessID;
 	vProcessInfo._process_name = _ProcessName;
 
@@ -486,10 +486,10 @@ xanadu::process xanadu::process::from_process_id(id_type _ProcessID, const xanad
 	}
 
 	::CloseHandle(vProcess);
-	vProcessInfo._process_path = xanadu::string::fromWString(vProcessPath).replace("\\", "/");
+	vProcessInfo._process_path = x::string::fromWString(vProcessPath).replace("\\", "/");
 #endif
 #if defined(XANADU_SYSTEM_LINUX)
-	auto		vProcessExe = xanadu::string::format("/proc/%llu/exe", _ProcessID);
+	auto		vProcessExe = x::string::format("/proc/%llu/exe", _ProcessID);
 	char		vProcessPath[XANADU_PATH_MAX] = {0};
 
 	auto		vCount = readlink(vProcessExe.data(), vProcessPath, XANADU_PATH_MAX);
@@ -511,19 +511,19 @@ xanadu::process xanadu::process::from_process_id(id_type _ProcessID, const xanad
 
 
 // 进程ID
-xanadu::process::id_type xanadu::process::id() const noexcept
+x::process::id_type x::process::id() const noexcept
 {
 	return this->_process_id;
 }
 
 // 进程名称
-const xanadu::string& xanadu::process::name() const noexcept
+const x::string& x::process::name() const noexcept
 {
 	return this->_process_name;
 }
 
 // 进程路径
-const xanadu::string& xanadu::process::path() const noexcept
+const x::string& x::process::path() const noexcept
 {
 	return this->_process_path;
 }
@@ -533,7 +533,7 @@ const xanadu::string& xanadu::process::path() const noexcept
 
 
 // 执行 exec 系列函数
-int xanadu::process::execds(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param) noexcept
+int x::process::execds(const x::string& _Application, const x::string& _Directory, const x::string& _Param) noexcept
 {
 	if(_Application.empty())
 	{
@@ -542,7 +542,7 @@ int xanadu::process::execds(const xanadu::string& _Application, const xanadu::st
 
 	auto		vSync = -1;
 	auto		vExecParam = _Application + (_Param.exist() ? " " : "") + _Param;
-	auto		vArgs = xanadu::process::string_to_args(vExecParam.data());
+	auto		vArgs = x::process::string_to_args(vExecParam.data());
 
 	// 我们需要改变工作目录
 	if(_Directory.exist())
@@ -556,7 +556,7 @@ int xanadu::process::execds(const xanadu::string& _Application, const xanadu::st
 #else
 	vSync = ::execv(_Application.data(), vArgs);
 #endif
-	xanadu::process::args_free(vArgs);
+	x::process::args_free(vArgs);
 	return vSync;
 }
 
@@ -565,19 +565,19 @@ int xanadu::process::execds(const xanadu::string& _Application, const xanadu::st
 
 
 // 同步运行
-int xanadu::process::sync_run(const xanadu::string& _Application) noexcept
+int x::process::sync_run(const x::string& _Application) noexcept
 {
-	return xanadu::process::async_run(_Application, nullptr, nullptr);
+	return x::process::async_run(_Application, nullptr, nullptr);
 }
 
 // 同步运行
-int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::string& _Directory) noexcept
+int x::process::sync_run(const x::string& _Application, const x::string& _Directory) noexcept
 {
-	return xanadu::process::async_run(_Application, _Directory, nullptr);
+	return x::process::async_run(_Application, _Directory, nullptr);
 }
 
 // 同步运行
-int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param) noexcept
+int x::process::sync_run(const x::string& _Application, const x::string& _Directory, const x::string& _Param) noexcept
 {
 #if defined(XANADU_SYSTEM_WINDOWS)
 	DWORD			vExitCode = STATUS_INVALID_HANDLE;
@@ -625,7 +625,7 @@ int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::
 	}
 	else if(vSync == 0)
 	{
-		if(-1 == xanadu::process::execds(_Application, _Directory, _Param))
+		if(-1 == x::process::execds(_Application, _Directory, _Param))
 		{
 			x_posix_exit(0);
 		}
@@ -639,23 +639,23 @@ int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::
 
 
 // 同步运行
-int xanadu::process::sync_run(const xanadu::string& _Application, const callback_type& _Lambda) noexcept
+int x::process::sync_run(const x::string& _Application, const callback_type& _Lambda) noexcept
 {
-	return xanadu::process::sync_run(_Application, nullptr, nullptr, _Lambda);
+	return x::process::sync_run(_Application, nullptr, nullptr, _Lambda);
 }
 
 // 同步运行
-int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::string& _Directory, const callback_type& _Lambda) noexcept
+int x::process::sync_run(const x::string& _Application, const x::string& _Directory, const callback_type& _Lambda) noexcept
 {
-	return xanadu::process::sync_run(_Application, _Directory, nullptr, _Lambda);
+	return x::process::sync_run(_Application, _Directory, nullptr, _Lambda);
 }
 
 // 同步运行
-int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param, const callback_type& _Lambda) noexcept
+int x::process::sync_run(const x::string& _Application, const x::string& _Directory, const x::string& _Param, const callback_type& _Lambda) noexcept
 {
 	if(_Lambda == nullptr)
 	{
-		return xanadu::process::sync_run(_Application, _Directory, _Param);
+		return x::process::sync_run(_Application, _Directory, _Param);
 	}
 
 #if defined(XANADU_SYSTEM_WINDOWS)
@@ -686,7 +686,7 @@ int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::
 		if (::CreateProcessW(vApplicationW.data(), vParamW.data(), nullptr, nullptr, TRUE, NULL, nullptr, nullptr, &si, &pi))
 		{
 			::CloseHandle(vWHandle);
-			xanadu::process::read_output_from_handle(vRHandle, _Lambda);
+			x::process::read_output_from_handle(vRHandle, _Lambda);
 			::CloseHandle(vRHandle);
 
 			// 等待进程结束
@@ -703,7 +703,7 @@ int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::
 	auto		vHandle = x_posix_popen(vExecParam.data(), "r");
 	if(vHandle)
 	{
-		xanadu::process::read_output_from_file(vHandle, _Lambda);
+		x::process::read_output_from_file(vHandle, _Lambda);
 		return x_posix_pclose(vHandle);
 	}
 #endif
@@ -715,19 +715,19 @@ int xanadu::process::sync_run(const xanadu::string& _Application, const xanadu::
 
 
 // 异步运行
-int xanadu::process::async_run(const xanadu::string& _Application) noexcept
+int x::process::async_run(const x::string& _Application) noexcept
 {
-	return xanadu::process::async_run(_Application, nullptr, nullptr);
+	return x::process::async_run(_Application, nullptr, nullptr);
 }
 
 // 异步运行
-int xanadu::process::async_run(const xanadu::string& _Application, const xanadu::string& _Directory) noexcept
+int x::process::async_run(const x::string& _Application, const x::string& _Directory) noexcept
 {
-	return xanadu::process::async_run(_Application, _Directory, nullptr);
+	return x::process::async_run(_Application, _Directory, nullptr);
 }
 
 // 异步运行
-int xanadu::process::async_run(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param) noexcept
+int x::process::async_run(const x::string& _Application, const x::string& _Directory, const x::string& _Param) noexcept
 {
 #if defined(XANADU_SYSTEM_WINDOWS)
 	DWORD			vExitCode = STATUS_INVALID_HANDLE;
@@ -758,7 +758,7 @@ int xanadu::process::async_run(const xanadu::string& _Application, const xanadu:
 	}
 	else if(vSync == 0)
 	{
-		if(-1 == xanadu::process::execds(_Application, _Directory, _Param))
+		if(-1 == x::process::execds(_Application, _Directory, _Param))
 		{
 			x_posix_exit(0);
 		}

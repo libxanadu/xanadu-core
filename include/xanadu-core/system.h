@@ -6,14 +6,14 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class system_version
 	class _XCOREAPI_ system_version
 	{
 	public:
-		using value_type				= xanadu::uint64_t;
-		using version_type				= xanadu::uint64_t;
+		using value_type				= x::uint64_t;
+		using version_type				= x::uint64_t;
 
 	public:
 		static const value_type version_unknown		= 0x00000000;		// 未知版本
@@ -52,14 +52,14 @@ namespace xanadu
 
 	public:
 		// 构建一个内核版本
-		static value_type create(xanadu::uint8_t _VersionX, xanadu::uint8_t _VersionY, xanadu::uint8_t _VersionZ) noexcept;
+		static value_type create(x::uint8_t _VersionX, x::uint8_t _VersionY, x::uint8_t _VersionZ) noexcept;
 	};
 
 	/// class system_machine
 	class _XCOREAPI_ system_machine
 	{
 	public:
-		using value_type				= xanadu::uint64_t;
+		using value_type				= x::uint64_t;
 
 	public:
 		static const value_type machine_unknown		= 0x00000000;		// 未知架构
@@ -75,7 +75,7 @@ namespace xanadu
 	class _XCOREAPI_ system_osbit
 	{
 	public:
-		using value_type				= xanadu::uint8_t;
+		using value_type				= x::uint8_t;
 
 	public:
 		static const value_type bit_unknown		= 0x00000000;		// 未知位数
@@ -89,10 +89,10 @@ namespace xanadu
 	class _XCOREAPI_ system
 	{
 	public:
-		using version_type				= xanadu::system_version::version_type;
-		using machine_type				= xanadu::system_machine::value_type;
-		using string_type				= xanadu::string;
-		using osbit_type				= xanadu::system_osbit::value_type;
+		using version_type				= x::system_version::version_type;
+		using machine_type				= x::system_machine::value_type;
+		using string_type				= x::string;
+		using osbit_type				= x::system_osbit::value_type;
 
 	public:
 		// constructor
@@ -116,7 +116,7 @@ namespace xanadu
 
 	private:
 		// 本机 /etc/os-release
-		static const std::list<xanadu::string>& native_os_release() noexcept;
+		static const std::list<x::string>& native_os_release() noexcept;
 
 	public:
 		// 内核名称

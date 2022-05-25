@@ -6,20 +6,20 @@
 
 
 // constructor
-xanadu::library::library() noexcept
+x::library::library() noexcept
 {
 	this->_library_handle = nullptr;
 }
 
 // constructor
-xanadu::library::library(const xanadu::string& _DllPath) noexcept
+x::library::library(const x::string& _DllPath) noexcept
 {
 	this->_library_handle = nullptr;
 	this->open(_DllPath);
 }
 
 // destructor
-xanadu::library::~library() noexcept
+x::library::~library() noexcept
 {
 	this->close();
 }
@@ -29,23 +29,23 @@ xanadu::library::~library() noexcept
 
 
 // operator overload =
-xanadu::library& xanadu::library::operator = (const library& _Library) noexcept = default;
+x::library& x::library::operator = (const library& _Library) noexcept = default;
 
 // operator overload =
-xanadu::library& xanadu::library::operator = (library&& _Library) noexcept = default;
+x::library& x::library::operator = (library&& _Library) noexcept = default;
 
 
 
 
 
 // 打开动态链接库
-bool xanadu::library::open() noexcept
+bool x::library::open() noexcept
 {
 	return this->open(this->_library_path);
 }
 
 // 打开动态链接库
-bool xanadu::library::open(const xanadu::string& _DllPath) noexcept
+bool x::library::open(const x::string& _DllPath) noexcept
 {
 	this->_library_path = _DllPath;
 
@@ -55,14 +55,14 @@ bool xanadu::library::open(const xanadu::string& _DllPath) noexcept
 	}
 
 	this->close();
-	this->_library_handle = xanadu::library::dlopen(_DllPath);
+	this->_library_handle = x::library::dlopen(_DllPath);
 	return this->_library_handle;
 }
 
 // 关闭动态链接库
-void xanadu::library::close() noexcept
+void x::library::close() noexcept
 {
-	xanadu::library::dlclose(this->_library_handle);
+	x::library::dlclose(this->_library_handle);
 	this->_library_handle = nullptr;
 }
 
@@ -71,13 +71,13 @@ void xanadu::library::close() noexcept
 
 
 // 是否已经打开
-bool xanadu::library::is_open() const noexcept
+bool x::library::is_open() const noexcept
 {
 	return this->_library_handle;
 }
 
 // 动态链接库的路径
-const xanadu::string& xanadu::library::dll_path() const noexcept
+const x::string& x::library::dll_path() const noexcept
 {
 	return this->_library_path;
 }
@@ -87,9 +87,9 @@ const xanadu::string& xanadu::library::dll_path() const noexcept
 
 
 // 在动态链接库中查找函数
-xanadu::library::func_address xanadu::library::find(const xanadu::string& _Function) noexcept
+x::library::func_address x::library::find(const x::string& _Function) noexcept
 {
-	return xanadu::library::dlsym(this->_library_handle, _Function);
+	return x::library::dlsym(this->_library_handle, _Function);
 }
 
 
@@ -97,7 +97,7 @@ xanadu::library::func_address xanadu::library::find(const xanadu::string& _Funct
 
 
 // [static] 打开动态链接库
-xanadu::library::library_handle xanadu::library::dlopen(const xanadu::string& _DllPath) noexcept
+x::library::library_handle x::library::dlopen(const x::string& _DllPath) noexcept
 {
 	if(_DllPath == nullptr)
 	{
@@ -113,7 +113,7 @@ xanadu::library::library_handle xanadu::library::dlopen(const xanadu::string& _D
 }
 
 // [static] 在动态链接库中查找函数
-xanadu::library::func_address xanadu::library::dlsym(library_handle _Handle, const xanadu::string& _Function) noexcept
+x::library::func_address x::library::dlsym(library_handle _Handle, const x::string& _Function) noexcept
 {
 	if(_Handle == nullptr || _Function.empty())
 	{
@@ -124,7 +124,7 @@ xanadu::library::func_address xanadu::library::dlsym(library_handle _Handle, con
 }
 
 // [static] 关闭动态链接库
-void xanadu::library::dlclose(library_handle _Handle) noexcept
+void x::library::dlclose(library_handle _Handle) noexcept
 {
 	if(_Handle)
 	{

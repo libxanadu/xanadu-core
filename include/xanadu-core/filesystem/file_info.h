@@ -8,8 +8,8 @@
 #include <xanadu-core/filesystem/path.h>
 
 
-// namespace xanadu::filesystem
-namespace xanadu::filesystem
+// namespace x::filesystem
+namespace x::filesystem
 {
 	/// class file_info
 	class _XCOREAPI_ file_info
@@ -32,7 +32,7 @@ namespace xanadu::filesystem
 
 	public:
 		// constructor
-		explicit file_info(const xanadu::filesystem::path& _Path) noexcept;
+		explicit file_info(const x::filesystem::path& _Path) noexcept;
 
 	public:
 		// operator overload =
@@ -43,11 +43,11 @@ namespace xanadu::filesystem
 
 	public:
 		// operator overload const path&
-		operator const xanadu::filesystem::path& () const noexcept; // NOLINT(google-explicit-constructor)
+		operator const x::filesystem::path& () const noexcept; // NOLINT(google-explicit-constructor)
 
 	public:
 		// 路径
-		virtual const xanadu::filesystem::path& path() const noexcept final;
+		virtual const x::filesystem::path& path() const noexcept final;
 	};
 }
 

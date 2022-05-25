@@ -5,7 +5,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class library
 	class _XCOREAPI_ library
@@ -15,7 +15,7 @@ namespace xanadu
 		using				func_address = void*;
 
 	public:
-		xanadu::string			_library_path;
+		x::string			_library_path;
 		library_handle			_library_handle;
 
 	public:
@@ -23,7 +23,7 @@ namespace xanadu
 		library() noexcept;
 
 		// constructor
-		explicit library(const xanadu::string& _DllPath) noexcept;
+		explicit library(const x::string& _DllPath) noexcept;
 
 		// destructor
 		virtual ~library() noexcept;
@@ -40,7 +40,7 @@ namespace xanadu
 		virtual bool open() noexcept final;
 
 		// 打开动态链接库
-		virtual bool open(const xanadu::string& _DllPath) noexcept final;
+		virtual bool open(const x::string& _DllPath) noexcept final;
 
 		// 关闭动态链接库
 		virtual void close() noexcept final;
@@ -50,18 +50,18 @@ namespace xanadu
 		virtual bool is_open() const noexcept final;
 
 		// 动态链接库的路径
-		virtual const xanadu::string& dll_path() const noexcept final;
+		virtual const x::string& dll_path() const noexcept final;
 
 	public:
 		// 在动态链接库中查找函数
-		virtual func_address find(const xanadu::string& _Function) noexcept final;
+		virtual func_address find(const x::string& _Function) noexcept final;
 
 	public:
 		// [static] 打开动态链接库
-		static library_handle dlopen(const xanadu::string& _DllPath) noexcept;
+		static library_handle dlopen(const x::string& _DllPath) noexcept;
 
 		// [static] 在动态链接库中查找函数
-		static func_address dlsym(library_handle _Handle, const xanadu::string& _Function) noexcept;
+		static func_address dlsym(library_handle _Handle, const x::string& _Function) noexcept;
 
 		// [static] 关闭动态链接库
 		static void dlclose(library_handle _Handle) noexcept;

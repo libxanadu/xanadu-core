@@ -5,16 +5,16 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class allocator
 	class _XCOREAPI_ allocator
 	{
 	public:
 		using				elem_type = char;
-		using				raw_type = xanadu::raw_type;
-		using				size_type = xanadu::size_type;
-		using				pos_type = xanadu::pos_type;
+		using				raw_type = x::raw_type;
+		using				size_type = x::size_type;
+		using				pos_type = x::pos_type;
 
 	public:
 		static const pos_type		npos = static_cast<pos_type>(-1);

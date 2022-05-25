@@ -5,13 +5,13 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class thread
 	class _XCOREAPI_ thread
 	{
 	public:
-		using id_type			= xanadu::uint64_t;
+		using id_type			= x::uint64_t;
 
 	public:
 		// constructor

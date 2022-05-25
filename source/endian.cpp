@@ -3,43 +3,43 @@
 
 
 // constructor
-xanadu::endian::endian() noexcept = default;
+x::endian::endian() noexcept = default;
 
 // destructor
-xanadu::endian::~endian() noexcept = default;
+x::endian::~endian() noexcept = default;
 
 
 
 // operator overload =
-xanadu::endian& xanadu::endian::operator = (const endian& _Endian) noexcept = default;
+x::endian& x::endian::operator = (const endian& _Endian) noexcept = default;
 
 // operator overload =
-xanadu::endian& xanadu::endian::operator = (endian&& _Endian) noexcept = default;
+x::endian& x::endian::operator = (endian&& _Endian) noexcept = default;
 
 
 
 // 检查操作系统是否为大端字节序
-bool xanadu::endian::is_big() noexcept
+bool x::endian::is_big() noexcept
 {
-	return xanadu::endian::native == xanadu::endian::big;
+	return x::endian::native == x::endian::big;
 }
 
 // 检查操作系统是否为小端字节序
-bool xanadu::endian::is_little() noexcept
+bool x::endian::is_little() noexcept
 {
-	return xanadu::endian::native == xanadu::endian::little;
+	return x::endian::native == x::endian::little;
 }
 
 // 检查操作系统是否为PDP字节序
-bool xanadu::endian::is_pdp() noexcept
+bool x::endian::is_pdp() noexcept
 {
-	return xanadu::endian::native == xanadu::endian::pdp;
+	return x::endian::native == x::endian::pdp;
 }
 
 
 
 // reverse : memory
-void xanadu::endian::reverse(void* _Memory, std::size_t _Size) noexcept
+void x::endian::reverse(void* _Memory, std::size_t _Size) noexcept
 {
 	if(_Memory != nullptr && _Size > 0)
 	{
@@ -59,56 +59,56 @@ void xanadu::endian::reverse(void* _Memory, std::size_t _Size) noexcept
 
 
 // reverse : short
-short xanadu::endian::reverse(short _Number) noexcept
+short x::endian::reverse(short _Number) noexcept
 {
-	return (short)xanadu::endian::reverse((unsigned short)_Number);
+	return (short)x::endian::reverse((unsigned short)_Number);
 }
 
 // reverse : unsigned short
-unsigned short xanadu::endian::reverse(unsigned short _Number) noexcept
+unsigned short x::endian::reverse(unsigned short _Number) noexcept
 {
 	return (((_Number & 0x00FF) << 8) | ((_Number & 0xFF00) >> 8));
 }
 
 // reverse : int
-int xanadu::endian::reverse(int _Number) noexcept
+int x::endian::reverse(int _Number) noexcept
 {
-	return (int)xanadu::endian::reverse((unsigned int)_Number);
+	return (int)x::endian::reverse((unsigned int)_Number);
 }
 
 // reverse : unsigned int
-unsigned int xanadu::endian::reverse(unsigned int _Number) noexcept
+unsigned int x::endian::reverse(unsigned int _Number) noexcept
 {
 	return (((_Number & 0xFF000000) >> 24) | ((_Number & 0x00FF0000) >> 8) | ((_Number & 0x0000FF00) << 8) | ((_Number & 0x000000FF) << 24));
 }
 
 // reverse : long
-long xanadu::endian::reverse(long _Number) noexcept
+long x::endian::reverse(long _Number) noexcept
 {
-	return (long)xanadu::endian::reverse((unsigned long)_Number);
+	return (long)x::endian::reverse((unsigned long)_Number);
 }
 
 // reverse : unsigned long
-unsigned long xanadu::endian::reverse(unsigned long _Number) noexcept
+unsigned long x::endian::reverse(unsigned long _Number) noexcept
 {
 	if (sizeof(unsigned long) == 4)
 	{
-		return (unsigned long)xanadu::endian::reverse((unsigned int)_Number);
+		return (unsigned long)x::endian::reverse((unsigned int)_Number);
 	}
 	else
 	{
-		return (unsigned long)xanadu::endian::reverse((unsigned long long)_Number);
+		return (unsigned long)x::endian::reverse((unsigned long long)_Number);
 	}
 }
 
 // reverse : long long
-long long xanadu::endian::reverse(long long _Number) noexcept
+long long x::endian::reverse(long long _Number) noexcept
 {
-	return (long long)xanadu::endian::reverse((unsigned long long)_Number);
+	return (long long)x::endian::reverse((unsigned long long)_Number);
 }
 
 // reverse : unsigned short
-unsigned long long xanadu::endian::reverse(unsigned long long _Number) noexcept
+unsigned long long x::endian::reverse(unsigned long long _Number) noexcept
 {
 	return (((_Number & 0x00000000000000FFULL) << 56) | ((_Number & 0x000000000000FF00ULL) << 40) |
 		((_Number & 0x0000000000FF0000ULL) << 24) | ((_Number & 0x00000000FF000000ULL) << 8) |
@@ -121,68 +121,68 @@ unsigned long long xanadu::endian::reverse(unsigned long long _Number) noexcept
 
 
 // Conversion from native byte order to network byte order : short
-short xanadu::endian::host_to_network(short _Number) noexcept
+short x::endian::host_to_network(short _Number) noexcept
 {
-	return (short)xanadu::endian::host_to_network((unsigned short)_Number);
+	return (short)x::endian::host_to_network((unsigned short)_Number);
 }
 
 // Conversion from native byte order to network byte order : unsigned short
-unsigned short xanadu::endian::host_to_network(unsigned short _Number) noexcept
+unsigned short x::endian::host_to_network(unsigned short _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
-		return xanadu::endian::reverse(_Number);
+		return x::endian::reverse(_Number);
 	}
 	return _Number;
 }
 
 // Conversion from native byte order to network byte order : int
-int xanadu::endian::host_to_network(int _Number) noexcept
+int x::endian::host_to_network(int _Number) noexcept
 {
-	return (int)xanadu::endian::host_to_network((unsigned int)_Number);
+	return (int)x::endian::host_to_network((unsigned int)_Number);
 }
 
 // Conversion from native byte order to network byte order : unsigned int
-unsigned int xanadu::endian::host_to_network(unsigned int _Number) noexcept
+unsigned int x::endian::host_to_network(unsigned int _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
-		return xanadu::endian::reverse(_Number);
+		return x::endian::reverse(_Number);
 	}
 	return _Number;
 }
 
 // Conversion from native byte order to network byte order : long
-long xanadu::endian::host_to_network(long _Number) noexcept
+long x::endian::host_to_network(long _Number) noexcept
 {
-	return (long)xanadu::endian::host_to_network((unsigned long)_Number);
+	return (long)x::endian::host_to_network((unsigned long)_Number);
 }
 
 // Conversion from native byte order to network byte order : unsigned long
-unsigned long xanadu::endian::host_to_network(unsigned long _Number) noexcept
+unsigned long x::endian::host_to_network(unsigned long _Number) noexcept
 {
 	if (sizeof(unsigned long) == 4)
 	{
-		return (unsigned long)xanadu::endian::host_to_network((unsigned int)_Number);
+		return (unsigned long)x::endian::host_to_network((unsigned int)_Number);
 	}
 	else
 	{
-		return (unsigned long)xanadu::endian::host_to_network((unsigned long long)_Number);
+		return (unsigned long)x::endian::host_to_network((unsigned long long)_Number);
 	}
 }
 
 // Conversion from native byte order to network byte order : long long
-long long xanadu::endian::host_to_network(long long _Number) noexcept
+long long x::endian::host_to_network(long long _Number) noexcept
 {
-	return (long long)xanadu::endian::host_to_network((unsigned long long)_Number);
+	return (long long)x::endian::host_to_network((unsigned long long)_Number);
 }
 
 // Conversion from native byte order to network byte order : unsigned short
-unsigned long long xanadu::endian::host_to_network(unsigned long long _Number) noexcept
+unsigned long long x::endian::host_to_network(unsigned long long _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
-		return xanadu::endian::reverse(_Number);
+		return x::endian::reverse(_Number);
 	}
 	return _Number;
 }
@@ -192,68 +192,68 @@ unsigned long long xanadu::endian::host_to_network(unsigned long long _Number) n
 
 
 // Conversion from network byte order to native byte order : short
-short xanadu::endian::network_to_host(short _Number) noexcept
+short x::endian::network_to_host(short _Number) noexcept
 {
-	return (short)xanadu::endian::network_to_host((unsigned short)_Number);
+	return (short)x::endian::network_to_host((unsigned short)_Number);
 }
 
 // Conversion from network byte order to native byte order : unsigned short
-unsigned short xanadu::endian::network_to_host(unsigned short _Number) noexcept
+unsigned short x::endian::network_to_host(unsigned short _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
-		return xanadu::endian::reverse(_Number);
+		return x::endian::reverse(_Number);
 	}
 	return _Number;
 }
 
 // Conversion from network byte order to native byte order : int
-int xanadu::endian::network_to_host(int _Number) noexcept
+int x::endian::network_to_host(int _Number) noexcept
 {
-	return (int)xanadu::endian::network_to_host((unsigned int)_Number);
+	return (int)x::endian::network_to_host((unsigned int)_Number);
 }
 
 // Conversion from network byte order to native byte order : unsigned int
-unsigned int xanadu::endian::network_to_host(unsigned int _Number) noexcept
+unsigned int x::endian::network_to_host(unsigned int _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
-		return xanadu::endian::reverse(_Number);
+		return x::endian::reverse(_Number);
 	}
 	return _Number;
 }
 
 // Conversion from network byte order to native byte order : long
-long xanadu::endian::network_to_host(long _Number) noexcept
+long x::endian::network_to_host(long _Number) noexcept
 {
-	return (long)xanadu::endian::network_to_host((unsigned long)_Number);
+	return (long)x::endian::network_to_host((unsigned long)_Number);
 }
 
 // Conversion from network byte order to native byte order : unsigned long
-unsigned long xanadu::endian::network_to_host(unsigned long _Number) noexcept
+unsigned long x::endian::network_to_host(unsigned long _Number) noexcept
 {
 	if (sizeof(unsigned long) == 4)
 	{
-		return (unsigned long)xanadu::endian::network_to_host((unsigned int)_Number);
+		return (unsigned long)x::endian::network_to_host((unsigned int)_Number);
 	}
 	else
 	{
-		return (unsigned long)xanadu::endian::network_to_host((unsigned long long)_Number);
+		return (unsigned long)x::endian::network_to_host((unsigned long long)_Number);
 	}
 }
 
 // Conversion from network byte order to native byte order : long long
-long long xanadu::endian::network_to_host(long long _Number) noexcept
+long long x::endian::network_to_host(long long _Number) noexcept
 {
-	return (long long)xanadu::endian::network_to_host((unsigned long long)_Number);
+	return (long long)x::endian::network_to_host((unsigned long long)_Number);
 }
 
 // Conversion from network byte order to native byte order : unsigned short
-unsigned long long xanadu::endian::network_to_host(unsigned long long _Number) noexcept
+unsigned long long x::endian::network_to_host(unsigned long long _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
-		return xanadu::endian::reverse(_Number);
+		return x::endian::reverse(_Number);
 	}
 	return _Number;
 }
@@ -263,51 +263,51 @@ unsigned long long xanadu::endian::network_to_host(unsigned long long _Number) n
 
 
 // Conversion from native byte order to big-endian order : short
-short xanadu::endian::host_to_big(short _Number) noexcept
+short x::endian::host_to_big(short _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : unsigned short
-unsigned short xanadu::endian::host_to_big(unsigned short _Number) noexcept
+unsigned short x::endian::host_to_big(unsigned short _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : int
-int xanadu::endian::host_to_big(int _Number) noexcept
+int x::endian::host_to_big(int _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : unsigned int
-unsigned int xanadu::endian::host_to_big(unsigned int _Number) noexcept
+unsigned int x::endian::host_to_big(unsigned int _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : long
-long xanadu::endian::host_to_big(long _Number) noexcept
+long x::endian::host_to_big(long _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : unsigned long
-unsigned long xanadu::endian::host_to_big(unsigned long _Number) noexcept
+unsigned long x::endian::host_to_big(unsigned long _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : long long
-long long xanadu::endian::host_to_big(long long _Number) noexcept
+long long x::endian::host_to_big(long long _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 // Conversion from native byte order to big-endian order : unsigned short
-unsigned long long xanadu::endian::host_to_big(unsigned long long _Number) noexcept
+unsigned long long x::endian::host_to_big(unsigned long long _Number) noexcept
 {
-	return xanadu::endian::host_to_network(_Number);
+	return x::endian::host_to_network(_Number);
 }
 
 
@@ -315,121 +315,121 @@ unsigned long long xanadu::endian::host_to_big(unsigned long long _Number) noexc
 
 
 // Conversion from big-endian order to native byte order : short
-short xanadu::endian::big_to_host(short _Number) noexcept
+short x::endian::big_to_host(short _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : unsigned short
-unsigned short xanadu::endian::big_to_host(unsigned short _Number) noexcept
+unsigned short x::endian::big_to_host(unsigned short _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : int
-int xanadu::endian::big_to_host(int _Number) noexcept
+int x::endian::big_to_host(int _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : unsigned int
-unsigned int xanadu::endian::big_to_host(unsigned int _Number) noexcept
+unsigned int x::endian::big_to_host(unsigned int _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : long
-long xanadu::endian::big_to_host(long _Number) noexcept
+long x::endian::big_to_host(long _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : unsigned long
-unsigned long xanadu::endian::big_to_host(unsigned long _Number) noexcept
+unsigned long x::endian::big_to_host(unsigned long _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : long long
-long long xanadu::endian::big_to_host(long long _Number) noexcept
+long long x::endian::big_to_host(long long _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 // Conversion from big-endian order to native byte order : unsigned short
-unsigned long long xanadu::endian::big_to_host(unsigned long long _Number) noexcept
+unsigned long long x::endian::big_to_host(unsigned long long _Number) noexcept
 {
-	return xanadu::endian::network_to_host(_Number);
+	return x::endian::network_to_host(_Number);
 }
 
 
 
 
 // Conversion from native byte order to little-endian order : short
-short xanadu::endian::host_to_little(short _Number) noexcept
+short x::endian::host_to_little(short _Number) noexcept
 {
-	return (short)xanadu::endian::host_to_little((unsigned short)_Number);
+	return (short)x::endian::host_to_little((unsigned short)_Number);
 }
 
 // Conversion from native byte order to little-endian order : unsigned short
-unsigned short xanadu::endian::host_to_little(unsigned short _Number) noexcept
+unsigned short x::endian::host_to_little(unsigned short _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
 		return _Number;
 	}
-	return xanadu::endian::reverse(_Number);
+	return x::endian::reverse(_Number);
 }
 
 // Conversion from native byte order to little-endian order : int
-int xanadu::endian::host_to_little(int _Number) noexcept
+int x::endian::host_to_little(int _Number) noexcept
 {
-	return (int)xanadu::endian::host_to_little((unsigned int)_Number);
+	return (int)x::endian::host_to_little((unsigned int)_Number);
 }
 
 // Conversion from native byte order to little-endian order : unsigned int
-unsigned int xanadu::endian::host_to_little(unsigned int _Number) noexcept
+unsigned int x::endian::host_to_little(unsigned int _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
 		return _Number;
 	}
-	return xanadu::endian::reverse(_Number);
+	return x::endian::reverse(_Number);
 }
 
 // Conversion from native byte order to little-endian order : long
-long xanadu::endian::host_to_little(long _Number) noexcept
+long x::endian::host_to_little(long _Number) noexcept
 {
-	return (long)xanadu::endian::host_to_little((unsigned long)_Number);
+	return (long)x::endian::host_to_little((unsigned long)_Number);
 }
 
 // Conversion from native byte order to little-endian order : unsigned long
-unsigned long xanadu::endian::host_to_little(unsigned long _Number) noexcept
+unsigned long x::endian::host_to_little(unsigned long _Number) noexcept
 {
 	if (sizeof(unsigned long) == 4)
 	{
-		return (unsigned long)xanadu::endian::host_to_little((unsigned int)_Number);
+		return (unsigned long)x::endian::host_to_little((unsigned int)_Number);
 	}
 	else
 	{
-		return (unsigned long)xanadu::endian::host_to_little((unsigned long long)_Number);
+		return (unsigned long)x::endian::host_to_little((unsigned long long)_Number);
 	}
 }
 
 // Conversion from native byte order to little-endian order : long long
-long long xanadu::endian::host_to_little(long long _Number) noexcept
+long long x::endian::host_to_little(long long _Number) noexcept
 {
-	return (long long)xanadu::endian::host_to_little((unsigned long long)_Number);
+	return (long long)x::endian::host_to_little((unsigned long long)_Number);
 }
 
 // Conversion from native byte order to little-endian order : unsigned short
-unsigned long long xanadu::endian::host_to_little(unsigned long long _Number) noexcept
+unsigned long long x::endian::host_to_little(unsigned long long _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
 		return _Number;
 	}
-	return xanadu::endian::reverse(_Number);
+	return x::endian::reverse(_Number);
 }
 
 
@@ -437,68 +437,68 @@ unsigned long long xanadu::endian::host_to_little(unsigned long long _Number) no
 
 
 // Conversion from little-endian order to native byte order : short
-short xanadu::endian::little_to_host(short _Number) noexcept
+short x::endian::little_to_host(short _Number) noexcept
 {
-	return (short)xanadu::endian::little_to_host((unsigned short)_Number);
+	return (short)x::endian::little_to_host((unsigned short)_Number);
 }
 
 // Conversion from little-endian order to native byte order : unsigned short
-unsigned short xanadu::endian::little_to_host(unsigned short _Number) noexcept
+unsigned short x::endian::little_to_host(unsigned short _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
 		return _Number;
 	}
-	return xanadu::endian::reverse(_Number);
+	return x::endian::reverse(_Number);
 }
 
 // Conversion from little-endian order to native byte order : int
-int xanadu::endian::little_to_host(int _Number) noexcept
+int x::endian::little_to_host(int _Number) noexcept
 {
-	return (int)xanadu::endian::little_to_host((unsigned int)_Number);
+	return (int)x::endian::little_to_host((unsigned int)_Number);
 }
 
 // Conversion from little-endian order to native byte order : unsigned int
-unsigned int xanadu::endian::little_to_host(unsigned int _Number) noexcept
+unsigned int x::endian::little_to_host(unsigned int _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
 		return _Number;
 	}
-	return xanadu::endian::reverse(_Number);
+	return x::endian::reverse(_Number);
 }
 
 // Conversion from little-endian order to native byte order : long
-long xanadu::endian::little_to_host(long _Number) noexcept
+long x::endian::little_to_host(long _Number) noexcept
 {
-	return (long)xanadu::endian::little_to_host((unsigned long)_Number);
+	return (long)x::endian::little_to_host((unsigned long)_Number);
 }
 
 // Conversion from little-endian order to native byte order : unsigned long
-unsigned long xanadu::endian::little_to_host(unsigned long _Number) noexcept
+unsigned long x::endian::little_to_host(unsigned long _Number) noexcept
 {
 	if (sizeof(unsigned long) == 4)
 	{
-		return (unsigned long)xanadu::endian::little_to_host((unsigned int)_Number);
+		return (unsigned long)x::endian::little_to_host((unsigned int)_Number);
 	}
 	else
 	{
-		return (unsigned long)xanadu::endian::little_to_host((unsigned long long)_Number);
+		return (unsigned long)x::endian::little_to_host((unsigned long long)_Number);
 	}
 }
 
 // Conversion from little-endian order to native byte order : long long
-long long xanadu::endian::little_to_host(long long _Number) noexcept
+long long x::endian::little_to_host(long long _Number) noexcept
 {
-	return (long long)xanadu::endian::little_to_host((unsigned long long)_Number);
+	return (long long)x::endian::little_to_host((unsigned long long)_Number);
 }
 
 // Conversion from little-endian order to native byte order : unsigned short
-unsigned long long xanadu::endian::little_to_host(unsigned long long _Number) noexcept
+unsigned long long x::endian::little_to_host(unsigned long long _Number) noexcept
 {
-	if(xanadu::endian::is_little())
+	if(x::endian::is_little())
 	{
 		return _Number;
 	}
-	return xanadu::endian::reverse(_Number);
+	return x::endian::reverse(_Number);
 }

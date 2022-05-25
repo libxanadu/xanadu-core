@@ -7,16 +7,16 @@
 #include <xanadu-core/filesystem/file_type.h>
 
 
-// namespace xanadu::filesystem
-namespace xanadu::filesystem
+// namespace x::filesystem
+namespace x::filesystem
 {
 	/// class file_status
 	class _XCOREAPI_ file_status
 	{
 	public:
-		using				size_type = xanadu::uint64_t;
-		using				time_type = xanadu::int64_t;
-		using				perms_type = xanadu::filesystem::perms;
+		using				size_type = x::uint64_t;
+		using				time_type = x::int64_t;
+		using				perms_type = x::filesystem::perms;
 
 	private:
 		size_type			_file_size;

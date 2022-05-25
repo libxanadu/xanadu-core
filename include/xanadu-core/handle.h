@@ -6,7 +6,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class handle context
 	class handle_context

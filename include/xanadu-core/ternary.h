@@ -5,7 +5,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class ternary
 	class _XCOREAPI_ ternary

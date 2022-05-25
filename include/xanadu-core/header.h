@@ -29,7 +29,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	// Case Sensitivity enum
 	typedef enum CaseSensitivity
@@ -41,7 +41,7 @@ namespace xanadu
 
 
 /// namespace xanadu 类型定义
-namespace xanadu
+namespace x
 {
 #if defined(XANADU_PLATFORM_BIT_32)
 	using	ssize_t			= int;
@@ -55,6 +55,13 @@ namespace xanadu
 	using	intptr_t		= long long;
 #endif
 
+	using 	uchar			= unsigned char;
+	using 	ushort			= unsigned short;
+	using 	uint			= unsigned int;
+	using 	ulong			= unsigned long;
+	using 	llong			= long long;
+	using 	ullong			= unsigned long long;
+
 	using	int8_t			= char;
 	using	uint8_t			= unsigned char;
 	using	int16_t			= short;
@@ -64,11 +71,11 @@ namespace xanadu
 	using	int64_t			= long long;
 	using	uint64_t		= unsigned long long;
 
-	using	size_type		= xanadu::size_t;
-	using	pos_type		= xanadu::size_t;
+	using	size_type		= x::size_t;
+	using	pos_type		= x::size_t;
 	using	raw_type		= void;
-	using	diff_type		= xanadu::ssize_t;
-	using	time_type		= xanadu::int64_t;
+	using	diff_type		= x::ssize_t;
+	using	time_type		= x::int64_t;
 }
 
 

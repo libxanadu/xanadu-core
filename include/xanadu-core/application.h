@@ -6,13 +6,13 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class application
 	class _XCOREAPI_ application
 	{
 	public:
-		using				string_type = xanadu::string;
+		using				string_type = x::string;
 
 	public:
 		// constructor

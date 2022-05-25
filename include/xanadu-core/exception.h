@@ -6,14 +6,14 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class exception
 	class _XCOREAPI_ exception
 	{
 	public:
 		using				elem_type = char;
-		using				size_type = xanadu::size_type;
+		using				size_type = x::size_type;
 
 	private:
 		elem_type*				_memory_address;
@@ -32,7 +32,7 @@ namespace xanadu
 		exception(const std::string& _Exception) noexcept; // NOLINT(google-explicit-constructor)
 
 		// constructor
-		exception(const xanadu::string& _Exception) noexcept; // NOLINT(google-explicit-constructor)
+		exception(const x::string& _Exception) noexcept; // NOLINT(google-explicit-constructor)
 
 		// constructor
 		exception(const exception& _Exception) noexcept;
@@ -51,7 +51,7 @@ namespace xanadu
 		exception& operator = (const std::string& _Exception) noexcept;
 
 		// operator overload =
-		exception& operator = (const xanadu::string& _Exception) noexcept;
+		exception& operator = (const x::string& _Exception) noexcept;
 
 		// operator overload =
 		exception& operator = (const exception& _Exception) noexcept;
@@ -78,7 +78,7 @@ namespace xanadu
 		static std::range_error range_error(const std::string& _Message) noexcept;
 
 		// [std] range_error
-		static std::range_error range_error(const xanadu::string& _Message) noexcept;
+		static std::range_error range_error(const x::string& _Message) noexcept;
 	};
 }
 

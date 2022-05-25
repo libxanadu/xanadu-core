@@ -6,20 +6,20 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class process
 	class _XCOREAPI_ process
 	{
 	public:
-		using				output_type = xanadu::string;
+		using				output_type = x::string;
 		using				callback_type = std::function<void(const output_type& _Output)>;
-		using				id_type = xanadu::uint64_t;
+		using				id_type = x::uint64_t;
 
 	private:
 		id_type				_process_id;
-		xanadu::string			_process_name;
-		xanadu::string			_process_path;
+		x::string			_process_name;
+		x::string			_process_path;
 
 	public:
 		// constructor
@@ -43,33 +43,33 @@ namespace xanadu
 
 	public:
 		// 遍历所有进程
-		static bool process_traverse(const std::function<bool(const xanadu::process& _ProcessInfo)>& _Lambda) noexcept;
+		static bool process_traverse(const std::function<bool(const x::process& _ProcessInfo)>& _Lambda) noexcept;
 
 		// 查询所有进程数量
-		static xanadu::uint64_t process_count() noexcept;
+		static x::uint64_t process_count() noexcept;
 
 		// 查询指定名称进程数量
-		static xanadu::uint64_t process_number(const xanadu::string& _ProcessName) noexcept;
+		static x::uint64_t process_number(const x::string& _ProcessName) noexcept;
 
 		// 根据进程ID终止进程
 		static bool terminate(unsigned long long _ProcessID) noexcept;
 
 		// 根据进程名称终止进程
-		static bool terminate(const xanadu::string& _ProcessName) noexcept;
+		static bool terminate(const x::string& _ProcessName) noexcept;
 
 	public:
 		// 当前进程
-		static xanadu::process current_process() noexcept;
+		static x::process current_process() noexcept;
 
 		// 当前进程ID
 		static id_type current_process_id() noexcept;
 
 	public:
 		// args 转换为 string
-		static xanadu::string args_to_string(char** _Args) noexcept;
+		static x::string args_to_string(char** _Args) noexcept;
 
 		// string 转换为 args
-		static char** string_to_args(const xanadu::string& _Args) noexcept;
+		static char** string_to_args(const x::string& _Args) noexcept;
 
 		// args 释放
 		static void args_free(char** _Args) noexcept;
@@ -92,51 +92,51 @@ namespace xanadu
 		static process from_process_id(id_type _ProcessID) noexcept;
 
 		// 从进程ID构建数据
-		static process from_process_id(id_type _ProcessID, const xanadu::string& _ProcessName) noexcept;
+		static process from_process_id(id_type _ProcessID, const x::string& _ProcessName) noexcept;
 
 	public:
 		// 进程ID
 		virtual id_type id() const noexcept final;
 
 		// 进程名称
-		virtual const xanadu::string& name() const noexcept final;
+		virtual const x::string& name() const noexcept final;
 
 		// 进程路径
-		virtual const xanadu::string& path() const noexcept final;
+		virtual const x::string& path() const noexcept final;
 
 	public:
 		// 执行 exec 系列函数
-		static int execds(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param) noexcept;
+		static int execds(const x::string& _Application, const x::string& _Directory, const x::string& _Param) noexcept;
 
 	public:
 		// 同步运行
-		static int sync_run(const xanadu::string& _Application) noexcept;
+		static int sync_run(const x::string& _Application) noexcept;
 
 		// 同步运行
-		static int sync_run(const xanadu::string& _Application, const xanadu::string& _Directory) noexcept;
+		static int sync_run(const x::string& _Application, const x::string& _Directory) noexcept;
 
 		// 同步运行
-		static int sync_run(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param) noexcept;
+		static int sync_run(const x::string& _Application, const x::string& _Directory, const x::string& _Param) noexcept;
 
 	public:
 		// 同步运行并接收结果
-		static int sync_run(const xanadu::string& _Application, const callback_type& _Lambda) noexcept;
+		static int sync_run(const x::string& _Application, const callback_type& _Lambda) noexcept;
 
 		// 同步运行并接收结果
-		static int sync_run(const xanadu::string& _Application, const xanadu::string& _Directory, const callback_type& _Lambda) noexcept;
+		static int sync_run(const x::string& _Application, const x::string& _Directory, const callback_type& _Lambda) noexcept;
 
 		// 同步运行并接收结果
-		static int sync_run(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param, const callback_type& _Lambda) noexcept;
+		static int sync_run(const x::string& _Application, const x::string& _Directory, const x::string& _Param, const callback_type& _Lambda) noexcept;
 
 	public:
 		// 异步运行
-		static int async_run(const xanadu::string& _Application) noexcept;
+		static int async_run(const x::string& _Application) noexcept;
 
 		// 异步运行
-		static int async_run(const xanadu::string& _Application, const xanadu::string& _Directory) noexcept;
+		static int async_run(const x::string& _Application, const x::string& _Directory) noexcept;
 
 		// 异步运行
-		static int async_run(const xanadu::string& _Application, const xanadu::string& _Directory, const xanadu::string& _Param) noexcept;
+		static int async_run(const x::string& _Application, const x::string& _Directory, const x::string& _Param) noexcept;
 	};
 }
 

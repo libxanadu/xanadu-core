@@ -5,7 +5,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// enum time_zone
 	typedef enum class time_zone
@@ -83,7 +83,7 @@ namespace xanadu
 	class _XCOREAPI_ time_regular
 	{
 	public:
-		using				value_type = xanadu::int64_t;
+		using				value_type = x::int64_t;
 
 	public:
 		static const value_type		switch_sec = 1000;			// 秒数转换
@@ -169,7 +169,7 @@ namespace xanadu
 	class _XCOREAPI_ date_time
 	{
 	public:
-		using				value_type = xanadu::int64_t;
+		using				value_type = x::int64_t;
 
 	private:
 		value_type			_time_year;
@@ -218,22 +218,22 @@ namespace xanadu
 		static bool year_is_leap(value_type _Year) noexcept;
 
 	public:
-		// 修正年份 xanadu::time_regular::min_year - xanadu::time_regular::max_year
+		// 修正年份 x::time_regular::min_year - x::time_regular::max_year
 		static value_type revise_year(value_type _Year) noexcept;
 
-		// 修正月份 xanadu::time_regular::min_month - xanadu::time_regular::max_month
+		// 修正月份 x::time_regular::min_month - x::time_regular::max_month
 		static value_type revise_month(value_type _Month) noexcept;
 
-		// 修正天数 xanadu::time_regular::min_day - xanadu::time_regular::max_day
+		// 修正天数 x::time_regular::min_day - x::time_regular::max_day
 		static value_type revise_day(value_type _Day) noexcept;
 
-		// 修正小时 xanadu::time_regular::min_hour - xanadu::time_regular::max_hour
+		// 修正小时 x::time_regular::min_hour - x::time_regular::max_hour
 		static value_type revise_hour(value_type _Hour) noexcept;
 
-		// 修正分钟 xanadu::time_regular::min_minute - xanadu::time_regular::max_minute
+		// 修正分钟 x::time_regular::min_minute - x::time_regular::max_minute
 		static value_type revise_minute(value_type _Minute) noexcept;
 
-		// 修正秒数 xanadu::time_regular::min_second - xanadu::time_regular::max_second
+		// 修正秒数 x::time_regular::min_second - x::time_regular::max_second
 		static value_type revise_second(value_type _Second) noexcept;
 
 	public:

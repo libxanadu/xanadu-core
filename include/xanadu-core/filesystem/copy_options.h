@@ -4,8 +4,8 @@
 #include <xanadu-core/header.h>
 
 
-// namespace xanadu::filesystem
-namespace xanadu::filesystem
+// namespace x::filesystem
+namespace x::filesystem
 {
 	typedef enum class xanadu_fs_copy_options
 	{

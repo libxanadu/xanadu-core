@@ -5,7 +5,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class mutex
 	class _XCOREAPI_ mutex
@@ -81,17 +81,17 @@ namespace xanadu
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class mutex
 	class _XCOREAPI_ auto_mutex
 	{
 	private:
-		xanadu::mutex&			_mutex_ref;
+		x::mutex&			_mutex_ref;
 
 	public:
 		// constructor
-		explicit auto_mutex(xanadu::mutex& _Mutex) noexcept;
+		explicit auto_mutex(x::mutex& _Mutex) noexcept;
 
 		// destructor
 		virtual ~auto_mutex() noexcept;
@@ -100,7 +100,7 @@ namespace xanadu
 
 
 // 一些方便调用互斥锁的宏
-#define				XANADU_MUTEX_AUTO(_Mutex)				xanadu::auto_mutex		_xanadu_auto_mutex(_Mutex)
+#define				XANADU_MUTEX_AUTO(_Mutex)				x::auto_mutex		_xanadu_auto_mutex(_Mutex)
 #define				STD_MUTEX_GUARD(_Mutex)				std::lock_guard<std::mutex>	_xanadu_lock_guard(_Mutex)
 
 #endif

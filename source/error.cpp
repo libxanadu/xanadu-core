@@ -4,60 +4,60 @@
 
 
 // 扩展数据
-static std::map<xanadu::error::value_type, xanadu::string>		_static_error_expend_array; // NOLINT(cert-err58-cpp)
+static std::map<x::error::value_type, x::string>		_static_error_expend_array; // NOLINT(cert-err58-cpp)
 
 
 
 // constructors
-xanadu::error::error() noexcept
+x::error::error() noexcept
 {
 	this->_error_code = EE_UNKNOWN_ERROR;
 }
 
 // constructors
-xanadu::error::error(value_type _Error) noexcept
+x::error::error(value_type _Error) noexcept
 {
 	this->_error_code = _Error;
 }
 
 // constructor
-xanadu::error::error(const error& _Error) noexcept = default;
+x::error::error(const error& _Error) noexcept = default;
 
 // constructor
-xanadu::error::error(error&& _Error) noexcept = default;
+x::error::error(error&& _Error) noexcept = default;
 
 // destructor
-xanadu::error::~error() noexcept = default;
+x::error::~error() noexcept = default;
 
 
 
 
 
 // operator overload =
-xanadu::error& xanadu::error::operator = (value_type _Error) noexcept
+x::error& x::error::operator = (value_type _Error) noexcept
 {
 	this->_error_code = _Error;
 	return *this;
 }
 
 // operator overload =
-xanadu::error& xanadu::error::operator = (const error& _Error) noexcept = default;
+x::error& x::error::operator = (const error& _Error) noexcept = default;
 
 // operator overload =
-xanadu::error& xanadu::error::operator = (error&& _Error) noexcept = default;
+x::error& x::error::operator = (error&& _Error) noexcept = default;
 
 
 
 
 
 // operator overload ==
-bool xanadu::error::operator == (value_type _Error) const noexcept
+bool x::error::operator == (value_type _Error) const noexcept
 {
 	return this->_error_code == _Error;
 }
 
 // operator overload ==
-bool xanadu::error::operator == (const error& _Error) const noexcept
+bool x::error::operator == (const error& _Error) const noexcept
 {
 	return this->_error_code == _Error._error_code;
 }
@@ -67,13 +67,13 @@ bool xanadu::error::operator == (const error& _Error) const noexcept
 
 
 // operator overload !=
-bool xanadu::error::operator != (value_type _Error) const noexcept
+bool x::error::operator != (value_type _Error) const noexcept
 {
 	return this->_error_code != _Error;
 }
 
 // operator overload !=
-bool xanadu::error::operator != (const error& _Error) const noexcept
+bool x::error::operator != (const error& _Error) const noexcept
 {
 	return this->_error_code != _Error._error_code;
 }
@@ -83,7 +83,7 @@ bool xanadu::error::operator != (const error& _Error) const noexcept
 
 
 // operator overload bool
-xanadu::error::operator bool () const noexcept
+x::error::operator bool () const noexcept
 {
 	return this->_error_code == EE_SUCCESS;
 }
@@ -93,19 +93,19 @@ xanadu::error::operator bool () const noexcept
 
 
 // [get] success
-bool xanadu::error::success() const noexcept
+bool x::error::success() const noexcept
 {
 	return this->_error_code == EE_SUCCESS;
 }
 
 // [get] failure
-bool xanadu::error::failure() const noexcept
+bool x::error::failure() const noexcept
 {
 	return this->_error_code != EE_SUCCESS;
 }
 
 // [get] explain
-const xanadu::error::elem_type* xanadu::error::explain() const noexcept
+const x::error::elem_type* x::error::explain() const noexcept
 {
 	auto		vIterator = _static_error_expend_array.find(this->_error_code);
 	if(vIterator != _static_error_expend_array.end())
@@ -125,12 +125,12 @@ const xanadu::error::elem_type* xanadu::error::explain() const noexcept
 
 
 // 添加扩展数据
-void xanadu::error::add_expand(value_type _Code, const elem_type* _Explain) noexcept
+void x::error::add_expand(value_type _Code, const elem_type* _Explain) noexcept
 {
 	auto		vIterator = _static_error_expend_array.find(_Code);
 	if(vIterator == _static_error_expend_array.end())
 	{
-		_static_error_expend_array.insert(std::map<xanadu::error::value_type, xanadu::string>::value_type(_Code, string(_Explain)));
+		_static_error_expend_array.insert(std::map<x::error::value_type, x::string>::value_type(_Code, string(_Explain)));
 	}
 	else
 	{

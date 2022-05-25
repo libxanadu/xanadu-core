@@ -6,7 +6,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class uuid
 	class _XCOREAPI_ uuid
@@ -42,27 +42,27 @@ namespace xanadu
 		explicit uuid(const char* _UUID) noexcept;
 
 		// constructor
-		explicit uuid(const xanadu::string& _UUID) noexcept;
+		explicit uuid(const x::string& _UUID) noexcept;
 
 		// constructor
-		uuid(const xanadu::uuid& _Object) noexcept;
+		uuid(const x::uuid& _Object) noexcept;
 
 		// constructor
-		uuid(xanadu::uuid&& _Object) noexcept;
+		uuid(x::uuid&& _Object) noexcept;
 
 		// destructor
 		virtual ~uuid() noexcept;
 
 	public:
 		// operator overload =
-		uuid& operator = (const xanadu::uuid& _Object) noexcept;
+		uuid& operator = (const x::uuid& _Object) noexcept;
 
 		// operator overload =
-		uuid& operator = (xanadu::uuid&& _Object) noexcept;
+		uuid& operator = (x::uuid&& _Object) noexcept;
 
 	private:
 		// 从字符串格式化
-		virtual bool formatString(const xanadu::string& _UUID) noexcept final;
+		virtual bool formatString(const x::string& _UUID) noexcept final;
 
 	public:
 		// 更换一个新的UUID
@@ -73,11 +73,14 @@ namespace xanadu
 		static uuid createUuid() noexcept;
 
 	public:
-		// 转换为字符串
-		virtual xanadu::string toString() const noexcept final;
+		// 从字符串格式化
+		static uuid fromString(const x::string& _UUID) noexcept;
 
 		// 转换为字符串
-		virtual xanadu::string toString(STRING_FORMAT _Format) const noexcept final;
+		virtual x::string toString() const noexcept final;
+
+		// 转换为字符串
+		virtual x::string toString(STRING_FORMAT _Format) const noexcept final;
 	};
 }
 

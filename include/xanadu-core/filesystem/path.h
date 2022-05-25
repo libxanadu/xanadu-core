@@ -6,16 +6,16 @@
 #include <xanadu-core/filesystem/file_status.h>
 
 
-// namespace xanadu::filesystem
-namespace xanadu::filesystem
+// namespace x::filesystem
+namespace x::filesystem
 {
 	/// class path
 	class _XCOREAPI_ path
 	{
 	public:
-		using				elem_type = xanadu::string::elem_type;
+		using				elem_type = x::string::elem_type;
 		using				value_type = elem_type;
-		using				string_type = xanadu::string;
+		using				string_type = x::string;
 
 	public:
 		static const value_type		path_separator = '/';

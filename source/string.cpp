@@ -4,43 +4,43 @@
 
 
 // constructor
-xanadu::string::string() noexcept = default;
+x::string::string() noexcept = default;
 
 // constructor
-xanadu::string::string(size_type _Length, elem_type _Char) noexcept : _Allocator(_Length, _Char)
+x::string::string(size_type _Length, elem_type _Char) noexcept : _Allocator(_Length, _Char)
 {
 }
 
 // constructor
-xanadu::string::string(const elem_type* _Memory) noexcept : _Allocator(_Memory, x_posix_strlen(_Memory))
+x::string::string(const elem_type* _Memory) noexcept : _Allocator(_Memory, x_posix_strlen(_Memory))
 {
 }
 
 // constructor
-xanadu::string::string(const elem_type* _Memory, size_type _Length) noexcept : _Allocator(_Memory, _Length)
+x::string::string(const elem_type* _Memory, size_type _Length) noexcept : _Allocator(_Memory, _Length)
 {
 }
 
 // constructor
-xanadu::string::string(const std::string& _StdStr) noexcept : _Allocator(_StdStr.data(), _StdStr.size())
+x::string::string(const std::string& _StdStr) noexcept : _Allocator(_StdStr.data(), _StdStr.size())
 {
 }
 
 // constructor
-xanadu::string::string(const xanadu::string& _String) noexcept = default;
+x::string::string(const x::string& _String) noexcept = default;
 
 // constructor
-xanadu::string::string(xanadu::string&& _String) noexcept = default;
+x::string::string(x::string&& _String) noexcept = default;
 
 // destructor
-xanadu::string::~string() noexcept = default;
+x::string::~string() noexcept = default;
 
 
 
 
 
 // operator overload =
-xanadu::string& xanadu::string::operator = (const elem_type* _Memory) noexcept
+x::string& x::string::operator = (const elem_type* _Memory) noexcept
 {
 	if(this->resize(x_posix_strlen(_Memory)))
 	{
@@ -50,7 +50,7 @@ xanadu::string& xanadu::string::operator = (const elem_type* _Memory) noexcept
 }
 
 // operator overload =
-xanadu::string& xanadu::string::operator = (const std::string& _String) noexcept
+x::string& x::string::operator = (const std::string& _String) noexcept
 {
 	if(this->resize(_String.size()))
 	{
@@ -60,7 +60,7 @@ xanadu::string& xanadu::string::operator = (const std::string& _String) noexcept
 }
 
 // operator overload =
-xanadu::string& xanadu::string::operator = (const xanadu::string& _String) noexcept
+x::string& x::string::operator = (const x::string& _String) noexcept
 {
 	if(this != &_String)
 	{
@@ -70,7 +70,7 @@ xanadu::string& xanadu::string::operator = (const xanadu::string& _String) noexc
 }
 
 // operator overload =
-xanadu::string& xanadu::string::operator = (xanadu::string&& _String) noexcept
+x::string& x::string::operator = (x::string&& _String) noexcept
 {
 	if(this != &_String)
 	{
@@ -84,26 +84,26 @@ xanadu::string& xanadu::string::operator = (xanadu::string&& _String) noexcept
 
 
 // operator overload +=
-xanadu::string& xanadu::string::operator += (elem_type _Char) noexcept
+x::string& x::string::operator += (elem_type _Char) noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
 	return this->append(vBytes, 1);
 }
 
 // operator overload +=
-xanadu::string& xanadu::string::operator += (const elem_type* _String) noexcept
+x::string& x::string::operator += (const elem_type* _String) noexcept
 {
 	return this->append(_String, x_posix_strlen(_String));
 }
 
 // operator overload +=
-xanadu::string& xanadu::string::operator += (const std::string& _String) noexcept
+x::string& x::string::operator += (const std::string& _String) noexcept
 {
 	return this->append(_String.data(), _String.size());
 }
 
 // operator overload +=
-xanadu::string& xanadu::string::operator += (const xanadu::string& _String) noexcept
+x::string& x::string::operator += (const x::string& _String) noexcept
 {
 	return this->append(_String.data(), _String.size());
 }
@@ -113,7 +113,7 @@ xanadu::string& xanadu::string::operator += (const xanadu::string& _String) noex
 
 
 // operator overload +
-xanadu::string xanadu::string::operator + (elem_type _Char) const noexcept
+x::string x::string::operator + (elem_type _Char) const noexcept
 {
 	auto		vTemp = *this;
 	vTemp += _Char;
@@ -121,7 +121,7 @@ xanadu::string xanadu::string::operator + (elem_type _Char) const noexcept
 }
 
 // operator overload +
-xanadu::string xanadu::string::operator + (const elem_type* _String) const noexcept
+x::string x::string::operator + (const elem_type* _String) const noexcept
 {
 	auto		vTemp = *this;
 	vTemp += _String;
@@ -129,7 +129,7 @@ xanadu::string xanadu::string::operator + (const elem_type* _String) const noexc
 }
 
 // operator overload +
-xanadu::string xanadu::string::operator + (const std::string& _String) const noexcept
+x::string x::string::operator + (const std::string& _String) const noexcept
 {
 	auto		vTemp = *this;
 	vTemp += _String;
@@ -137,7 +137,7 @@ xanadu::string xanadu::string::operator + (const std::string& _String) const noe
 }
 
 // operator overload +
-xanadu::string xanadu::string::operator + (const xanadu::string& _String) const noexcept
+x::string x::string::operator + (const x::string& _String) const noexcept
 {
 	auto		vTemp = *this;
 	vTemp += _String;
@@ -149,117 +149,117 @@ xanadu::string xanadu::string::operator + (const xanadu::string& _String) const 
 
 
 // operator overload ==
-bool xanadu::string::operator == (elem_type _Char) const noexcept
+bool x::string::operator == (elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
-	return this->compare(vBytes, 1, xanadu::CaseSensitive) == 0;
+	return this->compare(vBytes, 1, x::CaseSensitive) == 0;
 }
 
 // operator overload ==
-bool xanadu::string::operator == (const elem_type* _String) const noexcept
+bool x::string::operator == (const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive) == 0;
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive) == 0;
 }
 
 // operator overload ==
-bool xanadu::string::operator == (const xanadu::string& _String) const noexcept
+bool x::string::operator == (const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive) == 0;
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive) == 0;
 }
 
 // operator overload !=
-bool xanadu::string::operator != (elem_type _Char) const noexcept
+bool x::string::operator != (elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
-	return this->compare(vBytes, 1, xanadu::CaseSensitive) != 0;
+	return this->compare(vBytes, 1, x::CaseSensitive) != 0;
 }
 
 // operator overload !=
-bool xanadu::string::operator != (const elem_type* _String) const noexcept
+bool x::string::operator != (const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive) != 0;
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive) != 0;
 }
 
 // operator overload !=
-bool xanadu::string::operator != (const xanadu::string& _String) const noexcept
+bool x::string::operator != (const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive) != 0;
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive) != 0;
 }
 
 // operator overload <
-bool xanadu::string::operator < (elem_type _Char) const noexcept
+bool x::string::operator < (elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
-	return this->compare(vBytes, 1, xanadu::CaseSensitive) < 0;
+	return this->compare(vBytes, 1, x::CaseSensitive) < 0;
 }
 
 // operator overload <
-bool xanadu::string::operator < (const elem_type* _String) const noexcept
+bool x::string::operator < (const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive) < 0;
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive) < 0;
 }
 
 // operator overload <
-bool xanadu::string::operator < (const xanadu::string& _String) const noexcept
+bool x::string::operator < (const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive) < 0;
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive) < 0;
 }
 
 // operator overload >
-bool xanadu::string::operator > (elem_type _Char) const noexcept
+bool x::string::operator > (elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
-	return this->compare(vBytes, 1, xanadu::CaseSensitive) > 0;
+	return this->compare(vBytes, 1, x::CaseSensitive) > 0;
 }
 
 // operator overload >
-bool xanadu::string::operator > (const elem_type* _String) const noexcept
+bool x::string::operator > (const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive) > 0;
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive) > 0;
 }
 
 // operator overload >
-bool xanadu::string::operator > (const xanadu::string& _String) const noexcept
+bool x::string::operator > (const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive) > 0;
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive) > 0;
 }
 
 // operator overload <=
-bool xanadu::string::operator <= (elem_type _Char) const noexcept
+bool x::string::operator <= (elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
-	return this->compare(vBytes, 1, xanadu::CaseSensitive) <= 0;
+	return this->compare(vBytes, 1, x::CaseSensitive) <= 0;
 }
 
 // operator overload <=
-bool xanadu::string::operator <= (const elem_type* _String) const noexcept
+bool x::string::operator <= (const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive) <= 0;
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive) <= 0;
 }
 
 // operator overload <=
-bool xanadu::string::operator <= (const xanadu::string& _String) const noexcept
+bool x::string::operator <= (const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive) <= 0;
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive) <= 0;
 }
 
 // operator overload >=
-bool xanadu::string::operator >= (elem_type _Char) const noexcept
+bool x::string::operator >= (elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = {_Char, '\0'};
-	return this->compare(vBytes, 1, xanadu::CaseSensitive) >= 0;
+	return this->compare(vBytes, 1, x::CaseSensitive) >= 0;
 }
 
 // operator overload >=
-bool xanadu::string::operator >= (const elem_type* _String) const noexcept
+bool x::string::operator >= (const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive) >= 0;
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive) >= 0;
 }
 
 // operator overload >=
-bool xanadu::string::operator >= (const xanadu::string& _String) const noexcept
+bool x::string::operator >= (const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive) >= 0;
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive) >= 0;
 }
 
 
@@ -267,13 +267,13 @@ bool xanadu::string::operator >= (const xanadu::string& _String) const noexcept
 
 
 // operator overload []
-xanadu::string::elem_type& xanadu::string::operator [] (pos_type _Index)
+x::string::elem_type& x::string::operator [] (pos_type _Index)
 {
 	return this->_Allocator[_Index];
 }
 
 // operator overload []
-xanadu::string::elem_type xanadu::string::operator [] (pos_type _Index) const
+x::string::elem_type x::string::operator [] (pos_type _Index) const
 {
 	return this->_Allocator[_Index];
 }
@@ -283,19 +283,19 @@ xanadu::string::elem_type xanadu::string::operator [] (pos_type _Index) const
 
 
 // [opt] clear
-void xanadu::string::clear() noexcept
+void x::string::clear() noexcept
 {
 	this->_Allocator.clear();
 }
 
 // [opt] resize
-bool xanadu::string::resize(size_type _Length) noexcept
+bool x::string::resize(size_type _Length) noexcept
 {
 	return this->_Allocator.resize(_Length);
 }
 
 // [opt] reverse
-bool xanadu::string::reverse(size_type _Length) noexcept
+bool x::string::reverse(size_type _Length) noexcept
 {
 	return this->_Allocator.reverse(_Length);
 }
@@ -305,49 +305,49 @@ bool xanadu::string::reverse(size_type _Length) noexcept
 
 
 // [get] exist
-bool xanadu::string::exist() const noexcept
+bool x::string::exist() const noexcept
 {
 	return this->_Allocator.exist();
 }
 
 // [get] empty
-bool xanadu::string::empty() const noexcept
+bool x::string::empty() const noexcept
 {
 	return this->_Allocator.empty();
 }
 
 // [get] data
-xanadu::string::elem_type* xanadu::string::data() noexcept
+x::string::elem_type* x::string::data() noexcept
 {
-	return static_cast<xanadu::string::elem_type*>(this->_Allocator.data());
+	return static_cast<x::string::elem_type*>(this->_Allocator.data());
 }
 
 // [get] data
-const xanadu::string::elem_type* xanadu::string::data() const noexcept
+const x::string::elem_type* x::string::data() const noexcept
 {
-	return static_cast<const xanadu::string::elem_type*>(this->_Allocator.data());
+	return static_cast<const x::string::elem_type*>(this->_Allocator.data());
 }
 
 // [get] size
-xanadu::string::size_type xanadu::string::size() const noexcept
+x::string::size_type x::string::size() const noexcept
 {
 	return this->_Allocator.size();
 }
 
 // [get] capacity
-xanadu::string::size_type xanadu::string::capacity() const noexcept
+x::string::size_type x::string::capacity() const noexcept
 {
 	return this->_Allocator.capacity();
 }
 
 // [get] surplus
-xanadu::string::size_type xanadu::string::surplus() const noexcept
+x::string::size_type x::string::surplus() const noexcept
 {
 	return this->_Allocator.surplus();
 }
 
 // [get] max_size
-xanadu::string::size_type xanadu::string::max_size() const noexcept
+x::string::size_type x::string::max_size() const noexcept
 {
 	return this->_Allocator.max_size();
 }
@@ -357,17 +357,17 @@ xanadu::string::size_type xanadu::string::max_size() const noexcept
 
 
 // 从源中截取部分数据
-xanadu::string xanadu::string::substr(pos_type _Pos) const noexcept
+x::string x::string::substr(pos_type _Pos) const noexcept
 {
-	return this->substr(_Pos, xanadu::string::npos);
+	return this->substr(_Pos, x::string::npos);
 }
 
 // 从源中截取部分数据
-xanadu::string xanadu::string::substr(pos_type _Pos, size_type _Length) const noexcept
+x::string x::string::substr(pos_type _Pos, size_type _Length) const noexcept
 {
 	if(_Pos < this->size())
 	{
-		if(_Length == xanadu::string::npos)
+		if(_Length == x::string::npos)
 		{
 			return {this->data() + _Pos, this->size() - _Pos};
 		}
@@ -383,15 +383,15 @@ xanadu::string xanadu::string::substr(pos_type _Pos, size_type _Length) const no
 }
 
 // 从源中截取部分数据
-xanadu::string xanadu::string::left(pos_type _Pos) const noexcept
+x::string x::string::left(pos_type _Pos) const noexcept
 {
 	return this->substr(0, _Pos);
 }
 
 // 从源中截取部分数据
-xanadu::string xanadu::string::right(pos_type _Pos) const noexcept
+x::string x::string::right(pos_type _Pos) const noexcept
 {
-	return this->substr(this->size() - _Pos, xanadu::string::npos);
+	return this->substr(this->size() - _Pos, x::string::npos);
 }
 
 
@@ -399,40 +399,40 @@ xanadu::string xanadu::string::right(pos_type _Pos) const noexcept
 
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(pos_type _Pos) const noexcept
+x::string x::string::mid(pos_type _Pos) const noexcept
 {
-	return this->mid(_Pos, xanadu::string::npos);
+	return this->mid(_Pos, x::string::npos);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(pos_type _Pos, size_type _Size) const noexcept
+x::string x::string::mid(pos_type _Pos, size_type _Size) const noexcept
 {
 	return this->substr(_Pos, _Size);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const elem_type* _Left, const elem_type* _Right) const noexcept
+x::string x::string::mid(const elem_type* _Left, const elem_type* _Right) const noexcept
 {
-	return this->mid(_Left, x_posix_strlen(_Left), _Right, x_posix_strlen(_Right), xanadu::CaseSensitive);
+	return this->mid(_Left, x_posix_strlen(_Left), _Right, x_posix_strlen(_Right), x::CaseSensitive);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const elem_type* _Left, const elem_type* _Right, xanadu::CaseSensitivity _XCS) const noexcept
+x::string x::string::mid(const elem_type* _Left, const elem_type* _Right, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->mid(_Left, x_posix_strlen(_Left), _Right, x_posix_strlen(_Right), _XCS);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR) const noexcept
+x::string x::string::mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR) const noexcept
 {
-	return this->mid(_Left, _LengthL, _Right, _LengthR, xanadu::CaseSensitive);
+	return this->mid(_Left, _LengthL, _Right, _LengthR, x::CaseSensitive);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR, xanadu::CaseSensitivity _XCS) const noexcept
+x::string x::string::mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR, x::CaseSensitivity _XCS) const noexcept
 {
-	pos_type 	vPosL = xanadu::string::npos;
-	pos_type 	vPosR = xanadu::string::npos;
+	pos_type 	vPosL = x::string::npos;
+	pos_type 	vPosR = x::string::npos;
 
 	if(_Left == nullptr || _Right == nullptr || _LengthL == 0 || _LengthR == 0)
 	{
@@ -440,11 +440,11 @@ xanadu::string xanadu::string::mid(const elem_type* _Left, size_type _LengthL, c
 	}
 
 	vPosL = this->find(_Left, _LengthL, 0, _XCS);
-	if(xanadu::string::npos != vPosL)
+	if(x::string::npos != vPosL)
 	{
 		vPosL += _LengthL;
 		vPosR = this->find(_Right, _LengthR, vPosL, _XCS);
-		if(xanadu::string::npos != vPosR)
+		if(x::string::npos != vPosR)
 		{
 			return this->substr(vPosL, vPosR - vPosL);
 		}
@@ -453,37 +453,37 @@ xanadu::string xanadu::string::mid(const elem_type* _Left, size_type _LengthL, c
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const elem_type* _Left, const xanadu::string& _Right) const noexcept
+x::string x::string::mid(const elem_type* _Left, const x::string& _Right) const noexcept
 {
-	return this->mid(_Left, x_posix_strlen(_Left), _Right.data(), _Right.size(), xanadu::CaseSensitive);
+	return this->mid(_Left, x_posix_strlen(_Left), _Right.data(), _Right.size(), x::CaseSensitive);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const elem_type* _Left, const xanadu::string& _Right, xanadu::CaseSensitivity _XCS) const noexcept
+x::string x::string::mid(const elem_type* _Left, const x::string& _Right, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->mid(_Left, x_posix_strlen(_Left), _Right.data(), _Right.size(), _XCS);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const xanadu::string& _Left, const elem_type* _Right) const noexcept
+x::string x::string::mid(const x::string& _Left, const elem_type* _Right) const noexcept
 {
-	return this->mid(_Left.data(), _Left.size(), _Right, x_posix_strlen(_Right), xanadu::CaseSensitive);
+	return this->mid(_Left.data(), _Left.size(), _Right, x_posix_strlen(_Right), x::CaseSensitive);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const xanadu::string& _Left, const elem_type* _Right, xanadu::CaseSensitivity _XCS) const noexcept
+x::string x::string::mid(const x::string& _Left, const elem_type* _Right, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->mid(_Left.data(), _Left.size(), _Right, x_posix_strlen(_Right), _XCS);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const xanadu::string& _Left, const xanadu::string& _Right) const noexcept
+x::string x::string::mid(const x::string& _Left, const x::string& _Right) const noexcept
 {
-	return this->mid(_Left.data(), _Left.size(), _Right.data(), _Right.size(), xanadu::CaseSensitive);
+	return this->mid(_Left.data(), _Left.size(), _Right.data(), _Right.size(), x::CaseSensitive);
 }
 
 // [mid] 从源中截取部分数据
-xanadu::string xanadu::string::mid(const xanadu::string& _Left, const xanadu::string& _Right, xanadu::CaseSensitivity _XCS) const noexcept
+x::string x::string::mid(const x::string& _Left, const x::string& _Right, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->mid(_Left.data(), _Left.size(), _Right.data(), _Right.size(), _XCS);
 }
@@ -493,39 +493,39 @@ xanadu::string xanadu::string::mid(const xanadu::string& _Left, const xanadu::st
 
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(elem_type _Char) const noexcept
+bool x::string::startsWith(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->startsWith(vBytes, 1, xanadu::CaseSensitive);
+	return this->startsWith(vBytes, 1, x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::startsWith(elem_type _Char, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->startsWith(vBytes, 1, _XCS);
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(const elem_type* _Memory) const noexcept
+bool x::string::startsWith(const elem_type* _Memory) const noexcept
 {
-	return this->startsWith(_Memory, x_posix_strlen(_Memory), xanadu::CaseSensitive);
+	return this->startsWith(_Memory, x_posix_strlen(_Memory), x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(const elem_type* _Memory, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::startsWith(const elem_type* _Memory, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->startsWith(_Memory, x_posix_strlen(_Memory), _XCS);
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(const elem_type* _Memory, size_type _Length) const noexcept
+bool x::string::startsWith(const elem_type* _Memory, size_type _Length) const noexcept
 {
-	return this->startsWith(_Memory, _Length, xanadu::CaseSensitive);
+	return this->startsWith(_Memory, _Length, x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(const elem_type* _Memory, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::startsWith(const elem_type* _Memory, size_type _Length, x::CaseSensitivity _XCS) const noexcept
 {
 	if(this->size() >= _Length)
 	{
@@ -535,13 +535,13 @@ bool xanadu::string::startsWith(const elem_type* _Memory, size_type _Length, xan
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(const xanadu::string& _String) const noexcept
+bool x::string::startsWith(const x::string& _String) const noexcept
 {
-	return this->startsWith(_String.data(), _String.size(), xanadu::CaseSensitive);
+	return this->startsWith(_String.data(), _String.size(), x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的前缀
-bool xanadu::string::startsWith(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::startsWith(const x::string& _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->startsWith(_String.data(), _String.size(), _XCS);
 }
@@ -551,39 +551,39 @@ bool xanadu::string::startsWith(const xanadu::string& _String, xanadu::CaseSensi
 
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(elem_type _Char) const noexcept
+bool x::string::endsWith(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->endsWith(vBytes, 1, xanadu::CaseSensitive);
+	return this->endsWith(vBytes, 1, x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::endsWith(elem_type _Char, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->endsWith(vBytes, 1, _XCS);
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(const elem_type* _Memory) const noexcept
+bool x::string::endsWith(const elem_type* _Memory) const noexcept
 {
-	return this->endsWith(_Memory, x_posix_strlen(_Memory), xanadu::CaseSensitive);
+	return this->endsWith(_Memory, x_posix_strlen(_Memory), x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(const elem_type* _Memory, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::endsWith(const elem_type* _Memory, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->endsWith(_Memory, x_posix_strlen(_Memory), _XCS);
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(const elem_type* _Memory, size_type _Length) const noexcept
+bool x::string::endsWith(const elem_type* _Memory, size_type _Length) const noexcept
 {
-	return this->endsWith(_Memory, _Length, xanadu::CaseSensitive);
+	return this->endsWith(_Memory, _Length, x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(const elem_type* _Memory, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::endsWith(const elem_type* _Memory, size_type _Length, x::CaseSensitivity _XCS) const noexcept
 {
 	if(this->size() >= _Length)
 	{
@@ -593,13 +593,13 @@ bool xanadu::string::endsWith(const elem_type* _Memory, size_type _Length, xanad
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(const xanadu::string& _String) const noexcept
+bool x::string::endsWith(const x::string& _String) const noexcept
 {
-	return this->endsWith(_String.data(), _String.size(), xanadu::CaseSensitive);
+	return this->endsWith(_String.data(), _String.size(), x::CaseSensitive);
 }
 
 // 检测源数据是否存在指定的后缀
-bool xanadu::string::endsWith(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::endsWith(const x::string& _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->endsWith(_String.data(), _String.size(), _XCS);
 }
@@ -609,74 +609,74 @@ bool xanadu::string::endsWith(const xanadu::string& _String, xanadu::CaseSensiti
 
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(elem_type _Char) const noexcept
+x::string::pos_type x::string::find(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->find(vBytes, 1, 0, xanadu::CaseSensitive);
+	return this->find(vBytes, 1, 0, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(elem_type _Char, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->find(vBytes, 1, 0, _XCS);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(elem_type _Char, pos_type _Pos) const noexcept
+x::string::pos_type x::string::find(elem_type _Char, pos_type _Pos) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->find(vBytes, 1, _Pos, xanadu::CaseSensitive);
+	return this->find(vBytes, 1, _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(elem_type _Char, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(elem_type _Char, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->find(vBytes, 1, _Pos, _XCS);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const elem_type* _String) const noexcept
+x::string::pos_type x::string::find(const elem_type* _String) const noexcept
 {
-	return this->find(_String, x_posix_strlen(_String), 0, xanadu::CaseSensitive);
+	return this->find(_String, x_posix_strlen(_String), 0, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(const elem_type* _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->find(_String, x_posix_strlen(_String), 0, _XCS);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const elem_type* _String, pos_type _Pos) const noexcept
+x::string::pos_type x::string::find(const elem_type* _String, pos_type _Pos) const noexcept
 {
-	return this->find(_String, x_posix_strlen(_String), _Pos, xanadu::CaseSensitive);
+	return this->find(_String, x_posix_strlen(_String), _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const elem_type* _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(const elem_type* _String, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->find(_String, x_posix_strlen(_String), _Pos, _XCS);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const elem_type* _String, size_type _Length, pos_type _Pos) const noexcept
+x::string::pos_type x::string::find(const elem_type* _String, size_type _Length, pos_type _Pos) const noexcept
 {
-	return this->find(_String, _Length, _Pos, xanadu::CaseSensitive);
+	return this->find(_String, _Length, _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const elem_type* _String, size_type _Length, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(const elem_type* _String, size_type _Length, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
-	auto 		vFind = static_cast<const xanadu::string::elem_type*>(nullptr);
+	auto 		vFind = static_cast<const x::string::elem_type*>(nullptr);
 
 	if(_String == nullptr || _Length == 0 || (this->size() - _Pos) < _Length)
 	{
-		return xanadu::string::npos;
+		return x::string::npos;
 	}
 
-	if(_XCS == xanadu::CaseInsensitive)
+	if(_XCS == x::CaseInsensitive)
 	{
 		vFind = x_posix_stristr(this->data() + _Pos, _String);
 	}
@@ -689,29 +689,29 @@ xanadu::string::pos_type xanadu::string::find(const elem_type* _String, size_typ
 	{
 		return vFind - this->data();
 	}
-	return xanadu::string::npos;
+	return x::string::npos;
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const xanadu::string& _String) const noexcept
+x::string::pos_type x::string::find(const x::string& _String) const noexcept
 {
-	return this->find(_String.data(), _String.size(), 0, xanadu::CaseSensitive);
+	return this->find(_String.data(), _String.size(), 0, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(const x::string& _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->find(_String.data(), _String.size(), 0, _XCS);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const xanadu::string& _String, pos_type _Pos) const noexcept
+x::string::pos_type x::string::find(const x::string& _String, pos_type _Pos) const noexcept
 {
-	return this->find(_String.data(), _String.size(), _Pos, xanadu::CaseSensitive);
+	return this->find(_String.data(), _String.size(), _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按正序查找数据
-xanadu::string::pos_type xanadu::string::find(const xanadu::string& _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::find(const x::string& _String, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->find(_String.data(), _String.size(), _Pos, _XCS);
 }
@@ -721,76 +721,76 @@ xanadu::string::pos_type xanadu::string::find(const xanadu::string& _String, pos
 
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(elem_type _Char) const noexcept
+x::string::pos_type x::string::rfind(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->rfind(vBytes, 1, this->size() - 1, xanadu::CaseSensitive);
+	return this->rfind(vBytes, 1, this->size() - 1, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(elem_type _Char, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->rfind(vBytes, 1, this->size() - 1, _XCS);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(elem_type _Char, pos_type _Pos) const noexcept
+x::string::pos_type x::string::rfind(elem_type _Char, pos_type _Pos) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->rfind(vBytes, 1, _Pos, xanadu::CaseSensitive);
+	return this->rfind(vBytes, 1, _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(elem_type _Char, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(elem_type _Char, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->rfind(vBytes, 1, _Pos, _XCS);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String) const noexcept
+x::string::pos_type x::string::rfind(const elem_type* _String) const noexcept
 {
-	return  this->rfind(_String, x_posix_strlen(_String), this->size() - 1, xanadu::CaseSensitive);
+	return  this->rfind(_String, x_posix_strlen(_String), this->size() - 1, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(const elem_type* _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return  this->rfind(_String, x_posix_strlen(_String), this->size() - 1, _XCS);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String, pos_type _Pos) const noexcept
+x::string::pos_type x::string::rfind(const elem_type* _String, pos_type _Pos) const noexcept
 {
-	return  this->rfind(_String, x_posix_strlen(_String), _Pos, xanadu::CaseSensitive);
+	return  this->rfind(_String, x_posix_strlen(_String), _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(const elem_type* _String, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	return  this->rfind(_String, x_posix_strlen(_String), _Pos, _XCS);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String, size_type _Length, pos_type _Pos) const noexcept
+x::string::pos_type x::string::rfind(const elem_type* _String, size_type _Length, pos_type _Pos) const noexcept
 {
-	return this->rfind(_String, _Length, _Pos, xanadu::CaseSensitive);
+	return this->rfind(_String, _Length, _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String, size_type _Length, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(const elem_type* _String, size_type _Length, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	auto 		vFind = static_cast<int>(1);
 
 	if(_String == nullptr || _Length == 0 || this->size() < _Length)
 	{
-		return xanadu::string::npos;
+		return x::string::npos;
 	}
 
-	for(; _Pos != xanadu::string::npos && vFind != 0; --_Pos)
+	for(; _Pos != x::string::npos && vFind != 0; --_Pos)
 	{
-		if(_XCS == xanadu::CaseInsensitive)
+		if(_XCS == x::CaseInsensitive)
 		{
 			vFind = x_posix_strnicmp(this->data() + _Pos, _String, _Length);
 		}
@@ -803,25 +803,25 @@ xanadu::string::pos_type xanadu::string::rfind(const elem_type* _String, size_ty
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const xanadu::string& _String) const noexcept
+x::string::pos_type x::string::rfind(const x::string& _String) const noexcept
 {
-	return this->rfind(_String.data(), _String.size(), this->size() - 1, xanadu::CaseSensitive);
+	return this->rfind(_String.data(), _String.size(), this->size() - 1, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(const x::string& _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->rfind(_String.data(), _String.size(), this->size() - 1, _XCS);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const xanadu::string& _String, pos_type _Pos) const noexcept
+x::string::pos_type x::string::rfind(const x::string& _String, pos_type _Pos) const noexcept
 {
-	return this->rfind(_String.data(), _String.size(), _Pos, xanadu::CaseSensitive);
+	return this->rfind(_String.data(), _String.size(), _Pos, x::CaseSensitive);
 }
 
 // 从指定位置按倒序查找数据
-xanadu::string::pos_type xanadu::string::rfind(const xanadu::string& _String, pos_type _Pos, xanadu::CaseSensitivity _XCS) const noexcept
+x::string::pos_type x::string::rfind(const x::string& _String, pos_type _Pos, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->rfind(_String.data(), _String.size(), _Pos, _XCS);
 }
@@ -831,52 +831,52 @@ xanadu::string::pos_type xanadu::string::rfind(const xanadu::string& _String, po
 
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(elem_type _Char) const noexcept
+bool x::string::contains(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->contains(vBytes, 1, xanadu::CaseSensitive);
+	return this->contains(vBytes, 1, x::CaseSensitive);
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::contains(elem_type _Char, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->contains(vBytes, 1, _XCS);
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(const elem_type* _String) const noexcept
+bool x::string::contains(const elem_type* _String) const noexcept
 {
-	return this->contains(_String, x_posix_strlen(_String), xanadu::CaseSensitive);
+	return this->contains(_String, x_posix_strlen(_String), x::CaseSensitive);
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::contains(const elem_type* _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->contains(_String, x_posix_strlen(_String), _XCS);
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(const elem_type* _String, size_type _Length) const noexcept
+bool x::string::contains(const elem_type* _String, size_type _Length) const noexcept
 {
-	return this->contains(_String, _Length, xanadu::CaseSensitive);
+	return this->contains(_String, _Length, x::CaseSensitive);
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(const elem_type* _String, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::contains(const elem_type* _String, size_type _Length, x::CaseSensitivity _XCS) const noexcept
 {
 	auto		vFind = this->find(_String, _Length, 0, _XCS);
-	return vFind != xanadu::string::npos;
+	return vFind != x::string::npos;
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(const xanadu::string& _String) const noexcept
+bool x::string::contains(const x::string& _String) const noexcept
 {
-	return this->contains(_String.data(), _String.size(), xanadu::CaseSensitive);
+	return this->contains(_String.data(), _String.size(), x::CaseSensitive);
 }
 
 // 检查是否包含指定数据
-bool xanadu::string::contains(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept
+bool x::string::contains(const x::string& _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->contains(_String.data(), _String.size(), _XCS);
 }
@@ -886,39 +886,39 @@ bool xanadu::string::contains(const xanadu::string& _String, xanadu::CaseSensiti
 
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(elem_type _Char) const noexcept
+int x::string::compare(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->compare(vBytes, 1, xanadu::CaseSensitive);
+	return this->compare(vBytes, 1, x::CaseSensitive);
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(elem_type _Char, xanadu::CaseSensitivity _XCS) const noexcept
+int x::string::compare(elem_type _Char, x::CaseSensitivity _XCS) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->compare(vBytes, 1, _XCS);
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(const elem_type* _String) const noexcept
+int x::string::compare(const elem_type* _String) const noexcept
 {
-	return this->compare(_String, x_posix_strlen(_String), xanadu::CaseSensitive);
+	return this->compare(_String, x_posix_strlen(_String), x::CaseSensitive);
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(const elem_type* _String, xanadu::CaseSensitivity _XCS) const noexcept
+int x::string::compare(const elem_type* _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->compare(_String, x_posix_strlen(_String), _XCS);
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(const elem_type* _String, size_type _Length) const noexcept
+int x::string::compare(const elem_type* _String, size_type _Length) const noexcept
 {
-	return this->compare(_String, _Length, xanadu::CaseSensitive);
+	return this->compare(_String, _Length, x::CaseSensitive);
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(const elem_type* _String, size_type _Length, xanadu::CaseSensitivity _XCS) const noexcept
+int x::string::compare(const elem_type* _String, size_type _Length, x::CaseSensitivity _XCS) const noexcept
 {
 	int		vCompare = 0;
 
@@ -930,7 +930,7 @@ int xanadu::string::compare(const elem_type* _String, size_type _Length, xanadu:
 	{
 		if(this->size() == _Length)
 		{
-			if(_XCS == xanadu::CaseInsensitive)
+			if(_XCS == x::CaseInsensitive)
 			{
 				vCompare = x_posix_strnicmp(this->data(), _String, _Length);
 			}
@@ -941,7 +941,7 @@ int xanadu::string::compare(const elem_type* _String, size_type _Length, xanadu:
 		}
 		else if(this->size() > _Length)
 		{
-			if(_XCS == xanadu::CaseInsensitive)
+			if(_XCS == x::CaseInsensitive)
 			{
 				vCompare = x_posix_strnicmp(this->data(), _String, _Length);
 			}
@@ -956,7 +956,7 @@ int xanadu::string::compare(const elem_type* _String, size_type _Length, xanadu:
 		}
 		else
 		{
-			if(_XCS == xanadu::CaseInsensitive)
+			if(_XCS == x::CaseInsensitive)
 			{
 				vCompare = x_posix_strnicmp(this->data(), _String, this->size());
 			}
@@ -982,13 +982,13 @@ int xanadu::string::compare(const elem_type* _String, size_type _Length, xanadu:
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(const xanadu::string& _String) const noexcept
+int x::string::compare(const x::string& _String) const noexcept
 {
-	return this->compare(_String.data(), _String.size(), xanadu::CaseSensitive);
+	return this->compare(_String.data(), _String.size(), x::CaseSensitive);
 }
 
 // 检查是否与指定数据相同
-int xanadu::string::compare(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) const noexcept
+int x::string::compare(const x::string& _String, x::CaseSensitivity _XCS) const noexcept
 {
 	return this->compare(_String.data(), _String.size(), _XCS);
 }
@@ -998,26 +998,26 @@ int xanadu::string::compare(const xanadu::string& _String, xanadu::CaseSensitivi
 
 
 // 在头部插入数据
-xanadu::string& xanadu::string::prepend(elem_type _Char) noexcept
+x::string& x::string::prepend(elem_type _Char) noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->prepend(vBytes, 1);
 }
 
 // 在头部插入数据
-xanadu::string& xanadu::string::prepend(const elem_type* _String) noexcept
+x::string& x::string::prepend(const elem_type* _String) noexcept
 {
 	return this->prepend(_String, x_posix_strlen(_String));
 }
 
 // 在头部插入数据
-xanadu::string& xanadu::string::prepend(const elem_type* _String, size_type _Size) noexcept
+x::string& x::string::prepend(const elem_type* _String, size_type _Size) noexcept
 {
 	return this->insert(0, _String, _Size);
 }
 
 // 在头部插入数据
-xanadu::string& xanadu::string::prepend(const xanadu::string& _String) noexcept
+x::string& x::string::prepend(const x::string& _String) noexcept
 {
 	return this->prepend(_String.data(), _String.size());
 }
@@ -1027,26 +1027,26 @@ xanadu::string& xanadu::string::prepend(const xanadu::string& _String) noexcept
 
 
 // 在尾部添加数据
-xanadu::string& xanadu::string::append(elem_type _Char) noexcept
+x::string& x::string::append(elem_type _Char) noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->append(vBytes, 1);
 }
 
 // 在尾部添加数据
-xanadu::string& xanadu::string::append(const elem_type* _String) noexcept
+x::string& x::string::append(const elem_type* _String) noexcept
 {
 	return this->append(_String, x_posix_strlen(_String));
 }
 
 // 在尾部添加数据
-xanadu::string& xanadu::string::append(const elem_type* _String, size_type _Size) noexcept
+x::string& x::string::append(const elem_type* _String, size_type _Size) noexcept
 {
 	return this->insert(this->size(), _String, _Size);
 }
 
 // 在尾部添加数据
-xanadu::string& xanadu::string::append(const xanadu::string& _String) noexcept
+x::string& x::string::append(const x::string& _String) noexcept
 {
 	return this->append(_String.data(), _String.size());
 }
@@ -1056,34 +1056,34 @@ xanadu::string& xanadu::string::append(const xanadu::string& _String) noexcept
 
 
 // 在指定下标处插入数据
-xanadu::string& xanadu::string::insert(pos_type _Pos, elem_type _Char) noexcept
+x::string& x::string::insert(pos_type _Pos, elem_type _Char) noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->insert(_Pos, vBytes, 1);
 }
 
 // 在指定下标处插入数据
-xanadu::string& xanadu::string::insert(pos_type _Pos, size_type _Count, elem_type _Char) noexcept
+x::string& x::string::insert(pos_type _Pos, size_type _Count, elem_type _Char) noexcept
 {
-	auto		vString = xanadu::string(_Count, _Char);
+	auto		vString = x::string(_Count, _Char);
 	return this->insert(_Pos, vString.data(), vString.size());
 }
 
 // 在指定下标处插入数据
-xanadu::string& xanadu::string::insert(pos_type _Pos, const elem_type* _String) noexcept
+x::string& x::string::insert(pos_type _Pos, const elem_type* _String) noexcept
 {
 	return this->insert(_Pos, _String, x_posix_strlen(_String));
 }
 
 // 在指定下标处插入数据
-xanadu::string& xanadu::string::insert(pos_type _Pos, const elem_type* _String, size_type _Length) noexcept
+x::string& x::string::insert(pos_type _Pos, const elem_type* _String, size_type _Length) noexcept
 {
 	this->_Allocator.insert(_Pos, _String, _Length);
 	return *this;
 }
 
-// Inserts data from the specified location xanadu::string
-xanadu::string& xanadu::string::insert(pos_type _Pos, const xanadu::string& _String) noexcept
+// Inserts data from the specified location x::string
+x::string& x::string::insert(pos_type _Pos, const x::string& _String) noexcept
 {
 	return this->insert(_Pos, _String.data(), _String.size());
 }
@@ -1093,49 +1093,49 @@ xanadu::string& xanadu::string::insert(pos_type _Pos, const xanadu::string& _Str
 
 
 // 移除下标 pos 处的 length 长度数据
-xanadu::string& xanadu::string::remove(pos_type _Pos, size_type _Length) noexcept
+x::string& x::string::remove(pos_type _Pos, size_type _Length) noexcept
 {
 	this->_Allocator.remove(_Pos, _Length);
 	return *this;
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(elem_type _Char) noexcept
+x::string& x::string::remove(elem_type _Char) noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
-	return this->remove(vBytes, 1, xanadu::CaseSensitive);
+	return this->remove(vBytes, 1, x::CaseSensitive);
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(elem_type _Char, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::remove(elem_type _Char, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->remove(vBytes, 1, _XCS);
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(const elem_type* _String) noexcept
+x::string& x::string::remove(const elem_type* _String) noexcept
 {
-	return this->remove(_String, x_posix_strlen(_String), xanadu::CaseSensitive);
+	return this->remove(_String, x_posix_strlen(_String), x::CaseSensitive);
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(const elem_type* _String, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::remove(const elem_type* _String, x::CaseSensitivity _XCS) noexcept
 {
 	return this->remove(_String, x_posix_strlen(_String), _XCS);
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(const elem_type* _String, size_type _Length) noexcept
+x::string& x::string::remove(const elem_type* _String, size_type _Length) noexcept
 {
-	return this->remove(_String, _Length, xanadu::CaseSensitive);
+	return this->remove(_String, _Length, x::CaseSensitive);
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(const elem_type* _String, size_type _Length, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::remove(const elem_type* _String, size_type _Length, x::CaseSensitivity _XCS) noexcept
 {
 	auto		vFind = this->find(_String, _Length, 0, _XCS);
-	if(vFind != xanadu::string::npos)
+	if(vFind != x::string::npos)
 	{
 		return this->remove(vFind, _Length);
 	}
@@ -1143,13 +1143,13 @@ xanadu::string& xanadu::string::remove(const elem_type* _String, size_type _Leng
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(const xanadu::string& _String) noexcept
+x::string& x::string::remove(const x::string& _String) noexcept
 {
-	return this->remove(_String.data(), _String.size(), xanadu::CaseSensitive);
+	return this->remove(_String.data(), _String.size(), x::CaseSensitive);
 }
 
 // 删除与参数相同的数据
-xanadu::string& xanadu::string::remove(const xanadu::string& _String, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::remove(const x::string& _String, x::CaseSensitivity _XCS) noexcept
 {
 	return this->remove(_String.data(), _String.size(), _XCS);
 }
@@ -1157,27 +1157,27 @@ xanadu::string& xanadu::string::remove(const xanadu::string& _String, xanadu::Ca
 
 
 // 替换数据
-xanadu::string& xanadu::string::replace(pos_type _Pos, size_type _Length, elem_type _After) noexcept
+x::string& x::string::replace(pos_type _Pos, size_type _Length, elem_type _After) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
 	return this->replace(_Pos, _Length, vAfter, 1);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(pos_type _Pos, size_type _Length, const elem_type* _After) noexcept
+x::string& x::string::replace(pos_type _Pos, size_type _Length, const elem_type* _After) noexcept
 {
 	return this->replace(_Pos, _Length, _After, x_posix_strlen(_After));
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(pos_type _Pos, size_type _Length, const elem_type* _After, size_type _LengthA) noexcept
+x::string& x::string::replace(pos_type _Pos, size_type _Length, const elem_type* _After, size_type _LengthA) noexcept
 {
 	this->_Allocator.replace(_Pos, _Length, _After, _LengthA);
 	return *this;
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(pos_type _Pos, size_type _Length, const xanadu::string& _After) noexcept
+x::string& x::string::replace(pos_type _Pos, size_type _Length, const x::string& _After) noexcept
 {
 	return this->replace(_Pos, _Length, _After.data(), _After.size());
 }
@@ -1187,15 +1187,15 @@ xanadu::string& xanadu::string::replace(pos_type _Pos, size_type _Length, const 
 
 
 // 替换数据
-xanadu::string& xanadu::string::replace(elem_type _Before, elem_type _After) noexcept
+x::string& x::string::replace(elem_type _Before, elem_type _After) noexcept
 {
 	elem_type		vBefore[2] = { _Before, '\0' };
 	elem_type		vAfter[2] = { _After, '\0' };
-	return this->replace(vBefore, 1, vAfter, 1, xanadu::CaseSensitive);
+	return this->replace(vBefore, 1, vAfter, 1, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(elem_type _Before, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(elem_type _Before, elem_type _After, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vBefore[2] = { _Before, '\0' };
 	elem_type		vAfter[2] = { _After, '\0' };
@@ -1203,28 +1203,28 @@ xanadu::string& xanadu::string::replace(elem_type _Before, elem_type _After, xan
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(elem_type _Before, const elem_type* _After, size_type _LengthA) noexcept
+x::string& x::string::replace(elem_type _Before, const elem_type* _After, size_type _LengthA) noexcept
 {
 	elem_type		vBefore[2] = { _Before, '\0' };
-	return this->replace(vBefore, 1, _After, _LengthA, xanadu::CaseSensitive);
+	return this->replace(vBefore, 1, _After, _LengthA, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(elem_type _Before, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(elem_type _Before, const elem_type* _After, size_type _LengthA, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vBefore[2] = { _Before, '\0' };
 	return this->replace(vBefore, 1, _After, _LengthA, _XCS);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(elem_type _Before, const xanadu::string& _After) noexcept
+x::string& x::string::replace(elem_type _Before, const x::string& _After) noexcept
 {
 	elem_type		vBefore[2] = { _Before, '\0' };
-	return this->replace(vBefore, 1, _After.data(), _After.size(), xanadu::CaseSensitive);
+	return this->replace(vBefore, 1, _After.data(), _After.size(), x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(elem_type _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(elem_type _Before, const x::string& _After, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vBefore[2] = { _Before, '\0' };
 	return this->replace(vBefore, 1, _After.data(), _After.size(), _XCS);
@@ -1235,39 +1235,39 @@ xanadu::string& xanadu::string::replace(elem_type _Before, const xanadu::string&
 
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, elem_type _After) noexcept
+x::string& x::string::replace(const elem_type* _Before, elem_type _After) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
-	return this->replace(_Before, x_posix_strlen(_Before), vAfter, 1, xanadu::CaseSensitive);
+	return this->replace(_Before, x_posix_strlen(_Before), vAfter, 1, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const elem_type* _Before, elem_type _After, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
 	return this->replace(_Before, x_posix_strlen(_Before), vAfter, 1, _XCS);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, const elem_type* _After, size_type _LengthA) noexcept
+x::string& x::string::replace(const elem_type* _Before, const elem_type* _After, size_type _LengthA) noexcept
 {
-	return this->replace(_Before, x_posix_strlen(_Before), _After, _LengthA, xanadu::CaseSensitive);
+	return this->replace(_Before, x_posix_strlen(_Before), _After, _LengthA, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const elem_type* _Before, const elem_type* _After, size_type _LengthA, x::CaseSensitivity _XCS) noexcept
 {
 	return this->replace(_Before, x_posix_strlen(_Before), _After, _LengthA, _XCS);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, const xanadu::string& _After) noexcept
+x::string& x::string::replace(const elem_type* _Before, const x::string& _After) noexcept
 {
-	return this->replace(_Before, x_posix_strlen(_Before), _After.data(), _After.size(), xanadu::CaseSensitive);
+	return this->replace(_Before, x_posix_strlen(_Before), _After.data(), _After.size(), x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const elem_type* _Before, const x::string& _After, x::CaseSensitivity _XCS) noexcept
 {
 	return this->replace(_Before, x_posix_strlen(_Before), _After.data(), _After.size(), _XCS);
 }
@@ -1277,49 +1277,49 @@ xanadu::string& xanadu::string::replace(const elem_type* _Before, const xanadu::
 
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _LengthB, elem_type _After) noexcept
+x::string& x::string::replace(const elem_type* _Before, size_type _LengthB, elem_type _After) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
-	return this->replace(_Before, _LengthB, vAfter, 1, xanadu::CaseSensitive);
+	return this->replace(_Before, _LengthB, vAfter, 1, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _LengthB, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const elem_type* _Before, size_type _LengthB, elem_type _After, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
 	return this->replace(_Before, _LengthB, vAfter, 1, _XCS);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA) noexcept
+x::string& x::string::replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA) noexcept
 {
-	return this->replace(_Before, _LengthB, _After, _LengthA, xanadu::CaseSensitive);
+	return this->replace(_Before, _LengthB, _After, _LengthA, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA, x::CaseSensitivity _XCS) noexcept
 {
-	pos_type	vPos = xanadu::string::npos;
+	pos_type	vPos = x::string::npos;
 	do
 	{
 		vPos = this->find(_Before, _LengthB, vPos, _XCS);
-		if(xanadu::string::npos != vPos)
+		if(x::string::npos != vPos)
 		{
 			this->replace(vPos, _LengthB, _After, _LengthA);
 			vPos += _LengthA;
 		}
-	} while(xanadu::string::npos != vPos);
+	} while(x::string::npos != vPos);
 	return *this;
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _LengthB, const xanadu::string& _After) noexcept
+x::string& x::string::replace(const elem_type* _Before, size_type _LengthB, const x::string& _After) noexcept
 {
-	return this->replace(_Before, _LengthB, _After.data(), _After.size(), xanadu::CaseSensitive);
+	return this->replace(_Before, _LengthB, _After.data(), _After.size(), x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _LengthB, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const elem_type* _Before, size_type _LengthB, const x::string& _After, x::CaseSensitivity _XCS) noexcept
 {
 	return this->replace(_Before, _LengthB, _After.data(), _After.size(), _XCS);
 }
@@ -1329,39 +1329,39 @@ xanadu::string& xanadu::string::replace(const elem_type* _Before, size_type _Len
 
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const xanadu::string& _Before, elem_type _After) noexcept
+x::string& x::string::replace(const x::string& _Before, elem_type _After) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
-	return this->replace(_Before.data(), _Before.size(), vAfter, 1, xanadu::CaseSensitive);
+	return this->replace(_Before.data(), _Before.size(), vAfter, 1, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const xanadu::string& _Before, elem_type _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const x::string& _Before, elem_type _After, x::CaseSensitivity _XCS) noexcept
 {
 	elem_type		vAfter[2] = { _After, '\0' };
 	return this->replace(_Before.data(), _Before.size(), vAfter, 1, _XCS);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const xanadu::string& _Before, const elem_type* _After, size_type _LengthA) noexcept
+x::string& x::string::replace(const x::string& _Before, const elem_type* _After, size_type _LengthA) noexcept
 {
-	return this->replace(_Before.data(), _Before.size(), _After, _LengthA, xanadu::CaseSensitive);
+	return this->replace(_Before.data(), _Before.size(), _After, _LengthA, x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const xanadu::string& _Before, const elem_type* _After, size_type _LengthA, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const x::string& _Before, const elem_type* _After, size_type _LengthA, x::CaseSensitivity _XCS) noexcept
 {
 	return this->replace(_Before.data(), _Before.size(), _After, _LengthA, _XCS);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const xanadu::string& _Before, const xanadu::string& _After) noexcept
+x::string& x::string::replace(const x::string& _Before, const x::string& _After) noexcept
 {
-	return this->replace(_Before.data(), _Before.size(), _After.data(), _After.size(), xanadu::CaseSensitive);
+	return this->replace(_Before.data(), _Before.size(), _After.data(), _After.size(), x::CaseSensitive);
 }
 
 // 替换数据
-xanadu::string& xanadu::string::replace(const xanadu::string& _Before, const xanadu::string& _After, xanadu::CaseSensitivity _XCS) noexcept
+x::string& x::string::replace(const x::string& _Before, const x::string& _After, x::CaseSensitivity _XCS) noexcept
 {
 	return this->replace(_Before.data(), _Before.size(), _After.data(), _After.size(), _XCS);
 }
@@ -1371,31 +1371,31 @@ xanadu::string& xanadu::string::replace(const xanadu::string& _Before, const xan
 
 
 // 按指定数据拆分字符串
-std::list<xanadu::string> xanadu::string::split(elem_type _Char) const noexcept
+std::list<x::string> x::string::split(elem_type _Char) const noexcept
 {
 	elem_type		vBytes[2] = { _Char, '\0' };
 	return this->split(vBytes, 1);
 }
 
 // 按指定数据拆分字符串
-std::list<xanadu::string> xanadu::string::split(const elem_type* _Memory) const noexcept
+std::list<x::string> x::string::split(const elem_type* _Memory) const noexcept
 {
 	return this->split({_Memory, x_posix_strlen(_Memory)});
 }
 
 // 按指定数据拆分字符串
-std::list<xanadu::string> xanadu::string::split(const elem_type* _Memory, size_type _Size) const noexcept
+std::list<x::string> x::string::split(const elem_type* _Memory, size_type _Size) const noexcept
 {
 	return this->split({_Memory, _Size});
 }
 
 // 按指定数据拆分字符串
-std::list<xanadu::string> xanadu::string::split(const xanadu::string& _String) const noexcept
+std::list<x::string> x::string::split(const x::string& _String) const noexcept
 {
-	auto		vHeaderArray = std::list<xanadu::string>();
+	auto		vHeaderArray = std::list<x::string>();
 	auto		vLast = static_cast<size_type>(0U);
 	auto		vSplitIndex = this->find(_String, vLast);
-	while(vSplitIndex != xanadu::string::npos && _String.exist())
+	while(vSplitIndex != x::string::npos && _String.exist())
 	{
 		vHeaderArray.push_back(this->mid(vLast, vSplitIndex - vLast));
 		vLast = vSplitIndex + 2;
@@ -1411,16 +1411,16 @@ std::list<xanadu::string> xanadu::string::split(const xanadu::string& _String) c
 
 
 // 判断一个字符是否为空白字符
-bool xanadu::string::isSpace(elem_type _Char) noexcept
+bool x::string::isSpace(elem_type _Char) noexcept
 {
 	// 如果宽字符是空白字符，则为真，否则假。
 	return isspace(_Char);
 }
 
 // 格式化字符串 (char* [%s]) (wchar_t* [%ls])
-xanadu::string xanadu::string::format(const char* _Format, ...) noexcept
+x::string x::string::format(const char* _Format, ...) noexcept
 {
-	auto		vString = xanadu::string();
+	auto		vString = x::string();
 	va_list		vArgs1;
 	va_list		vArgs2;
 
@@ -1443,7 +1443,7 @@ xanadu::string xanadu::string::format(const char* _Format, ...) noexcept
 
 
 // [conv] 转换至大写
-xanadu::string xanadu::string::toUpper() const noexcept
+x::string x::string::toUpper() const noexcept
 {
 	auto		vStrUpper = *this;
 	for(pos_type vIndex = 0; vIndex < vStrUpper.size(); ++vIndex)
@@ -1454,7 +1454,7 @@ xanadu::string xanadu::string::toUpper() const noexcept
 }
 
 // [conv] 转换至小写
-xanadu::string xanadu::string::toLower() const noexcept
+x::string x::string::toLower() const noexcept
 {
 	auto		vStrUpper = *this;
 	for(pos_type vIndex = 0; vIndex < vStrUpper.size(); ++vIndex)
@@ -1469,7 +1469,7 @@ xanadu::string xanadu::string::toLower() const noexcept
 
 
 // [conv] 转换至AString
-AString xanadu::string::toAString() const noexcept
+AString x::string::toAString() const noexcept
 {
 	auto		vWString = this->toWString();
 	auto		vAString = AString();
@@ -1483,13 +1483,13 @@ AString xanadu::string::toAString() const noexcept
 }
 
 // [conv] 从AString转换
-xanadu::string xanadu::string::fromAString(const char* _AString) noexcept
+x::string x::string::fromAString(const char* _AString) noexcept
 {
-	return xanadu::string::fromAString({_AString, x_posix_strlen(_AString)});
+	return x::string::fromAString({_AString, x_posix_strlen(_AString)});
 }
 
 // [conv] 从AString转换
-xanadu::string xanadu::string::fromAString(const AString& _AString) noexcept
+x::string x::string::fromAString(const AString& _AString) noexcept
 {
 	auto		vString = WString();
 	auto		vChangeStr = x_posix_stratow(_AString.data());
@@ -1498,7 +1498,7 @@ xanadu::string xanadu::string::fromAString(const AString& _AString) noexcept
 		vString = vChangeStr;
 		x_posix_free(vChangeStr);
 	}
-	return xanadu::string::fromWString(vString);
+	return x::string::fromWString(vString);
 }
 
 
@@ -1506,7 +1506,7 @@ xanadu::string xanadu::string::fromAString(const AString& _AString) noexcept
 
 
 // [conv] 转换至WString
-WString xanadu::string::toWString() const noexcept
+WString x::string::toWString() const noexcept
 {
 	auto		vWString = WString();
 	auto		vChangeStr = x_posix_strutow(this->data());
@@ -1519,15 +1519,15 @@ WString xanadu::string::toWString() const noexcept
 }
 
 // [conv] 从WString转换
-xanadu::string xanadu::string::fromWString(const wchar_t* _WString) noexcept
+x::string x::string::fromWString(const wchar_t* _WString) noexcept
 {
-	return xanadu::string::fromWString({_WString, x_posix_wcslen(_WString)});
+	return x::string::fromWString({_WString, x_posix_wcslen(_WString)});
 }
 
 // [conv] 从WString转换
-xanadu::string xanadu::string::fromWString(const WString& _WString) noexcept
+x::string x::string::fromWString(const WString& _WString) noexcept
 {
-	auto		vString = xanadu::string();
+	auto		vString = x::string();
 	auto		vChangeStr = x_posix_strwtou(_WString.data());
 	if(vChangeStr)
 	{
@@ -1542,19 +1542,19 @@ xanadu::string xanadu::string::fromWString(const WString& _WString) noexcept
 
 
 // [conv] 转换至UString
-UString xanadu::string::toUString() const noexcept
+UString x::string::toUString() const noexcept
 {
 	return {this->data(), this->size()};
 }
 
 // [conv] 从UString转换
-xanadu::string xanadu::string::fromUString(const char* _UString) noexcept
+x::string x::string::fromUString(const char* _UString) noexcept
 {
-	return xanadu::string::fromUString({_UString, x_posix_strlen(_UString)});
+	return x::string::fromUString({_UString, x_posix_strlen(_UString)});
 }
 
 // [conv] 从UString转换
-xanadu::string xanadu::string::fromUString(const UString& _UString) noexcept
+x::string x::string::fromUString(const UString& _UString) noexcept
 {
 	return {_UString.data(), _UString.size()};
 }
@@ -1564,7 +1564,7 @@ xanadu::string xanadu::string::fromUString(const UString& _UString) noexcept
 
 
 // [conv] 转换至NString (Windows: ASCII / 其它: UTF-8)
-NString xanadu::string::toNString() const noexcept
+NString x::string::toNString() const noexcept
 {
 #if defined(XANADU_SYSTEM_WINDOWS)
 	return this->toAString();
@@ -1574,18 +1574,18 @@ NString xanadu::string::toNString() const noexcept
 }
 
 // [conv] 从NString转换 (Windows: ASCII / 其它: UTF-8)
-xanadu::string xanadu::string::fromNString(const char* _NString) noexcept
+x::string x::string::fromNString(const char* _NString) noexcept
 {
-	return xanadu::string::fromNString({_NString, x_posix_strlen(_NString)});
+	return x::string::fromNString({_NString, x_posix_strlen(_NString)});
 }
 
 // [conv] 从NString转换 (Windows: ASCII / 其它: UTF-8)
-xanadu::string xanadu::string::fromNString(const UString& _NString) noexcept
+x::string x::string::fromNString(const UString& _NString) noexcept
 {
 #if defined(XANADU_SYSTEM_WINDOWS)
-	return xanadu::string::fromAString(_NString);
+	return x::string::fromAString(_NString);
 #else
-	return xanadu::string::fromUString(_NString);
+	return x::string::fromUString(_NString);
 #endif
 }
 
@@ -1594,9 +1594,9 @@ xanadu::string xanadu::string::fromNString(const UString& _NString) noexcept
 
 
 // [conv] 转换至HEX
-xanadu::string xanadu::string::toHex() const noexcept
+x::string x::string::toHex() const noexcept
 {
-	auto		vTarget = xanadu::string(this->size() * 2, '0');
+	auto		vTarget = x::string(this->size() * 2, '0');
 	for (auto vIndex = 0U; vIndex < this->size(); ++vIndex)
 	{
 		x_posix_sprintf(vTarget.data() + (vIndex * 2), "%02X", (std::uint8_t)this->data()[vIndex]);
@@ -1605,19 +1605,19 @@ xanadu::string xanadu::string::toHex() const noexcept
 }
 
 // [conv] 从HEX转换
-xanadu::string xanadu::string::fromHex(const elem_type* _String) noexcept
+x::string x::string::fromHex(const elem_type* _String) noexcept
 {
-	return xanadu::string::fromHex({_String, x_posix_strlen(_String)});
+	return x::string::fromHex({_String, x_posix_strlen(_String)});
 }
 
 // [conv] 从HEX转换
-xanadu::string xanadu::string::fromHex(const elem_type* _String, size_type _Size) noexcept
+x::string x::string::fromHex(const elem_type* _String, size_type _Size) noexcept
 {
-	return xanadu::string::fromHex({_String, _Size});
+	return x::string::fromHex({_String, _Size});
 }
 
 // [conv] 从HEX转换
-xanadu::string xanadu::string::fromHex(const xanadu::string& _Hex) noexcept
+x::string x::string::fromHex(const x::string& _Hex) noexcept
 {
 	if (_Hex.empty())
 	{
@@ -1642,7 +1642,7 @@ xanadu::string xanadu::string::fromHex(const xanadu::string& _Hex) noexcept
 	};
 	auto		vBuffer = _Hex.data();
 	auto		vLength = _Hex.size() / 2;
-	auto		vTarget = xanadu::string(vLength, '\0');
+	auto		vTarget = x::string(vLength, '\0');
 
 	for (auto vIndex = 0U; vIndex < vLength; ++vIndex)
 	{
@@ -1658,55 +1658,55 @@ xanadu::string xanadu::string::fromHex(const xanadu::string& _Hex) noexcept
 
 
 // [convert] convert to char
-char xanadu::string::toChar(bool* _Ok, int _Base) const noexcept
+char x::string::toChar(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<char>(this->toLLong(_Ok, _Base));
 }
 
 // [convert] convert to unsigned char
-unsigned char xanadu::string::toUChar(bool* _Ok, int _Base) const noexcept
+unsigned char x::string::toUChar(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<unsigned char>(this->toULLong(_Ok, _Base));
 }
 
 // [convert] convert to short
-short xanadu::string::toShort(bool* _Ok, int _Base) const noexcept
+short x::string::toShort(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<short>(this->toLLong(_Ok, _Base));
 }
 
 // [convert] convert to short
-unsigned short xanadu::string::toUShort(bool* _Ok, int _Base) const noexcept
+unsigned short x::string::toUShort(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<unsigned short>(this->toULLong(_Ok, _Base));
 }
 
 // [convert] convert to int
-int xanadu::string::toInt(bool* _Ok, int _Base) const noexcept
+int x::string::toInt(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<int>(this->toLLong(_Ok, _Base));
 }
 
 // [convert] convert to unsigned int
-unsigned int xanadu::string::toUInt(bool* _Ok, int _Base) const noexcept
+unsigned int x::string::toUInt(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<unsigned int>(this->toULLong(_Ok, _Base));
 }
 
 // [convert] convert to long
-long xanadu::string::toLong(bool* _Ok, int _Base) const noexcept
+long x::string::toLong(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<long>(this->toLLong(_Ok, _Base));
 }
 
 // [convert] convert to unsigned long
-unsigned long xanadu::string::toULong(bool* _Ok, int _Base) const noexcept
+unsigned long x::string::toULong(bool* _Ok, int _Base) const noexcept
 {
 	return static_cast<unsigned long>(this->toULLong(_Ok, _Base));
 }
 
 // [convert] convert to long long
-long long xanadu::string::toLLong(bool* _Ok, int _Base) const noexcept
+long long x::string::toLLong(bool* _Ok, int _Base) const noexcept
 {
 	auto		vEnd = static_cast<elem_type*>(nullptr);
 	auto		vValue = std::strtoll(this->data(), &vEnd, _Base);
@@ -1727,7 +1727,7 @@ long long xanadu::string::toLLong(bool* _Ok, int _Base) const noexcept
 }
 
 // [convert] convert to unsigned long long
-unsigned long long xanadu::string::toULLong(bool* _Ok, int _Base) const noexcept
+unsigned long long x::string::toULLong(bool* _Ok, int _Base) const noexcept
 {
 	auto		vEnd = static_cast<elem_type*>(nullptr);
 	auto		vValue = std::strtoull(this->data(), &vEnd, _Base);
@@ -1748,7 +1748,7 @@ unsigned long long xanadu::string::toULLong(bool* _Ok, int _Base) const noexcept
 }
 
 // [convert] convert to float
-float xanadu::string::toFloat(bool* _Ok) const noexcept
+float x::string::toFloat(bool* _Ok) const noexcept
 {
 	auto		vEnd = static_cast<elem_type*>(nullptr);
 	auto		vValue = std::strtof(this->data(), &vEnd);
@@ -1769,7 +1769,7 @@ float xanadu::string::toFloat(bool* _Ok) const noexcept
 }
 
 // [convert] convert to double
-double xanadu::string::toDouble(bool* _Ok) const noexcept
+double x::string::toDouble(bool* _Ok) const noexcept
 {
 	auto		vEnd = static_cast<elem_type*>(nullptr);
 	auto		vValue = std::strtod(this->data(), &vEnd);
@@ -1794,63 +1794,63 @@ double xanadu::string::toDouble(bool* _Ok) const noexcept
 
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(char _Value, int _Base) noexcept
+x::string& x::string::setNumber(char _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(unsigned char _Value, int _Base) noexcept
+x::string& x::string::setNumber(unsigned char _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<unsigned long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(short _Value, int _Base) noexcept
+x::string& x::string::setNumber(short _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(unsigned short _Value, int _Base) noexcept
+x::string& x::string::setNumber(unsigned short _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<unsigned long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(int _Value, int _Base) noexcept
+x::string& x::string::setNumber(int _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(unsigned int _Value, int _Base) noexcept
+x::string& x::string::setNumber(unsigned int _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<unsigned long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(long _Value, int _Base) noexcept
+x::string& x::string::setNumber(long _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(unsigned long _Value, int _Base) noexcept
+x::string& x::string::setNumber(unsigned long _Value, int _Base) noexcept
 {
 	this->setNumber(static_cast<unsigned long long>(_Value), _Base);
 	return *this;
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(long long _Value, int _Base) noexcept
+x::string& x::string::setNumber(long long _Value, int _Base) noexcept
 {
 	if(2 <= _Base && _Base <= 36)
 	{
@@ -1860,7 +1860,7 @@ xanadu::string& xanadu::string::setNumber(long long _Value, int _Base) noexcept
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(unsigned long long _Value, int _Base) noexcept
+x::string& x::string::setNumber(unsigned long long _Value, int _Base) noexcept
 {
 	if(2 <= _Base && _Base <= 36)
 	{
@@ -1870,7 +1870,7 @@ xanadu::string& xanadu::string::setNumber(unsigned long long _Value, int _Base) 
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(float _Value, char _Format, int _Prec) noexcept
+x::string& x::string::setNumber(float _Value, char _Format, int _Prec) noexcept
 {
 	XANADU_UNUSED(_Format);
 	XANADU_UNUSED(_Prec);
@@ -1880,7 +1880,7 @@ xanadu::string& xanadu::string::setNumber(float _Value, char _Format, int _Prec)
 }
 
 // [convert] convert from number
-xanadu::string& xanadu::string::setNumber(double _Value, char _Format, int _Prec) noexcept
+x::string& x::string::setNumber(double _Value, char _Format, int _Prec) noexcept
 {
 	XANADU_UNUSED(_Format);
 	XANADU_UNUSED(_Prec);
@@ -1894,97 +1894,97 @@ xanadu::string& xanadu::string::setNumber(double _Value, char _Format, int _Prec
 
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(char _Value, int _Base) noexcept
+x::string x::string::number(char _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(unsigned char _Value, int _Base) noexcept
+x::string x::string::number(unsigned char _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(short _Value, int _Base) noexcept
+x::string x::string::number(short _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(unsigned short _Value, int _Base) noexcept
+x::string x::string::number(unsigned short _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(int _Value, int _Base) noexcept
+x::string x::string::number(int _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(unsigned int _Value, int _Base) noexcept
+x::string x::string::number(unsigned int _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(long _Value, int _Base) noexcept
+x::string x::string::number(long _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(unsigned long _Value, int _Base) noexcept
+x::string x::string::number(unsigned long _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(long long _Value, int _Base) noexcept
+x::string x::string::number(long long _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(unsigned long long _Value, int _Base) noexcept
+x::string x::string::number(unsigned long long _Value, int _Base) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Base);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(float _Value, char _Format, int _Prec) noexcept
+x::string x::string::number(float _Value, char _Format, int _Prec) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Format, _Prec);
 	return vValue;
 }
 
 // [convert] convert from number
-xanadu::string xanadu::string::number(double _Value, char _Format, int _Prec) noexcept
+x::string x::string::number(double _Value, char _Format, int _Prec) noexcept
 {
-	auto		vValue = xanadu::string();
+	auto		vValue = x::string();
 	vValue.setNumber(_Value, _Format, _Prec);
 	return vValue;
 }
@@ -1994,7 +1994,7 @@ xanadu::string xanadu::string::number(double _Value, char _Format, int _Prec) no
 
 
 // Standard enhancement function : stream <<
-_XCOREAPI_ std::ostream& operator<< (std::ostream& _OStream, const xanadu::string& _String) noexcept
+_XCOREAPI_ std::ostream& operator<< (std::ostream& _OStream, const x::string& _String) noexcept
 {
 	for(auto vIndex = 0U; vIndex < _String.size(); ++vIndex)
 	{
@@ -2004,12 +2004,12 @@ _XCOREAPI_ std::ostream& operator<< (std::ostream& _OStream, const xanadu::strin
 }
 
 // Standard enhancement function : stream >>
-_XCOREAPI_ std::istream& operator>> (std::istream& _IStream, xanadu::string& _String) noexcept
+_XCOREAPI_ std::istream& operator>> (std::istream& _IStream, x::string& _String) noexcept
 {
 	_String.clear();
 	do
 	{
-		auto		vChar = static_cast<xanadu::string::elem_type>(_IStream.get());
+		auto		vChar = static_cast<x::string::elem_type>(_IStream.get());
 		if(vChar == '\n' || vChar == ' ')
 		{
 			break;
@@ -2020,12 +2020,12 @@ _XCOREAPI_ std::istream& operator>> (std::istream& _IStream, xanadu::string& _St
 }
 
 // Standard enhancement function : getline
-_XCOREAPI_ std::istream& getline(std::istream& _IStream, xanadu::string& _String, char _Delim) noexcept
+_XCOREAPI_ std::istream& getline(std::istream& _IStream, x::string& _String, char _Delim) noexcept
 {
 	_String.clear();
 	do
 	{
-		auto		vChar = static_cast<xanadu::string::elem_type>(_IStream.get());
+		auto		vChar = static_cast<x::string::elem_type>(_IStream.get());
 		if(vChar == _Delim)
 		{
 			break;
@@ -2036,7 +2036,7 @@ _XCOREAPI_ std::istream& getline(std::istream& _IStream, xanadu::string& _String
 }
 
 // Standard enhancement function : getline
-_XCOREAPI_ std::istream& getline(std::istream& _IStream, xanadu::string& _String) noexcept
+_XCOREAPI_ std::istream& getline(std::istream& _IStream, x::string& _String) noexcept
 {
 	return getline(_IStream, _String, '\n');
 }

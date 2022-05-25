@@ -2,21 +2,21 @@
 
 
 // constructors
-xanadu::handle_context::handle_context() noexcept
+x::handle_context::handle_context() noexcept
 {
 	this->_ReferenceCount = 1;
 	this->_ActualData = nullptr;
 }
 
 // constructors
-xanadu::handle_context::handle_context(void* _Object) noexcept
+x::handle_context::handle_context(void* _Object) noexcept
 {
 	this->_ReferenceCount = 1;
 	this->_ActualData = _Object;
 }
 
 // destructor
-xanadu::handle_context::~handle_context() noexcept
+x::handle_context::~handle_context() noexcept
 {
 	this->_ReferenceCount = 0;
 	this->_ActualData = nullptr;
@@ -27,14 +27,14 @@ xanadu::handle_context::~handle_context() noexcept
 
 
 // [opt] clone
-xanadu::handle_context* xanadu::handle_context::clone() noexcept
+x::handle_context* x::handle_context::clone() noexcept
 {
 	++this->_ReferenceCount;
 	return this;
 }
 
 // [opt] release
-void xanadu::handle_context::release() noexcept
+void x::handle_context::release() noexcept
 {
 	--this->_ReferenceCount;
 	if(this->_ReferenceCount == 0)
@@ -48,13 +48,13 @@ void xanadu::handle_context::release() noexcept
 
 
 // [get] data
-void* xanadu::handle_context::data() noexcept
+void* x::handle_context::data() noexcept
 {
 	return this->_ActualData;
 }
 
 // [get] data
-const void* xanadu::handle_context::data() const noexcept
+const void* x::handle_context::data() const noexcept
 {
 	return this->_ActualData;
 }
@@ -64,31 +64,31 @@ const void* xanadu::handle_context::data() const noexcept
 
 
 // constructors
-xanadu::handle::handle() noexcept
+x::handle::handle() noexcept
 {
-	this->_Context = new(std::nothrow) xanadu::handle_context();
+	this->_Context = new(std::nothrow) x::handle_context();
 }
 
 // constructors
-xanadu::handle::handle(void* _Object) noexcept
+x::handle::handle(void* _Object) noexcept
 {
-	this->_Context = new(std::nothrow) xanadu::handle_context(_Object);
+	this->_Context = new(std::nothrow) x::handle_context(_Object);
 }
 
 // constructor
-xanadu::handle::handle(const handle& _Handle) noexcept
+x::handle::handle(const handle& _Handle) noexcept
 {
 	this->_Context = _Handle._Context->clone();
 }
 
 // constructor
-xanadu::handle::handle(handle&& _Handle) noexcept
+x::handle::handle(handle&& _Handle) noexcept
 {
 	this->_Context = _Handle._Context->clone();
 }
 
 // destructor
-xanadu::handle::~handle() noexcept
+x::handle::~handle() noexcept
 {
 	this->_Context->release();
 	this->_Context = nullptr;
@@ -99,15 +99,15 @@ xanadu::handle::~handle() noexcept
 
 
 // operator overload =
-xanadu::handle& xanadu::handle::operator = (void* _Object) noexcept
+x::handle& x::handle::operator = (void* _Object) noexcept
 {
 	this->_Context->release();
-	this->_Context = new(std::nothrow) xanadu::handle_context(_Object);
+	this->_Context = new(std::nothrow) x::handle_context(_Object);
 	return *this;
 }
 
 // operator overload =
-xanadu::handle& xanadu::handle::operator = (const handle& _Handle) noexcept
+x::handle& x::handle::operator = (const handle& _Handle) noexcept
 {
 	if(this != &_Handle)
 	{
@@ -118,7 +118,7 @@ xanadu::handle& xanadu::handle::operator = (const handle& _Handle) noexcept
 }
 
 // operator overload =
-xanadu::handle& xanadu::handle::operator = (handle&& _Handle) noexcept
+x::handle& x::handle::operator = (handle&& _Handle) noexcept
 {
 	if(this != &_Handle)
 	{
@@ -133,25 +133,25 @@ xanadu::handle& xanadu::handle::operator = (handle&& _Handle) noexcept
 
 
 // operator overload ==
-bool xanadu::handle::operator == (const void* _Object) const noexcept
+bool x::handle::operator == (const void* _Object) const noexcept
 {
 	return this->_Context->data() == _Object;
 }
 
 // operator overload ==
-bool xanadu::handle::operator == (const handle& _Handle) const noexcept
+bool x::handle::operator == (const handle& _Handle) const noexcept
 {
 	return this->_Context == _Handle._Context;
 }
 
 // operator overload !=
-bool xanadu::handle::operator != (const void* _Object) const noexcept
+bool x::handle::operator != (const void* _Object) const noexcept
 {
 	return this->_Context->data() != _Object;
 }
 
 // operator overload !=
-bool xanadu::handle::operator != (const handle& _Handle) const noexcept
+bool x::handle::operator != (const handle& _Handle) const noexcept
 {
 	return this->_Context != _Handle._Context;
 }
@@ -161,25 +161,25 @@ bool xanadu::handle::operator != (const handle& _Handle) const noexcept
 
 
 // [get] exist
-bool xanadu::handle::exist() const noexcept
+bool x::handle::exist() const noexcept
 {
 	return this->_Context->data();
 }
 
 // [get] empty
-bool xanadu::handle::empty() const noexcept
+bool x::handle::empty() const noexcept
 {
 	return this->_Context->data() == nullptr;
 }
 
 // [get] data
-void* xanadu::handle::data() noexcept
+void* x::handle::data() noexcept
 {
 	return this->_Context->data();
 }
 
 // [get] data
-const void* xanadu::handle::data() const noexcept
+const void* x::handle::data() const noexcept
 {
 	return this->_Context->data();
 }
@@ -189,15 +189,15 @@ const void* xanadu::handle::data() const noexcept
 
 
 // [opt] again
-void xanadu::handle::again(void* _Object) noexcept
+void x::handle::again(void* _Object) noexcept
 {
 	this->_Context->release();
-	this->_Context = new(std::nothrow) xanadu::handle_context(_Object);
+	this->_Context = new(std::nothrow) x::handle_context(_Object);
 }
 
 // [opt] clear
-void xanadu::handle::clear() noexcept
+void x::handle::clear() noexcept
 {
 	this->_Context->release();
-	this->_Context = new(std::nothrow) xanadu::handle_context();
+	this->_Context = new(std::nothrow) x::handle_context();
 }

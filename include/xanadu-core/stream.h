@@ -5,7 +5,7 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class stream
 	class _XCOREAPI_ stream

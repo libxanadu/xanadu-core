@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
-	<Type Name="xanadu::allocator">
+	<Type Name="x::allocator">
 		<DisplayString>{_memory_address,s8}</DisplayString>
 		<StringView>_memory_address,s8</StringView>
 		<Expand>
@@ -14,7 +14,7 @@
 		</Expand>
 	</Type>
 
-	<Type Name="xanadu::string">
+	<Type Name="x::string">
 		<DisplayString>{_Allocator._memory_address,s8}</DisplayString>
 		<StringView>_Allocator._memory_address,s8</StringView>
 		<Expand>

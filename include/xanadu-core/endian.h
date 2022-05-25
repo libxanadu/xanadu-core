@@ -5,13 +5,13 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class endian
 	class _XCOREAPI_ endian
 	{
 	public:
-		using				endian_type = xanadu::size_type;
+		using				endian_type = x::size_type;
 
 	public:
 #if defined(XANADU_SYSTEM_WINDOWS)

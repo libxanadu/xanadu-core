@@ -4,8 +4,8 @@
 #include <xanadu-core/header.h>
 
 
-// namespace xanadu::filesystem
-namespace xanadu::filesystem
+// namespace x::filesystem
+namespace x::filesystem
 {
 	// ENUM CLASS file_type
 	typedef enum class file_type

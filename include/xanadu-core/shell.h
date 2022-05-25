@@ -6,13 +6,13 @@
 
 
 /// namespace xanadu
-namespace xanadu
+namespace x
 {
 	/// class shell
 	class _XCOREAPI_ shell
 	{
 	public:
-		using				output_type = xanadu::string;
+		using				output_type = x::string;
 		using				callback_type = std::function<void(const output_type& _Output)>;
 
 	public:
@@ -31,17 +31,17 @@ namespace xanadu
 
 	public:
 		// 执行本机system命令
-		static int system(const xanadu::string& _Command) noexcept;
+		static int system(const x::string& _Command) noexcept;
 
 	public:
 		// 同步运行
-		static int sync_run(const xanadu::string& _Shell) noexcept;
+		static int sync_run(const x::string& _Shell) noexcept;
 
 		// 同步运行并接收结果
-		static int sync_run(const xanadu::string& _Shell, const callback_type& _Lambda) noexcept;
+		static int sync_run(const x::string& _Shell, const callback_type& _Lambda) noexcept;
 
 		// 异步运行
-		static int async_run(const xanadu::string& _Shell) noexcept;
+		static int async_run(const x::string& _Shell) noexcept;
 	};
 }
 
