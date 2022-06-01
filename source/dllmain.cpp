@@ -1,46 +1,46 @@
 ﻿#include <xanadu-core/xanadu.h>
 
-
-// 动态库初始化
-static bool __xcall__ xanadu_core_library_initialize() noexcept
+bool __xcall__ _Xanadu_Core_Initialize() noexcept
 {
 	return true;
 };
 
-// 动态库释放
-static void __xcall__ xanadu_core_library_release() noexcept
+void __xcall__ _Xanadu_Core_Release() noexcept
 {
 };
 
-
-// 动态库入口
 #if defined(XANADU_SYSTEM_WINDOWS)
-extern "C" BOOL WINAPI DllMain(HANDLE _HDllHandle, DWORD _Reason, LPVOID _Reserved)
+BOOL WINAPI DllMain(HANDLE _HDllHandle, DWORD _Reason, LPVOID _Reserved)
 {
 	XANADU_UNUSED(_HDllHandle);
 	XANADU_UNUSED(_Reserved);
 
+	BOOL	vResult = TRUE;
 	switch(_Reason)
 	{
 		case DLL_PROCESS_ATTACH:
-			xanadu_core_library_initialize();
+			_Xanadu_Core_Initialize();
+			break;
+		case DLL_THREAD_ATTACH:
+			break;
+		case DLL_THREAD_DETACH:
 			break;
 		case DLL_PROCESS_DETACH:
-			xanadu_core_library_release();
+			_Xanadu_Core_Release();
 			break;
 		default:
 			break;
 	}
-	return TRUE;
+	return vResult;
 }
 #else
-__attribute((constructor)) void xanadu_core_dynamic_library_init(void)
+__attribute((constructor)) void _Xanadu_Core_Dynamic_Library_Init(void)
 {
-	xanadu_core_library_initialize();
+	_Xanadu_Core_Initialize();
 };
 
-__attribute((destructor)) void xanadu_core_dynamic_library_fini(void)
+__attribute((destructor)) void _Xanadu_Core_Dynamic_Library_Fini(void)
 {
-	xanadu_core_library_release();
+	_Xanadu_Core_Release();
 };
 #endif

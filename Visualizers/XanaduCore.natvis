@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<Type Name="XAllocator">
+		<DisplayString>{_memory_address,s8}</DisplayString>
+		<StringView>_memory_address,s8</StringView>
+		<Expand>
+			<Item Name="[size]">_memory_length</Item>
+			<Item Name="[capacity]">_memory_capacity</Item>
+			<ArrayItems>
+				<Size>_memory_length</Size>
+				<ValuePointer>_memory_address</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="XByteArray">
+		<DisplayString>{_memory_address,s8}</DisplayString>
+		<StringView>_memory_address,s8</StringView>
+		<Expand>
+			<Item Name="[size]">_memory_length</Item>
+			<Item Name="[capacity]">_memory_capacity</Item>
+			<ArrayItems>
+				<Size>_memory_length</Size>
+				<ValuePointer>_memory_address</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+
+	<Type Name="XString">
+		<DisplayString>{_string_data,s8}</DisplayString>
+		<StringView>_string_data,s8</StringView>
+		<Expand>
+			<Item Name="[size]">_string_length</Item>
+			<Item Name="[capacity]">_string_capacity</Item>
+			<ArrayItems>
+				<Size>_string_length</Size>
+				<ValuePointer>_string_data</ValuePointer>
+			</ArrayItems>
+		</Expand>
+	</Type>
+</AutoVisualizer>

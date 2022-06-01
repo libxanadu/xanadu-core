@@ -1,64 +1,55 @@
-# xanadu-core
-*C++ Support Library for X-Series Core*
+# Xanadu.Core
 
+*A cross-platform C++ extension library*
 
 
 ## Explain
-This project is for C++ support for the X-Series, providing more calls than the standard library.
 
+This is a collection of C++ extension classes, which can make some C++ calls more convenient.
 
 
 ### Function
-~~~
-bytearray	: Byte array handling
-endian		: Judgment and conversion of big and small endian byte order
-library		: Encapsulation class for dynamic library related operations
-mutex		: Mutex is a pure C-based C++ package
-process		: Process traversal and operation collection
-string		: String handling
-ternary		: Action class with three states (true/false/null)
-thread		: Thread ID and sleep
-uuid		: Create UUID and convert to and from strings
-~~~
-
+    XString             : A string processing class of UTF-8.
+    XByteArray          : Byte array processing
+    XBase64             : Base64 codec
+    XCoreApplication    : Some basic application operations
+    XLibrary            : Dynamic library loading
+    XMutex              : Mutex
+    XShell              : Shell operation, xanadu to call the command line and return output
+    XLog                : Multiple levels of log output
+    XVariant            : Variant
+    XHash               : Provide calculation of MD5 / CRC32 / SHA1
+    XException          : Exception handling
+    more...
 
 
 ## Note
+
 If you want to commit any changes, write the code in the following format.
 
-set encoding=utf-8 with BOM
+set encoding=utf-8
 
 set tabstop=8
 
 set shiftwidth=8
-
-
-
-## Note
-If you want to commit any changes, write the code in the following format.
-
-set encoding=utf-8 with BOM
-
-set tabstop=8
-
-set shiftwidth=8
-
 
 
 
 ## Comment format
 
 ```shell
-/// Function description
-/// \param _Value : Parameter explanation
-/// \return : Return value description
+/// <summary>
+/// The description of the current function
+/// </summary>
+/// <param name="_ParameterName"> Parameter description </param>
+/// <returns> Return value description</returns>
+/// <examples> Examples </examples>
 ```
-
 
 
 ## Installation
 
-### Linux
+### Ubuntu Linux
 
 First install all required dependencies and build tools:
 ```shell
@@ -69,14 +60,10 @@ sudo apt install libtool-bin
 sudo apt install cmake
 ```
 
-Resolve all dependencies:
-
-[xanadu-posix](https://github.com/libxanadu/xanadu-posix)
-
-Then clone the actual project repository:
+Then clone the actual project Repository:
 ```shell
-git clone https://github.com/libxanadu/xanadu-core.git
-svn checkout https://github.com/libxanadu/xanadu-core/trunk
+git clone https://github.com/libxanadu/XanaduCore.git
+svn checkout https://github.com/libxanadu/XanaduCore/trunk
 cd xanadu-core
 ```
 
@@ -87,9 +74,9 @@ make
 sudo make install
 ```
 
-
-
 ## License
 
 This library is licensed under the [GNU Lesser General Public License v2.1](https://www.gnu.org/licenses/lgpl-2.1.en.html),
 also included in the repository in the `LICENSE` file.
+
+README Updated on: 2021-09-09

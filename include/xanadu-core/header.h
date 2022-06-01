@@ -1,26 +1,98 @@
-#ifndef			_XANADU_CORE_HEADER_H_
+﻿#ifndef			_XANADU_CORE_HEADER_H_
 #define			_XANADU_CORE_HEADER_H_
 
 #include <xanadu-posix/xanadu.h>
-#include <xanadu-core/sys/types.h>
-#include <memory>
-#include <list>
-#include <vector>
-#include <map>
+
+// Include some C runtime library header files based on the operating system version
+#if defined(XANADU_SYSTEM_ANDROID)
+#include <sys/time.h>
+#else
+#include <sys/timeb.h>
+#endif
+#include <cerrno>
+#include <fcntl.h>
+#include <clocale>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <cassert>
+#include <cfloat>
+#include <cwchar>
+#include <cctype>
+#include <cwctype>
+#include <cinttypes>
+#include <codecvt>
+#include <locale>
+#include <iostream>
+#include <fstream>
+#include <ctime>
 #include <string>
-#include <stdexcept>
-#include <istream>
-#include <ostream>
+#include <cstring>
+#include <algorithm>
+#include <regex>
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
 #include <functional>
 #include <mutex>
+#include <thread>
+#include <stdexcept>
+#include <cassert>
 #include <random>
+#if defined(XANADU_SYSTEM_WINDOWS)
+#include <io.h>
+#include <direct.h>
+#include <process.h>
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <Windows.h>
+#include <Iphlpapi.h>
+#include <Shlobj.h>
+#else
+#if defined(XANADU_SYSTEM_DARWIN)
+#include <sys/uio.h>
+#include <sys/param.h>
+#include <sys/mount.h>
+#include <objc/objc.h>
+#include <objc/message.h>
+#include <xlocale.h>
+#else
+#if defined(XANADU_SYSTEM_ANDROID) || defined(XANADU_SYSTEM_ARM)
+#include <sys/uio.h>
+#else
+#include <sys/io.h>
+#endif
+#include <sys/vfs.h>
+#include <locale.h>
+#endif
+#include <wctype.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stdarg.h>
+#include <dlfcn.h>
+#include <dirent.h>
+#include <sys/time.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/mman.h>
+#include <sys/statvfs.h>
+#include <netdb.h>
+#include <signal.h>
+#include <sys/wait.h>
+#include <pthread.h>
+#endif
 
 
-// xanadu export declaration used by the project
+
+
+
+// Export definition of X-Series core library
 #if defined(XANADU_CORE_BUILD_STATIC)
 #define			_XCOREAPI_
 #else
-#if defined(XANADU_CORE_BUILD_LOCAL)
+#if defined(XANADU_CORE_BUILD_SHARED)
 #define			_XCOREAPI_					XANADU_COMPILER_API_EXP
 #else
 #define			_XCOREAPI_					XANADU_COMPILER_API_IMP
@@ -28,55 +100,33 @@
 #endif
 
 
-/// namespace xanadu
-namespace x
+
+
+
+// Macro definition of X-Series
+#define			XANADU_CHECK_RETURN(_Value, ...)			if(!(_Value)){	return __VA_ARGS__;	}
+#define			XANADU_DELETE_ARR(_Value)				if(_Value){ delete[] _Value;_Value = nullptr;}
+#define			XANADU_DELETE_PTR(_Value)				if(_Value){ delete _Value;	_Value = nullptr;}
+#define			XANADU_ASSERT(_Condition)				assert(_Condition)
+
+
+
+
+
+/// namespace X-Series
+namespace Xs
 {
 	// Case Sensitivity enum
 	typedef enum CaseSensitivity
 	{
-		CaseInsensitive,						// no
-		CaseSensitive,							// yes
+		// NO
+		CaseInsensitive			= 0,
+
+		// YES
+		CaseSensitive
 	}CaseSensitivity;
 }
 
-
-/// namespace xanadu 类型定义
-namespace x
-{
-#if defined(XANADU_PLATFORM_BIT_32)
-	using	ssize_t			= int;
-	using	size_t			= unsigned int;
-	using	ptrdiff_t		= int;
-	using	intptr_t		= int;
-#else
-	using	ssize_t			= long long;
-	using	size_t			= unsigned long long;
-	using	ptrdiff_t		= long long;
-	using	intptr_t		= long long;
-#endif
-
-	using 	uchar			= unsigned char;
-	using 	ushort			= unsigned short;
-	using 	uint			= unsigned int;
-	using 	ulong			= unsigned long;
-	using 	llong			= long long;
-	using 	ullong			= unsigned long long;
-
-	using	int8_t			= char;
-	using	uint8_t			= unsigned char;
-	using	int16_t			= short;
-	using	uint16_t		= unsigned short;
-	using	int32_t			= int;
-	using	uint32_t		= unsigned int;
-	using	int64_t			= long long;
-	using	uint64_t		= unsigned long long;
-
-	using	size_type		= x::size_t;
-	using	pos_type		= x::size_t;
-	using	raw_type		= void;
-	using	diff_type		= x::ssize_t;
-	using	time_type		= x::int64_t;
-}
 
 
 #endif
