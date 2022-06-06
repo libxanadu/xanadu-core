@@ -1332,7 +1332,7 @@ XString& XString::replace(const elem_type* _Before, size_type _LengthB, const el
 // 替换数据
 XString& XString::replace(const elem_type* _Before, size_type _LengthB, const elem_type* _After, size_type _LengthA, Xs::CaseSensitivity _XCS) noexcept
 {
-	pos_type	vPos = XString::npos;
+	pos_type	vPos = 0;
 	do
 	{
 		vPos = this->find(_Before, _LengthB, vPos, _XCS);
