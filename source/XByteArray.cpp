@@ -337,8 +337,8 @@ XByteArray XByteArray::mid(const elem_type* _Left, size_type _LengthL, const ele
 // [mid] 从源中截取部分数据
 XByteArray XByteArray::mid(const void* _Left, size_type _LengthL, const void* _Right, size_type _LengthR) const noexcept
 {
-	pos_type 	vPosL = XByteArray::npos;
-	pos_type 	vPosR = XByteArray::npos;
+	pos_type 	vPosL = 0;
+	pos_type 	vPosR = 0;
 
 	if(_Left == nullptr || _Right == nullptr || _LengthL == 0 || _LengthR == 0)
 	{
@@ -965,7 +965,7 @@ XByteArray& XByteArray::replace(const void* _Before, size_type _LengthB, const e
 // 替换数据
 XByteArray& XByteArray::replace(const void* _Before, size_type _LengthB, const void* _After, size_type _LengthA) noexcept
 {
-	pos_type	vPos = XByteArray::npos;
+	pos_type	vPos = 0;
 	do
 	{
 		vPos = this->find(_Before, _LengthB, vPos);

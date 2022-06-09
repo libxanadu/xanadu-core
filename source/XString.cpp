@@ -446,8 +446,8 @@ XString XString::mid(const elem_type* _Left, size_type _LengthL, const elem_type
 // [mid] 从源中截取部分数据
 XString XString::mid(const elem_type* _Left, size_type _LengthL, const elem_type* _Right, size_type _LengthR, Xs::CaseSensitivity _XCS) const noexcept
 {
-	pos_type 	vPosL = XString::npos;
-	pos_type 	vPosR = XString::npos;
+	pos_type 	vPosL = 0;
+	pos_type 	vPosR = 0;
 
 	if(_Left == nullptr || _Right == nullptr || _LengthL == 0 || _LengthR == 0)
 	{
