@@ -62,8 +62,8 @@ sudo apt install cmake
 
 Then clone the actual project Repository:
 ```shell
-git clone https://github.com/libxanadu/XanaduCore.git
-svn checkout https://github.com/libxanadu/XanaduCore/trunk
+git clone https://github.com/libxanadu/xanadu-core.git
+svn checkout https://github.com/libxanadu/xanadu-core/trunk
 cd xanadu-core
 ```
 
