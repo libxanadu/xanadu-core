@@ -417,7 +417,7 @@ bool XAllocator::remove(pos_type _Pos, size_type _Length) noexcept
 		_Length = this->_memory_length - _Pos;
 	}
 
-	std::memmove(this->_memory_address + _Pos, this->_memory_address + _Pos + _Length, _Length);
+	std::memmove(this->_memory_address + _Pos, this->_memory_address + _Pos + _Length, this->_memory_length - _Pos - _Length);
 	std::memset(this->_memory_address + (this->_memory_length - _Length), 0, _Length);
 	this->_memory_length -= _Length;
 	return true;
